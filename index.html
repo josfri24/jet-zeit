@@ -349,7 +349,7 @@ const DEV=(()=>{let d=null;try{d=JSON.parse(localStorage.getItem('jetzeit_dev')|
 function saveDev(){try{localStorage.setItem('jetzeit_dev',JSON.stringify(DEV));}catch(e){}}
 const isPersonal=()=>DB.mode==='personal';
 let memOnly=false,lsOk=true,idbOk=null,fresh=false,persisted=false,saveT=null,lastSaved=null;
-function seed(){return{ver:1,settings:{...DEF_S},emps:[{id:uid(),first:'Josef',last:'Fritz',nr:'',color:'#024794',photo:'',icon:'',pin:'1234',multi:true,active:true}],data:{}};}
+function seed(){return{ver:1,settings:{...DEF_S},emps:[],data:{}};} /* Web-Version: startet ohne Mitarbeiter */
 function norm(d){d.settings={...DEF_S,...(d.settings||{})};d.emps=Array.isArray(d.emps)?d.emps:[];d.data=d.data||{};d.meta=d.meta||{rev:0,savedAt:''};return d;}
 function load(){let d=null;try{const s=localStorage.getItem(LS);if(s)d=JSON.parse(s);}catch(e){lsOk=false;}
  if(!d||typeof d!=='object'){d=seed();fresh=true;}
@@ -638,7 +638,7 @@ function status(e){const os=openShift(e),tk=ymd(new Date()),t=getShifts(e,tk);
 
 /* ---------- Datenübernahme & Migration (einmalig, wird in DB.imports vermerkt) ---------- */
 /* November 2026 aus JET-Stunden_2026.xlsm (Minuten ab Mitternacht) */
-const IMPORTS=[{id:'excel-2026-11',emp:'Josef Fritz',days:{'2026-11-16':[[810,945],[1020,1080]],'2026-11-17':[[825,930]],'2026-11-18':[[660,720],[960,1290]],'2026-11-20':[[330,480]]}}];
+const IMPORTS=[]; /* Web-Version: keine Übernahmedaten */
 function migrate(){const st=DB.settings;DB.imports=DB.imports||{};
  if(!DB.imports.branding){if(st.company==='Meine Firma'&&!st.logo)Object.assign(st,{company:DEF_S.company,subtitle:DEF_S.subtitle,boss:DEF_S.boss,logo:JET_LOGO,accent:DEF_S.accent,accentText:DEF_S.accentText});DB.imports.branding=new Date().toISOString();}
  for(const o of Object.values(DB.data))for(const [k,a] of Object.entries(o)){const b=a.filter(s=>s.o==null||s.o>s.i);if(b.length!==a.length){if(b.length)o[k]=b;else delete o[k];}}
@@ -1004,7 +1004,7 @@ function aDaten(){const c=countBk(DB),kb=Math.round(JSON.stringify(DB).length/10
  <div class="card"><h3>📦 Komplettpaket für ein neues Gerät</h3><p class="mut">Eine einzige HTML-Datei mit <b>Programm und allen Daten</b>. Auf dem neuen Gerät öffnen → „Daten übernehmen“ bestätigen → fertig.</p>
  <div class="acts">${sh?'<button class="btn" id="dPackS">📤 Komplettpaket teilen</button>':''}<button class="btn" id="dPack" title="${esc(saveTip())}">📦 Komplettpaket speichern</button>${PACK?'<button class="btn" id="dPackI">Daten aus diesem Paket übernehmen</button>':''}</div></div>
  <div class="card"><h3>Speicherstatus</h3><p>Gespeicherte Buchungen: <b>${c.n}</b> · Mitarbeiter: <b>${c.emps}</b> · Datenmenge ca. <b>${kb} KB</b></p><div class="acts" style="margin-top:0"><button class="btn" id="dInfo">Details zum Speicher</button></div></div>
- ${IMPORTS.length?`<div class="card"><h3>Übernahme aus Excel</h3><p class="mut">Einträge vom November 2026 aus JET-Stunden_2026.xlsm (Josef Fritz). Fehlende Einträge werden ergänzt, vorhandene bleiben unverändert – es entstehen keine Doppelungen.</p><div class="acts"><button class="btn" id="dImp">Excel-Einträge November erneut übernehmen</button></div></div>`:''}
+ ${IMPORTS.length?`<div class="card"><h3>Übernahme aus Excel</h3><p class="mut">Einträge vom November 2026 aus der Excel-Liste. Fehlende Einträge werden ergänzt, vorhandene bleiben unverändert – es entstehen keine Doppelungen.</p><div class="acts"><button class="btn" id="dImp">Excel-Einträge November erneut übernehmen</button></div></div>`:''}
  <div class="card"><h3>Auswertung aller Mitarbeiter</h3><p class="mut">Unter „Zeitlisten“ → „Drucken / Export“ → „Alle Mitarbeiter“ lassen sich Woche, Monat oder Jahr für alle gemeinsam drucken oder exportieren.</p></div>
  <div class="card"><h3>Zurücksetzen</h3><p class="small mut">Auch hier wird vorher automatisch eine Sicherheitskopie angelegt.</p><div class="acts"><button class="btn d" id="dClr">Alle Zeitbuchungen löschen</button><button class="btn d" id="dAll">Alles zurücksetzen (Werkseinstellung)</button></div></div>`;}
 function canShareFiles(){try{return !!(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['{}'],'t.json',{type:'application/json'})]}));}catch(e){return false;}}
