@@ -348,6 +348,7 @@ input[type=file]{display:none!important}
 .ktab td{vertical-align:middle}.ktab tfoot td{border-top:2px solid var(--acc);padding:8px}
 .mtab tr.kcur td{background:#fff6d6}.mtab tr.kclk{cursor:pointer}.mtab tr.kclk:hover td{background:#fff3c4}
 .kcar{display:inline-flex;align-items:center;gap:6px}
+.orow{display:flex;flex-wrap:wrap;gap:4px 28px;align-items:center}
 @media print{
  @page{size:A4 portrait;margin:12mm}
  html,body{height:auto;overflow:visible;background:#fff;display:block;font-size:10pt}
@@ -407,7 +408,8 @@ const SRC0=('<!DOCTYPE html>\n'+document.documentElement.outerHTML).replace(new 
    localStorage (sofort) + IndexedDB (Zweitkopie + Tagessicherungen)
    + optional Datei jetzeit-daten.json (bis V1.29 Jet-Office: jetoffice-daten.json) in einem Datenordner (PC/Android, File System Access API)
    ========================================================= */
-const VERSION='1.31';
+const VERSION='1.32';
+/* V1.32: Drucken/Export mit Häkchen „mit Pausenzeiten“ (Vorgabe aus = kompakte Liste ohne Pausenzeilen; mit = für Meldungen an Behörden) */
 /* V1.31: Stundenkonto (Vertragsstunden je Mitarbeiter, verrechnete Stunden je Monat, laufender Saldo, Admin-Reiter „Stundenkonto“) und Ansicht „Jahr“ in der Mitarbeiter-Liste */
 /* V1.30: nur noch EINE Version. Die frühere Office-Version „Jet-Office“ entfällt; stattdessen schaltet der Administrator unter
    Parameter → „Mitarbeiter-Handys & Datenaustausch“ (settings.mobileOn) Eigenes Gerät, Monatsmeldung, Daten importieren/exportieren,
@@ -1152,7 +1154,7 @@ function outputDialog(e,admin){prepPdfLogo();const ONLY=OUT_ONLY;OUT_ONLY=null;c
   <div class="row2" id="oM"><label class="fld">Monat<select id="oMon">${MON.map((n,i)=>opt([i,n],a.getMonth())).join('')}</select></label><label class="fld">Jahr<select id="oYear">${years.map(y=>opt([y,y],a.getFullYear())).join('')}</select></label></div>
  </div>
  <label class="chk" id="oSumL"><input type="checkbox" id="oSum" ${SUM0?'checked':''}> Nur Jahresübersicht mit Stundenkonto (ohne Monatsseiten)</label>
- ${admin?`<label class="chk"><input type="checkbox" id="oAll"> Alle Mitarbeiter (sonst nur ${esc(fullName(e))})</label>`:''}
+ <div class="orow">${admin?`<label class="chk"><input type="checkbox" id="oAll"> Alle Mitarbeiter (sonst nur ${esc(fullName(e))})</label>`:''}${S().vpOn?`<label class="chk" title="Pausenzeilen („Pause von/bis“, „Pause (bezahlt)“) mit ausgeben – nötig z. B. für Meldungen an Behörden. Ohne Häkchen: kompakte Liste."><input type="checkbox" id="oVp" ${S().outVp?'checked':''}> mit Pausenzeiten</label>`:''}</div>
  ${/*@FULL*/(isPersonal()?'<p class="small" style="background:#fff6dc;border-radius:8px;padding:6px 10px;margin:10px 0 0">Stunden an den Administrator schicken? → bitte <b>📤 Monat melden</b> verwenden (Excel/CSV/Text/PDF sind nur zum Ansehen und Drucken).</p>':'')+/*@/FULL*/''}
  ${IOS?'<p class="small mut" style="margin:8px 0 0">ⓘ Jede Ausgabe öffnet das Teilen-Menü (Drucken, Mail, WhatsApp, In Dateien sichern).</p>':''}
  ${MOBILE&&!IOS&&canShareFiles()?'<label class="chk"><input type="checkbox" id="oShare" checked> Excel/CSV/Text über das Teilen-Menü (Mail, WhatsApp …) – sonst in „Downloads“</label>':''}
@@ -1164,8 +1166,10 @@ function outputDialog(e,admin){prepPdfLogo();const ONLY=OUT_ONLY;OUT_ONLY=null;c
  b.querySelectorAll('[data-f]').forEach(x=>x.onclick=()=>{
   const emps=admin&&$('#oAll').checked?(ONLY?DB.emps.filter(x=>ONLY.includes(x.id)):DB.emps.slice()):[e];
   const ref={kind,date:$('#oDate').value?pd($('#oDate').value):new Date(),y:+$('#oYear').value,m:+$('#oMon').value,sum:kind==='year'&&$('#oSum').checked};
-  const secs=sections(emps,ref);const f=x.dataset.f;const osh=b.querySelector('#oShare');OUT_SHARE=!!(osh&&osh.checked);
+  ref.vp=!!($('#oVp')&&$('#oVp').checked);if(!!S().outVp!==ref.vp){DB.settings.outVp=ref.vp;save();}const secs=sections(emps,ref);if(!ref.vp)secs.forEach(x=>x.periods.forEach(noVp));const f=x.dataset.f;const osh=b.querySelector('#oShare');OUT_SHARE=!!(osh&&osh.checked);
   if(f==='pdf'){pdfOut(secs,ref,false);}else if(f==='print'&&IOS){pdfOut(secs,ref,true);}else if(f==='print'){closeModal();printSections(secs,ref);}else if(f==='xlsx')exportXlsx(secs,ref);else if(f==='csv')exportCsv(secs,ref);else exportTxt(secs,ref);});}
+/* V1.32: Pausenzeiten aus einer Periode entfernen (kompakte Ausgabe) */
+function noVp(P){P.total.vp=0;P.weeks.forEach(w=>{w.vp=0;w.days.forEach(d=>d.vp=null);});}
 /* sections: [{emp, periods:[P], kind}] */
 function sections(emps,ref){return emps.map(e=>{let periods;
  if(ref.kind==='week')periods=[weekPeriod(e,ref.date)];
@@ -1276,6 +1280,7 @@ function printSections(secs,ref){let h='';
 /* Der Druckinhalt bleibt im (am Bildschirm unsichtbaren) Bereich #print stehen – Chrome/Android meldet 'afterprint' schon beim Öffnen der Vorschau, ein Leeren dort ergab leere Seiten. Er wird beim nächsten Druck ersetzt. */
 
 /* CSV (flach, eine Zeile pro Buchung) */
+function csvCut(line,n){let c=0,inQ=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"')inQ=!inQ;else if(ch===';'&&!inQ&&++c===n)return line.slice(0,i);}return line;}
 function exportCsv(secs,ref){const q=v=>{v=String(v??'');return/[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
  if(ref.sum){const L=[['Mitarbeiter','Pers.-Nr.','Jahr','Monat','Geleistet (Std dezimal)','Geleistet','Verrechnet (Std dezimal)','Verrechnet','Monat ± (Std dezimal)','Saldo (Std dezimal)','Saldo','Bemerkung'].join(';')];
   for(const s of secs){const A=acctYear(s.emp,ref.y);if(A.carry)L.push([fullName(s.emp),s.emp.nr||'',ref.y,'Übertrag '+(ref.y-1),'','','','','',dec(A.carry),fmtS(A.carry),''].map(q).join(';'));
@@ -1286,6 +1291,7 @@ function exportCsv(secs,ref){const q=v=>{v=String(v??'');return/[;"\n]/.test(v)?
  for(const s of secs){let tot=0,vpt=0;for(const P of s.periods)for(const w of P.weeks)for(const d of w.days){tot+=d.net;if(d.vp)vpt+=d.vp.dur;d.shifts.forEach((sh,k)=>{const last=k===d.shifts.length-1;
   L.push([fullName(s.emp),s.emp.nr||'',dmy(d.date),WD[d.date.getDay()],isoWeek(d.date),hm(sh.i),sh.o==null?'offen':hmx(sh.o),sh.o==null?'':dec(sh.o-sh.i),last?d.pause:'',last?dec(d.net):'',last?fmtH(d.net):'',sh.n||'',sh.e?'ja':'',sh.ri||'',sh.ro||'',last&&d.vp?hm(d.vp.s):'',last&&d.vp?hm(d.vp.s+d.vp.dur):'',last&&d.vp?d.vp.dur:'',last&&d.vp?(d.vp.ok?'ja':'Vorschlag'):''].map(q).join(';'));});}
   L.push([fullName(s.emp),s.emp.nr||'','Summe '+refLabel(ref),'','','','','','','',dec(tot),fmtH(tot),'','','','','',vpt||'',''].map(q).join(';'));}
+ if(!ref.vp)for(let i=0;i<L.length;i++)L[i]=csvCut(L[i],15);
  download(new Blob(['﻿'+L.join('\r\n')],{type:'text/csv;charset=utf-8'}),fileBase(secs,ref)+'.csv');}
 
 /* Text */
