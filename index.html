@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Jet-Zeit V1.24</title>
+<title>Jet-Zeit V1.29</title>
 <style>
 :root{--acc:#1f4e79;--accT:#fff;--bg:#eef1f5;--card:#fff;--ink:#1d2530;--mut:#6b7684;--line:#dde2e9;--ok:#23955a;--go:#d6492f;--dis:#c5cbd3;--we:#f5f6f8}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -77,7 +77,7 @@ main.bgimg .empty{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .fld{display:block;margin:0 0 14px;font-size:14px;color:var(--mut);font-weight:600}
 .fld input,.fld select,.row2 input{display:block;width:100%;margin-top:5px;height:48px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;background:#fff;font-size:17px;font-weight:400;color:var(--ink)}
 .fld input:focus,.fld select:focus{outline:none;border-color:var(--acc)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
 .chk{display:flex;align-items:center;gap:12px;margin:6px 0 14px;font-size:16px;min-height:40px}
 .chk input{width:26px;height:26px;accent-color:var(--acc)}
 .acts{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}
@@ -275,6 +275,35 @@ input[type=file]{display:none!important}
 #toast.on{transform:translateX(-50%) translateY(0)}
 #toast.err{background:#a8321e}
 #print{display:none}
+/* V1.26: virtuelle Pause */
+.tz tr.vrow td{color:#4a5563;font-size:13.5px;height:28px}
+.tz tr.vrow td.vpl{font-style:italic;padding-left:18px}
+.tz .vps{font-size:11.5px;font-weight:600;color:#b26a00;background:#fff3cd;border-radius:6px;padding:1px 6px}
+.tz tr.ws.wsa td{border-bottom:1px solid #c9d3df}
+.tz tr.ws.wsp td{font-weight:500;font-size:14px;height:28px}
+.vpg .vph{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.vpg .vph b{font-size:15px}
+.vpr{display:grid;grid-template-columns:160px 1fr 210px;align-items:center;gap:10px;min-height:36px;border-top:1px solid #eef1f5}
+.vpr.vpax{min-height:18px;border-top:0}
+.vpn{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vpt{position:relative;height:28px;border-radius:6px;background-color:#f6f8fb;background-image:linear-gradient(90deg,#d9dfe7 1px,transparent 1px);background-size:calc(100% / var(--h)) 100%}
+.vpax .vpt{height:16px;background:none}
+.vpax .vpt span{position:absolute;top:0;transform:translateX(-50%);font-size:10.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.vpb{position:absolute;top:4px;bottom:4px;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.vpp{position:absolute;top:-1px;bottom:-1px;border-radius:6px;background:#fff;border:2.5px dashed #1d2530;cursor:grab;touch-action:none;z-index:2;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.vpp.ok{border:2.5px solid var(--ok);background:#e6f7ec}
+.vpp.cf{border-color:var(--go);background:#fde0d9}
+.vpp.lk{cursor:default}
+.vpp.drag{cursor:grabbing;box-shadow:0 0 0 3px rgba(31,78,121,.35),0 4px 12px rgba(0,0,0,.3)}
+.vpi{display:flex;align-items:center;gap:4px;font-size:13px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.vpi b{min-width:92px}
+.vpi .btn{min-height:28px!important;padding:2px 9px!important;font-size:13px!important}
+.vpi .btn.okb{background:#e3f4ea;color:var(--ok)}
+.vpw{font-size:11.5px;color:#b26a00;flex-basis:100%}
+.vpleg{display:inline-flex;align-items:center;gap:5px;margin-right:12px}
+.vpleg i{display:inline-block;width:22px;height:13px;border-radius:4px;background:#fff;border:2px dashed #1d2530}
+.vpleg i.ok{border:2px solid var(--ok);background:#e6f7ec}.vpleg i.cf{border:2px solid var(--go);background:#fde0d9}
+@media (max-width:760px){.vpr{grid-template-columns:96px 1fr}.vpi{grid-column:1/-1;padding-bottom:4px}.vpr.vpax .vpi{display:none}.vpax .vpt span.odd{display:none}}
 @media (max-width:760px){
  .bb{height:130px;font-size:34px}
  .kpis b{font-size:20px}
@@ -295,6 +324,10 @@ input[type=file]{display:none!important}
  .tabs button{padding:6px 10px}
  .lbar{flex-wrap:wrap;gap:6px}
  .tz .yr{display:none}
+ .tz.ty .kmd{display:none}
+ .tz.ty .nb{width:auto}
+ .tz.ty col{width:auto!important}
+ .tz.ty td,.tz.ty th{padding:6px 4px}
  .tz .nb{width:92px}
  table.tz{font-size:12.5px} .tz col{width:auto!important}
  .tz td,.tz th{padding:4px 5px;height:32px}
@@ -305,6 +338,16 @@ input[type=file]{display:none!important}
  .lbar .nav{flex-wrap:wrap;gap:4px} .lbar .nav b{font-size:14px}
  .lbar .nav .btn{min-height:36px;padding:6px 10px}
 }
+.tz.ty tr.ym{cursor:pointer}.tz.ty tr.ym:hover td{background:#fff3c4}.tz .ych{color:#9aa6b5;font-weight:700}
+.tz .kpos,.mtab .kpos{color:#1f7a3f}.tz .kneg,.mtab .kneg{color:#c0392b}.tz tfoot .kpos,.tz tfoot .kneg{color:inherit}
+.kof{font-size:12px;color:#8a6d1a;background:#fff3cd;border-radius:6px;padding:1px 6px}
+.kin{width:86px;height:32px;padding:2px 6px;border:1.5px solid var(--line);border-radius:8px;text-align:right;font-size:15px}
+.kin.kn{width:100%;min-width:140px;text-align:left}
+.kdef{display:block;font-size:11px;color:var(--mut)}
+.kst{font-size:12px;color:#b26a00;margin-top:2px}
+.ktab td{vertical-align:middle}.ktab tfoot td{border-top:2px solid var(--acc);padding:8px}
+.mtab tr.kcur td{background:#fff6d6}.mtab tr.kclk{cursor:pointer}.mtab tr.kclk:hover td{background:#fff3c4}
+.kcar{display:inline-flex;align-items:center;gap:6px}
 @media print{
  @page{size:A4 portrait;margin:12mm}
  html,body{height:auto;overflow:visible;background:#fff;display:block;font-size:10pt}
@@ -334,6 +377,10 @@ input[type=file]{display:none!important}
  .tz tr.td.b1 td{background:none!important}
  .tz tr.td.b2 td{background:#eeeeee!important}
  .tz tr.ws td{background:#e6e6e6!important;border-bottom:2px solid #000}
+ .tz tr.ws.wsa td{border-bottom:1px solid #999}
+ .tz tr.ws.wsp td{font-size:9pt;height:auto}
+ .tz tr.vrow td{color:#333;font-size:8.5pt;height:auto}
+ .tz .vps{background:none;color:#555;font-weight:400}
  .tz tfoot td{background:#ccc!important;color:#000!important;font-size:11pt}
  .tz .nt{display:table-cell;color:#333;font-size:8.5pt}
  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -352,20 +399,32 @@ input[type=file]{display:none!important}
 <div id="print"></div>
 <script>
 'use strict';
-/* Programmquelltext für das Komplettpaket (Programm + Daten) – vor jeder Änderung am Dokument festhalten */
-const SRC0=('<!DOCTYPE html>\n'+document.documentElement.outerHTML).replace(new RegExp('<scr'+'ipt id="jzPack"[^>]*>[\\s\\S]*?</scr'+'ipt>\\n?'),'');
+/*@FULL*//* Programmquelltext für das Komplettpaket (Programm + Daten) – vor jeder Änderung am Dokument festhalten */
+const SRC0=('<!DOCTYPE html>\n'+document.documentElement.outerHTML).replace(new RegExp('<scr'+'ipt id="jzPack"[^>]*>[\\s\\S]*?</scr'+'ipt>\\n?'),'');/*@/FULL*/
 /* =========================================================
    Jet-Zeit – Zeiterfassung für Tablets, PC und iPad
-   Version 1.24 · neues JET-Logo, sprechende Dateinamen (Druck/PDF, Meldung), Hinweise bei Import/Export, Android-Ausgaben über Teilen · Version 1.23 · ohne Startmitarbeiter und ohne Übernahmedaten (PC und Web identisch) · Version 1.22 · Monatsmeldung mit Gesamtstunden, Daten importieren/exportieren · Copyright-Würfel, Std./Min ausgerichtet · bis 12 Mitarbeiter · Abschluss pro Mitarbeiter · Datenordner verständlicher · Admin-Gerät geschützt · Personalnummer als Schlüssel · Einzelmodus eingeschränkt · PIN pro Mitarbeiter · PDF-Ausgabe · iPhone/iPad · Monatsmeldung & Monatsabschluss · Terminal- und Einzelmodus (eigenes Gerät) · installierbare Web-App (Android/PC) · Daten bei jeder Eingabe gespeichert:
+   Version 1.30 · nur noch eine Version: Schalter „Mitarbeiter-Handys & Datenaustausch“ statt Jet-Office, Übernahme der Jet-Office-Daten · Version 1.29 · Pausenplanung nur bei zusammenhängender Arbeitszeit über der Grenze (Pause liegt in diesem Block) · Version 1.28 · iPad/iPhone: eigene Sicherungs-Karte statt Datenordner (In Dateien sichern), Hinweise erkennen iPad zuerst · Version 1.27 · Jet-Office mit eigenem Speicher (eigene Datei jetoffice-daten.json, eigener Datenordner), Pausenplanung, automatischer Pausenabzug ausgeblendet, Hinweise für Einzelgerät/offline · Version 1.26 · virtuelle Pause (Admin-Seite „Pause“, bezahlt, in allen Ausgaben) · Version 1.25 · Vollversion Jet-Zeit und Office-Version Jet-Office aus einer Quelle · Version 1.24 · neues JET-Logo, sprechende Dateinamen (Druck/PDF, Meldung), Hinweise bei Import/Export, Android-Ausgaben über Teilen · Version 1.23 · ohne Startmitarbeiter und ohne Übernahmedaten (PC und Web identisch) · Version 1.22 · Monatsmeldung mit Gesamtstunden, Daten importieren/exportieren · Copyright-Würfel, Std./Min ausgerichtet · bis 12 Mitarbeiter · Abschluss pro Mitarbeiter · Datenordner verständlicher · Admin-Gerät geschützt · Personalnummer als Schlüssel · Einzelmodus eingeschränkt · PIN pro Mitarbeiter · PDF-Ausgabe · iPhone/iPad · Monatsmeldung & Monatsabschluss · Terminal- und Einzelmodus (eigenes Gerät) · installierbare Web-App (Android/PC) · Daten bei jeder Eingabe gespeichert:
    localStorage (sofort) + IndexedDB (Zweitkopie + Tagessicherungen)
-   + optional Datei jetzeit-daten.json in einem Datenordner (PC/Android, File System Access API)
+   + optional Datei jetzeit-daten.json (bis V1.29 Jet-Office: jetoffice-daten.json) in einem Datenordner (PC/Android, File System Access API)
    ========================================================= */
-const VERSION='1.24';
+const VERSION='1.31';
+/* V1.31: Stundenkonto (Vertragsstunden je Mitarbeiter, verrechnete Stunden je Monat, laufender Saldo, Admin-Reiter „Stundenkonto“) und Ansicht „Jahr“ in der Mitarbeiter-Liste */
+/* V1.30: nur noch EINE Version. Die frühere Office-Version „Jet-Office“ entfällt; stattdessen schaltet der Administrator unter
+   Parameter → „Mitarbeiter-Handys & Datenaustausch“ (settings.mobileOn) Eigenes Gerät, Monatsmeldung, Daten importieren/exportieren,
+   Herkunft der Buchungen, Gerätename und Komplettpaket ein oder aus (Vorgabe bei neuen Installationen: aus = Büro-Terminal).
+   Die Marken FULL … /FULL kennzeichnen weiterhin diese Bereiche (nur noch als Kommentar). */
+const APP='Jet-Zeit';
+/* Mitarbeiter-Handys & Datenaustausch eingeschaltet? (am persönlichen Gerät immer) */
+const MOB=()=>{try{return!!(DB.mode==='personal'||DB.settings.mobileOn);}catch(e){return false;}};
 const JET_LOGO='data:image/png;base64,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';
 const JET_LOGO_OLD_PRE='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhcAAACMCAYAAADP54vhAACEvElEQVR42uy9eZhcV3Xu/Vt7n1PVLUu2JSwZCzC2CRBaQAgy2B'; /* V1.24: altes Logo erkennen und ersetzen */
-const LS='jetzeit_db_v1';
+/* Speicher-Präfix (V1.27–V1.29 hatte Jet-Office „jetoffice“ – wird beim Start einmalig zur Übernahme angeboten) */
+const PFX='jetzeit',OLD_PFX='jetoffice';
+const LS=PFX+'_db_v1';
+/* V1.27: automatischer Pausenabzug ausgeblendet und abgeschaltet (für spätere Anforderung im Code belassen: true = wieder sichtbar und wirksam) */
+const PAUSE_AUTO=false;
 const MAX_EMP=12;
-const DEF_S={company:'JET Tankstelle Mäder',subtitle:'Neue Landstraße 84 · 6841 Mäder',boss:'Gökhan Ünlü',logo:JET_LOGO,accent:'#ffb701',accentText:'#024794',round:5,pinLen:4,requirePin:true,adminPin:'0000',idleSec:60,afterBookSec:5,empEdit:true,hourFmt:'stdmin',tileCols:0,tileRows:0,tileW:240,tileH:210,tileStyle:'color',bgImage:'',bgDim:25,pauseOn:false,pauseAfter:6,pauseMin:30,bakRemind:7,lastBackup:'',notesOn:false};
+const DEF_S={company:'JET Tankstelle Mäder',subtitle:'Neue Landstraße 84 · 6841 Mäder',boss:'Gökhan Ünlü',logo:JET_LOGO,accent:'#ffb701',accentText:'#024794',round:5,pinLen:4,requirePin:true,adminPin:'0000',idleSec:60,afterBookSec:5,empEdit:true,hourFmt:'stdmin',tileCols:0,tileRows:0,tileW:240,tileH:210,tileStyle:'color',bgImage:'',bgDim:25,pauseOn:false,pauseAfter:6,pauseMin:30,bakRemind:7,mobileOn:false,lastBackup:'',notesOn:false,vpOn:true,vpAfter:6,vpMin:30};
 const COLORS=['#024794','#ffb701','#1f77b4','#2e9e5b','#e07b00','#8e44ad','#c0392b','#16a085','#d4a017','#34495e','#e84393','#6d4c41'];
 const WD=['So.','Mo.','Di.','Mi.','Do.','Fr.','Sa.'];
 const WDL=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
@@ -409,18 +468,20 @@ const safeName=s=>s.replace(/[^\wäöüÄÖÜß\- ]+/g,'').replace(/\s+/g,'_');
 
 /* ---------- Data ---------- */
 /* Gerätekennung: bleibt auf diesem Gerät, wandert nicht mit Sicherungen (für Herkunft der Buchungen, V1.11 Monatsmeldung) */
-const DEV=(()=>{let d=null;try{d=JSON.parse(localStorage.getItem('jetzeit_dev')||'null');}catch(e){}if(!d||!d.id){d={id:uid(),name:''};try{localStorage.setItem('jetzeit_dev',JSON.stringify(d));}catch(e){}}return d;})();
-function saveDev(){try{localStorage.setItem('jetzeit_dev',JSON.stringify(DEV));}catch(e){}}
+const DEV=(()=>{let d=null;try{d=JSON.parse(localStorage.getItem(PFX+'_dev')||'null');}catch(e){}if(!d||!d.id){d={id:uid(),name:''};try{localStorage.setItem(PFX+'_dev',JSON.stringify(d));}catch(e){}}return d;})();
+function saveDev(){try{localStorage.setItem(PFX+'_dev',JSON.stringify(DEV));}catch(e){}}
 const isPersonal=()=>DB.mode==='personal';
 let memOnly=false,lsOk=true,idbOk=null,fresh=false,persisted=false,saveT=null,lastSaved=null;
 function seed(){return{ver:1,settings:{...DEF_S},emps:[],data:{}};} /* ab V1.23: startet ohne Mitarbeiter (PC und Web) */
-function norm(d){d.settings={...DEF_S,...(d.settings||{})};d.emps=Array.isArray(d.emps)?d.emps:[];d.data=d.data||{};d.meta=d.meta||{rev:0,savedAt:''};return d;}
+/* V1.30: Daten ohne Schalter (bis V1.29): eingeschaltet, wenn Handy-Funktionen genutzt wurden, sonst aus (Büro-Terminal) */
+function usedMobile(d){return d.mode==='personal'||Object.keys(d.reportsIn||{}).length>0||Object.keys(d.sent||{}).length>0||Object.values(d.devKind||{}).includes('p')||(d.emps||[]).some(e=>e&&e.pinOwn);}
+function norm(d){const had=!!(d.settings&&'mobileOn' in d.settings);d.settings={...DEF_S,...(d.settings||{})};if(!had)d.settings.mobileOn=usedMobile(d);d.emps=Array.isArray(d.emps)?d.emps:[];d.data=d.data||{};d.acct=d.acct||{};d.meta=d.meta||{rev:0,savedAt:''};return d;}
 function load(){let d=null;try{const s=localStorage.getItem(LS);if(s)d=JSON.parse(s);}catch(e){lsOk=false;}
  if(!d||typeof d!=='object'){d=seed();fresh=true;}
  return norm(d);}
 let DB=load();
 /* --- IndexedDB: zweite Kopie (Schlüssel 'db'), Tagessicherungen 'auto-JJJJ-MM-TT', Sicherheitskopien 'safe-…', Verzeichnis 'snaps' --- */
-const IDB_NAME='jetzeit',IDB_ST='kv';let idbP=null;
+const IDB_NAME=PFX,IDB_ST='kv';let idbP=null;
 function idb(){if(idbP)return idbP;idbP=new Promise((res,rej)=>{try{const r=indexedDB.open(IDB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore(IDB_ST);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}});return idbP;}
 function idbDo(mode,fn){return idb().then(db=>new Promise((res,rej)=>{const tx=db.transaction(IDB_ST,mode),r=fn(tx.objectStore(IDB_ST));tx.oncomplete=()=>res(r?r.result:undefined);tx.onerror=()=>rej(tx.error);tx.onabort=()=>rej(tx.error);}));}
 const idbGet=k=>idbDo('readonly',st=>st.get(k));
@@ -444,25 +505,25 @@ async function bootStore(){try{if(navigator.storage&&navigator.storage.persist){
     if(fresh||r1>r0){const wasFresh=fresh;DB=norm(d);try{localStorage.setItem(LS,JSON.stringify(DB));lsOk=true;}catch(e){lsOk=false;}migrate();if(scr==='home')render();if(wasFresh)toast('Daten aus dem Zweitspeicher wiederhergestellt');}}
    await flushIdb();await pruneSnaps();}catch(e){idbOk=false;console.warn('IndexedDB',e);}}
  else idbOk=false;
- fresh=false;updDot();await bootFile();checkPack();}
+ fresh=false;updDot();await bootFile();checkPack();checkOldOffice();}
 addEventListener('pagehide',()=>{if(saveT)flushIdb();if(fsT)flushFile();});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){if(saveT)flushIdb();if(fsT)flushFile();}});
 /* ---------- V1.7: Speicherung in eine echte Datei (File System Access API, PC + Android-Chrome) ---------- */
 const FS_OK=typeof window.showDirectoryPicker==='function';
-const DATA_FILE='jetzeit-daten.json',BAK_DIR='Sicherungen',FILE_KEEP=30;
+const DATA_FILE=PFX+'-daten.json',OTHER_FILE=OLD_PFX+'-daten.json',BAK_DIR='Sicherungen',FILE_KEEP=30;
 let fsErr='',dirLabel='',dirH=null,fileSt='none',fsBusy=false,fsAgain=false,fsT=null,lastFile=null,fsPruned=false; /* fileSt: none|ok|prompt|err */
 async function fsPerm(h,ask){const o={mode:'readwrite'};try{let p=await h.queryPermission(o);if(p!=='granted'&&ask)p=await h.requestPermission(o);return p;}catch(e){return'granted';}}
 async function fsWriteText(dir,name,text){const fh=await dir.getFileHandle(name,{create:true});const w=await fh.createWritable();await w.write(text);await w.close();}
 async function fsReadJson(dir,name){try{const fh=await dir.getFileHandle(name);return JSON.parse(await (await fh.getFile()).text());}catch(e){return null;}}
-const fileWrap=()=>JSON.stringify({app:'Jet-Zeit',version:VERSION,created:new Date().toISOString(),counts:countBk(DB),db:DB},null,1);
+const fileWrap=()=>JSON.stringify({app:APP,version:VERSION,created:new Date().toISOString(),counts:countBk(DB),db:DB},null,1);
 function schedFile(){if(!dirH||fileSt!=='ok')return;clearTimeout(fsT);fsT=setTimeout(flushFile,400);}
 async function flushFile(){clearTimeout(fsT);fsT=null;if(!dirH||fileSt!=='ok')return;if(fsBusy){fsAgain=true;return;}fsBusy=true;
  try{const txt=fileWrap();await fsWriteText(dirH,DATA_FILE,txt);
-  const bd=await dirH.getDirectoryHandle(BAK_DIR,{create:true});await fsWriteText(bd,'jetzeit_'+ymd(new Date())+'.json',txt);
+  const bd=await dirH.getDirectoryHandle(BAK_DIR,{create:true});await fsWriteText(bd,PFX+'_'+ymd(new Date())+'.json',txt);
   lastFile=new Date();if(!fsPruned){fsPruned=true;fsPrune(bd);}}
  catch(e){console.warn('Datei',e);fsErr=(e&&(e.name+': '+e.message))||String(e);fileSt=e&&(e.name==='NotAllowedError'||e.name==='SecurityError')?'prompt':'err';if(scr==='home'&&!modalOpen())renderHome();}
  fsBusy=false;updDot();if(fsAgain){fsAgain=false;flushFile();}}
-async function fsPrune(bd){try{const n=[];for await(const [name,h] of bd.entries())if(h.kind==='file'&&/^jetzeit_\d{4}-\d\d-\d\d\.json$/.test(name))n.push(name);
+async function fsPrune(bd){try{const n=[];for await(const [name,h] of bd.entries())if(h.kind==='file'&&new RegExp('^'+PFX+'_\\d{4}-\\d\\d-\\d\\d\\.json$').test(name))n.push(name);
  n.sort().reverse();for(const x of n.slice(FILE_KEEP))await bd.removeEntry(x);}catch(e){}}
 /* Neuere Daten in der Datei (z. B. nach gelöschtem Browserspeicher) übernehmen */
 async function syncFromFile(){const j=await fsReadJson(dirH,DATA_FILE),d=j&&(j.db||j);if(!d||!Array.isArray(d.emps)||!d.data)return false;
@@ -476,37 +537,38 @@ async function bootFile(){if(!window.indexedDB)return;try{const h=await idbGet('
 async function fsGrant(){if(!dirH)return;fsErr='';const p=await fsPerm(dirH,true);
  if(p==='granted'){fileSt='ok';try{await syncFromFile();}catch(e){}await flushFile();toast(fileSt==='ok'?'Datenordner freigegeben – Daten werden in die Datei geschrieben':'Datenordner nicht erreichbar',fileSt!=='ok');}
  else toast('Freigabe nicht erteilt – Daten bleiben vorerst nur im Browser',true);updDot();render();}
-async function fsChoose(){let h;try{h=await window.showDirectoryPicker({id:'jetzeit',mode:'readwrite'});}catch(e){if(!e||e.name!=='AbortError')toast('Ordner konnte nicht gewählt werden: '+((e&&e.message)||e),true);return;}
- if(/^sicherungen$/i.test(h.name)){toast('Bitte nicht den Unterordner „Sicherungen“ wählen, sondern den Ordner darüber (z. B. Daten) – dort liegt jetzeit-daten.json.',true);return;}
+async function fsChoose(){let h;try{h=await window.showDirectoryPicker({id:PFX,mode:'readwrite'});}catch(e){if(!e||e.name!=='AbortError')toast('Ordner konnte nicht gewählt werden: '+((e&&e.message)||e),true);return;}
+ if(/^sicherungen$/i.test(h.name)){toast('Bitte nicht den Unterordner „Sicherungen“ wählen, sondern den Ordner darüber (z. B. Daten) – dort liegt '+DATA_FILE+'.',true);return;}
  if(/^[\\/]$|^[A-Za-z]:\\?$/.test(h.name)){toast('Bitte nicht ein ganzes Laufwerk wählen, sondern einen Unterordner darin (z. B. Jet-Zeit)',true);return;}
  if(await fsPerm(h,true)!=='granted'){toast('Keine Schreibberechtigung für diesen Ordner',true);return;}
- const j=await fsReadJson(h,DATA_FILE),d=j&&(j.db||j);
+ const j0=await fsReadJson(h,DATA_FILE),jo=j0?null:await fsReadJson(h,OTHER_FILE),j=j0||jo,d=j&&(j.db||j); /* V1.30: auch alte Jet-Office-Datei übernehmen */
  const use=async adopt=>{dirH=h;fileSt='ok';fsPruned=false;try{await idbPut('dirHandle',h);}catch(e){}
   if(adopt){await safetyCopy('Sicherheitskopie vor Übernahme aus dem Datenordner');const rev=Math.max((DB.meta&&DB.meta.rev)||0,(d.meta&&d.meta.rev)||0);DB=norm(d);DB.meta.rev=rev;save();}
   await flushFile();render();toast(fileSt==='ok'?'Datenordner „'+h.name+'“ verbunden':'Datei konnte nicht geschrieben werden',fileSt!=='ok');};
  if(d&&Array.isArray(d.emps)&&d.data){const c=countBk(d),cur=countBk(DB);
-  const b=openModal(`<h2>📁 Daten im Ordner gefunden</h2><p>Im Ordner „${esc(h.name)}“ liegen bereits Jet-Zeit-Daten vom <b>${fmtTs(j.created||(d.meta&&d.meta.savedAt))}</b>:<br>${c.emps} Mitarbeiter (${esc(d.emps.map(e=>e.first).join(', ')||'–')}), ${c.n} Buchungen.</p><p class="mut">Auf diesem Gerät: ${cur.emps} Mitarbeiter, ${cur.n} Buchungen. Der jeweils nicht verwendete Stand wird als Sicherheitskopie aufgehoben.</p><div class="acts"><button class="btn" id="fdK">Daten dieses Geräts verwenden</button><span class="sp"></span><button class="btn p" id="fdA">Daten aus dem Ordner übernehmen</button></div>`);
-  b.querySelector('#fdK').onclick=async()=>{closeModal();try{const bd=await h.getDirectoryHandle(BAK_DIR,{create:true});await fsWriteText(bd,'jetzeit_ersetzt_'+ymd(new Date())+'_'+pad(new Date().getHours())+pad(new Date().getMinutes())+'.json',JSON.stringify(j,null,1));}catch(e){}await use(false);};
+  const b=openModal(`<h2>📁 Daten im Ordner gefunden</h2><p>Im Ordner „${esc(h.name)}“ liegen bereits ${APP}-Daten vom <b>${fmtTs(j.created||(d.meta&&d.meta.savedAt))}</b>:<br>${c.emps} Mitarbeiter (${esc(d.emps.map(e=>e.first).join(', ')||'–')}), ${c.n} Buchungen.</p><p class="mut">Auf diesem Gerät: ${cur.emps} Mitarbeiter, ${cur.n} Buchungen. Der jeweils nicht verwendete Stand wird als Sicherheitskopie aufgehoben.</p><div class="acts"><button class="btn" id="fdK">Daten dieses Geräts verwenden</button><span class="sp"></span><button class="btn p" id="fdA">Daten aus dem Ordner übernehmen</button></div>`);
+  b.querySelector('#fdK').onclick=async()=>{closeModal();try{const bd=await h.getDirectoryHandle(BAK_DIR,{create:true});await fsWriteText(bd,PFX+'_ersetzt_'+ymd(new Date())+'_'+pad(new Date().getHours())+pad(new Date().getMinutes())+'.json',JSON.stringify(j,null,1));}catch(e){}await use(false);};
   b.querySelector('#fdA').onclick=async()=>{closeModal();await use(true);};}
- else await use(false);}
+ else await use(false);
+ if(j0&&await fsReadJson(h,OTHER_FILE))setTimeout(()=>toast('Hinweis: In diesem Ordner liegt auch eine ältere Datei '+OTHER_FILE+' (Jet-Office bis V1.29) – sie wird nicht mehr verwendet.',true),2200);}
 function fsDisconnect(){confirmDlg('Datenordner trennen? Die Dateien im Ordner bleiben erhalten, es wird aber nicht mehr hineingeschrieben. Die Daten bleiben weiterhin im Browser gespeichert.','Trennen',async()=>{dirH=null;fileSt='none';lastFile=null;dirLabel='';try{await idbDel('dirHandle');await idbDel('dirLabel');}catch(e){}updDot();render();toast('Datenordner getrennt');});}
 const SAVE_OK=typeof window.showSaveFilePicker==='function'&&!/Android/i.test(navigator.userAgent);
 async function saveAs(blob,name,kind){if(!SAVE_OK){download(blob,name);return true;}
  const ext=name.slice(name.lastIndexOf('.'));
- try{const h=await window.showSaveFilePicker({id:'jetzeit-'+kind,suggestedName:name,startIn:'downloads',types:[{description:ext==='.html'?'Jet-Zeit Komplettpaket':'Jet-Zeit Sicherung',accept:{[blob.type||'application/octet-stream']:[ext]}}]});
+ try{const h=await window.showSaveFilePicker({id:PFX+'-'+kind,suggestedName:name,startIn:'downloads',types:[{description:ext==='.html'?'Jet-Zeit Komplettpaket':APP+' Sicherung',accept:{[blob.type||'application/octet-stream']:[ext]}}]});
   const w=await h.createWritable();await w.write(blob);await w.close();toast('Gespeichert: '+h.name);return true;}
  catch(e){if(e&&e.name==='AbortError')return false;download(blob,name);return true;}}
-const saveTip=()=>SAVE_OK?'Öffnet das Fenster „Speichern unter“: Ordner und Dateinamen selbst wählen (z. B. USB-Stick oder P:\\Jet-Zeit\\Sicherungen). Beim nächsten Mal wird der zuletzt verwendete Ordner vorgeschlagen.'
+const saveTip=()=>SAVE_OK?'Öffnet das Fenster „Speichern unter“: Ordner und Dateinamen selbst wählen (z. B. USB-Stick oder P:\\'+APP+'\\Sicherungen). Beim nächsten Mal wird der zuletzt verwendete Ordner vorgeschlagen.'
  :'Die Datei wird im Download-Ordner des Browsers gespeichert (meist „Downloads“, am iPad: App „Dateien“ → Downloads). Hat Chrome/Edge „Vor dem Download fragen, wo eine Datei gespeichert werden soll“ eingeschaltet, kann der Ordner gewählt werden.';
 function fsWhy(){const ua=navigator.userAgent;let top=true;try{top=window.self===window.top;}catch(e){top=false;}
  let why;
- if(location.protocol==='file:'&&/Chrome|Edg/.test(ua)&&!/Android/i.test(ua))why='Jet-Zeit wurde von einem <b>Netzlaufwerk oder Netzwerkpfad</b> geöffnet (z. B. P:). Von dort stellen Chrome und Edge die Ordner-Funktion nicht bereit.<br><b>Lösung:</b> index.html auf den PC kopieren (z. B. <b>C:\\Jet-Zeit\\index.html</b>) und von dort öffnen. Der Datenordner selbst darf auf dem Netzlaufwerk liegen (z. B. P:\\Jet-Zeit\\Daten). Achtung: Die lokale Kopie hat einen eigenen Speicher – vorher hier „Sicherung speichern“ und die Sicherung danach dort einspielen.';
- else if(!window.isSecureContext)why='Jet-Zeit läuft über eine unsichere Adresse (http://… ohne localhost). Die Speicherung in einen Ordner braucht <b>https://</b> oder <b>http://localhost</b> – am PC z. B. über <b>Jet-Zeit-Start.cmd</b> starten.';
- else if(!top)why='Jet-Zeit läuft eingebettet in einer anderen Seite oder Vorschau. Bitte die Datei direkt in Chrome/Edge öffnen (bzw. über <b>Jet-Zeit-Start.cmd</b>).';
+ if(/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)||(/Safari/.test(ua)&&!/Chrome|CriOS|Edg/.test(ua)))why='iPad/iPhone unterstützt die Speicherung in einen Ordner nicht. Die Daten bleiben doppelt im Gerät gespeichert – bitte regelmäßig eine Sicherung erstellen (Teilen → „In Dateien sichern“, USB-Stick, Mail, AirDrop).';
+ else if(location.protocol==='file:'&&/Chrome|Edg/.test(ua)&&!/Android/i.test(ua))why=APP+' wurde als Datei geöffnet, z. B. von einem <b>Netzlaufwerk</b>, einem <b>USB-Stick</b> oder direkt aus einem <b>Mail-Anhang</b>. Von dort stellen Chrome und Edge die Ordner-Funktion nicht bereit.<br><b>Lösung:</b> index.html in einen Ordner auf diesem PC kopieren (z. B. <b>C:\\'+APP+'\\index.html</b>) und immer von dort öffnen. Der Datenordner selbst darf auf einem Netzlaufwerk oder USB-Stick liegen (z. B. P:\\'+APP+'\\Daten). Achtung: Die lokale Kopie kann einen eigenen Speicher haben – vorher hier „Sicherung speichern“ und die Sicherung danach dort einspielen.';
+ else if(!window.isSecureContext)why='Jet-Zeit läuft über eine unsichere Adresse (http://… ohne localhost). Die Speicherung in einen Ordner braucht <b>https://</b> oder <b>http://localhost</b> – am PC einfach die Datei index.html von der Festplatte öffnen.';
+ else if(!top)why='Jet-Zeit läuft eingebettet in einer anderen Seite oder Vorschau. Bitte die Datei index.html direkt in Chrome oder Edge öffnen.';
  else if(/Firefox|FxiOS/.test(ua))why='Firefox unterstützt die Speicherung in einen Ordner nicht – bitte Chrome oder Edge verwenden.';
- else if(/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)||(/Safari/.test(ua)&&!/Chrome|CriOS|Edg/.test(ua)))why='iPad/Safari unterstützt die Speicherung in einen Ordner nicht. Die Daten bleiben doppelt im Browser gespeichert – bitte regelmäßig eine Sicherung erstellen.';
  else if(navigator.brave)why='Im Brave-Browser ist die Ordner-Funktion abgeschaltet – bitte Chrome oder Edge verwenden.';
- else why='Dieser Browser stellt die Ordner-Funktion hier nicht bereit (mögliche Gründe: Richtlinie der Firmen-IT, sehr alte Version, besonderer Browser-Modus). Bitte die Diagnose-Zeile unten an Claude weitergeben.';
+ else why='Dieser Browser stellt die Ordner-Funktion hier nicht bereit (mögliche Gründe: Richtlinie der Firmen-IT, sehr alte Version, besonderer Browser-Modus). Bitte die Diagnose-Zeile unten an Ihren Betreuer weitergeben.';
  const br=(ua.match(/Edg\/[\d.]+/)||ua.match(/Chrome\/[\d.]+/)||ua.match(/Firefox\/[\d.]+/)||ua.match(/Version\/[\d.]+.*Safari/)||[''])[0];
  return why+`<br><span class="small">Diagnose: Adresse <b>${esc(location.protocol+'//'+location.host+location.pathname)}</b> · Browser ${esc(br||'?')} · sicher: ${window.isSecureContext?'ja':'nein'} · eingebettet: ${top?'nein':'ja'} · showDirectoryPicker: ${'showDirectoryPicker' in window?'ja':'nein'}</span>`;}
 const fileStTxt=()=>fileSt==='ok'?'<b style="color:var(--ok)">✅ aktiv</b>'+(lastFile?' – zuletzt geschrieben '+hm(lastFile.getHours()*60+lastFile.getMinutes())+' Uhr':''):fileSt==='prompt'?'<b style="color:#b26a00">⚠ Freigabe nötig</b>':'<b style="color:var(--go)">❌ nicht erreichbar</b> – der gewählte Ordner „'+esc(dirH?dirH.name:'')+'“ ist nicht verfügbar (Laufwerk getrennt, Ordner umbenannt/gelöscht?). Bitte mit „Anderen Ordner wählen“ neu auswählen.'+(fsErr?'<br><span class="small mut">Technisch: '+esc(fsErr)+'</span>':'');
@@ -529,6 +591,9 @@ function iosInstallHelp(){const safari=!/CriOS|FxiOS|EdgiOS/.test(navigator.user
  <p class="mut small">Wichtig: Nur als App vom Home-Bildschirm bleiben die Daten dauerhaft gespeichert. Im normalen Safari-Fenster kann iOS die Daten nach einigen Tagen ohne Benutzung löschen.</p>
  <div class="acts"><span class="sp"></span><button class="btn p" id="ihOk">OK</button></div>`);
  b.querySelector('#ihOk').onclick=closeModal;}
+/* V1.27: direkt aus einem Mail-Anhang bzw. Temp-Ordner geöffnet? Dann gehen die Daten leicht verloren */
+const TMPRUN=location.protocol==='file:'&&/[\\/](Temp|INetCache|Content\.Outlook|Temporary Internet Files)[\\/]/i.test(decodeURIComponent(location.pathname));
+function tmpHelp(){const b=openModal(`<h2>⚠ Aus einem Mail-Anhang geöffnet</h2><p>${APP} wurde direkt aus einem <b>Mail-Anhang bzw. temporären Ordner</b> gestartet. Dieser Ordner wird von Windows aufgeräumt – beim nächsten Öffnen findet ${APP} die Daten unter Umständen nicht wieder.</p><ol style="line-height:1.7;padding-left:22px;margin:8px 0"><li>Anhang in der Mail mit <b>„Speichern unter“</b> in einen festen Ordner speichern, z. B. <b>C:\\${APP}\\index.html</b>.</li><li>Diese Datei mit Chrome oder Edge öffnen und eine Verknüpfung auf den Desktop legen.</li><li>Künftig nur noch über diese Datei starten.</li></ol><p class="mut small">Schon Daten erfasst? Vorher unter ⚙ Administration → Sichern &amp; Daten eine Sicherung speichern und sie danach in der gespeicherten Kopie einspielen.</p><div class="acts"><span class="sp"></span><button class="btn p" id="tmOk">OK</button></div>`);b.querySelector('#tmOk').onclick=closeModal;}
 /* ---------- V1.9: installierbare Web-App ---------- */
 var instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e;if(scr==='home'&&!modalOpen())renderHome();});
@@ -540,12 +605,13 @@ const labelFits=()=>{const p=String(dirLabel||'').replace(/[\\/›>\s]+$/,'').sp
 const dirShow=()=>dirLabel||(dirH?dirH.name:'');
 function askDirLabel(fresh){if(!dirH)return;const android=/Android/i.test(navigator.userAgent);
  const pre=dirLabel&&!fresh?dirLabel:(android?'Tablet › Dokumente › '+dirH.name:'');
- const b=openModal(`<h2>📁 Wo liegt dieser Ordner?</h2><p class="mut">Der Browser verrät aus Datenschutzgründen nur den Ordnernamen <b>„${esc(dirH.name)}“</b>. Tragen Sie den vollständigen Pfad zur Anzeige ein (z. B. K:\\Claude\\Jet-Zeit). Der Pfad muss auf <b>„${esc(dirH.name)}“</b> enden – er ist nur eine Anzeige, den Ordner selbst haben Sie bereits gewählt.</p>
- <label class="fld">Speicherort<input id="dlIn" value="${esc(pre)}" placeholder="${android?'z. B. Tablet › Dokumente › Jet-Zeit':'z. B. P:\\Jet-Zeit\\'+esc(dirH.name)}"></label>
+ const b=openModal(`<h2>📁 Wo liegt dieser Ordner?</h2><p class="mut">Der Browser verrät aus Datenschutzgründen nur den Ordnernamen <b>„${esc(dirH.name)}“</b>. Tragen Sie den vollständigen Pfad zur Anzeige ein (z. B. P:\\${APP}\\Daten). Der Pfad muss auf <b>„${esc(dirH.name)}“</b> enden – er ist nur eine Anzeige, den Ordner selbst haben Sie bereits gewählt.</p>
+ <label class="fld">Speicherort<input id="dlIn" value="${esc(pre)}" placeholder="${android?'z. B. Tablet › Dokumente › '+APP:'z. B. P:\\'+APP+'\\'+esc(dirH.name)}"></label>
  <div class="acts"><button class="btn" id="dlNo">Überspringen</button><span class="sp"></span><button class="btn p" id="dlOk">Speichern</button></div>`);
  const inp=b.querySelector('#dlIn');setTimeout(()=>inp.focus(),50);
  b.querySelector('#dlNo').onclick=closeModal;
  b.querySelector('#dlOk').onclick=async()=>{dirLabel=inp.value.trim();try{await idbPut('dirLabel',dirLabel);}catch(e){}closeModal();render();};}
+/*@FULL*/
 /* ---------- V1.10: Einzelmodus (persönliches Gerät eines Mitarbeiters) ---------- */
 function readJsonFile(ev,cb){const f=ev.target.files[0];ev.target.value='';if(!f)return;const fr=new FileReader();
  fr.onload=()=>{let j;try{j=JSON.parse(fr.result);}catch(x){toast('Datei ist keine Jet-Zeit-Datei',true);return;}cb(j,f);};fr.readAsText(f);}
@@ -592,15 +658,19 @@ function bindPersonal(){const dn=$('#devName');if(dn)dn.onchange=()=>{DEV.name=d
  const pe=$('#pEnd');if(pe)pe.onclick=()=>{const e0=DB.emps[0];if(!DB.adminKey){toast('Bitte zuerst eine neue Einrichtungsdatei (ab V1.15) vom Administrator einspielen',true);return;}
   pinDialog({title:'Administrator',sub:'Admin-PIN der Firma eingeben',len:0,check:p=>adminKey(p,e0.id)===DB.adminKey,ok:()=>confirmDlg('Einzelmodus beenden und das Gerät zurücksetzen? Alle Daten auf diesem Gerät werden gelöscht – vorher wird automatisch eine Sicherheitskopie angelegt. Danach gilt die Admin-PIN <b>0000</b>.','Zurücksetzen',async()=>{
   await safetyCopy('Sicherheitskopie vor „Einzelmodus beenden“');const rev=(DB.meta&&DB.meta.rev)||0;DB=norm(seed());DB.emps=[];DB.imports={done:true,branding:1,fmt12:1};DB.meta.rev=rev;save();scr='home';render();toast('Gerät zurückgesetzt');},true)});};}
+/*@/FULL*/
 /* ---------- V1.11: Monatsmeldung & Monatsabschluss ---------- */
 const monKey=(y,m)=>y+'-'+pad(m+1);
 const monLabel=k=>{const [y,m]=k.split('-').map(Number);return MON[m-1]+' '+y;};
 function defMonth(){const d=new Date();if(d.getDate()<=10)return shiftMonth(monKey(d.getFullYear(),d.getMonth()),-1);return monKey(d.getFullYear(),d.getMonth());}
 function shiftMonth(k,n){const [y,m]=k.split('-').map(Number);const d=new Date(y,m-1+n,1);return monKey(d.getFullYear(),d.getMonth());}
+/*@FULL*/
 const devIcon=id=>((DB.devKind||{})[id]==='p'?'📱':'🖥');
 const devName=id=>id===DEV.id?(DEV.name||'dieses Gerät'):((DB.devices||{})[id]||'anderes Gerät');
 const chk=o=>crc32(new TextEncoder().encode(JSON.stringify(o))).toString(16);
+/*@/FULL*/
 function dayConflicts(sh){const bad=new Set();for(let a=0;a<sh.length;a++)for(let b=a+1;b<sh.length;b++){const x=sh[a],y=sh[b];if(x.o==null||y.o==null)continue;if(x.i<y.o&&y.i<x.o){bad.add(a);bad.add(b);}}return bad;}
+/*@FULL*/
 /* eigene Buchungen eines Monats (dieses Gerät bzw. ohne Herkunft), nur abgeschlossene */
 function monthShifts(e,mk,own){const o=DB.data[e.id]||{},r={};let open=0;for(const [k,a] of Object.entries(o)){if(!k.startsWith(mk))continue;
  const b=a.filter(s=>(!own||!s.src||s.src===DEV.id));open+=b.filter(s=>s.o==null).length;const c=b.filter(s=>s.o!=null);if(c.length)r[k]=c;}return{days:r,open};}
@@ -664,39 +734,87 @@ async function importReports(files){const plans=[];for(const f of files){let j=n
  <div class="acts"><button class="btn" id="imC">Abbrechen</button><span class="sp"></span><button class="btn p" id="imY" ${ok.length?'':'disabled'}>${ok.length} Meldung(en) übernehmen</button></div>`,'wide');
  b.querySelector('#imC').onclick=closeModal;
  b.querySelector('#imY').onclick=async()=>{closeModal();await safetyCopy('Sicherheitskopie vor dem Einlesen von Monatsmeldungen');ok.forEach(applyReport);save();render();toast(ok.length+' Meldung(en) übernommen');};}
+/*@/FULL*/
 let abMonth=null,abSel=null;
 const isClosed=(mk,id)=>!!((DB.closed||{})[mk]||((DB.closedEmp||{})[mk]||{})[id]);
 const closedAt=(mk,id)=>((DB.closed||{})[mk]||{}).at||((DB.closedEmp||{})[mk]||{})[id]||'';
 const selIds=()=>abSel?DB.emps.filter(e=>abSel.has(e.id)).map(e=>e.id):DB.emps.map(e=>e.id);
 function monthStats(e,mk){const o=DB.data[e.id]||{},src=new Set();let tot=0,cf=0,open=0;
  for(const [k,a] of Object.entries(o)){if(!k.startsWith(mk))continue;tot+=dayCalc(a).net;cf+=dayConflicts(a).size;a.forEach(s=>{src.add(s.src&&s.src!==DEV.id?s.src:'_');if(s.o==null)open++;});}
- return{tot,cf,open,src:[...src]};}
-function aAbschl(){const mk=abMonth||(abMonth=defMonth()),ins=(DB.reportsIn||{})[mk]||{},sel=new Set(selIds());
+ return{tot,cf,open,src:[...src],vpo:vpOpen(e,mk)};}
+function aAbschl(){const mk=abMonth||(abMonth=defMonth()),/*@FULL*/ins=(DB.reportsIn||{})[mk]||{},/*@/FULL*/sel=new Set(selIds());
  const ncl=DB.emps.filter(e=>isClosed(mk,e.id)).length,cl=DB.emps.length&&ncl===DB.emps.length,part=ncl&&!cl;
  const selCl=DB.emps.filter(e=>sel.has(e.id)&&isClosed(mk,e.id)).length,selOp=sel.size-selCl;
- const rows=DB.emps.map(e=>{const st=monthStats(e,mk);const rep=Object.values(ins).some(r=>r.emps.includes(e.id));
-  return`<tr><td><input type="checkbox" data-sel="${e.id}" ${sel.has(e.id)?'checked':''} style="width:18px;height:18px"></td><td>${esc(e.nr||'–')}</td><td><span style="display:inline-flex;align-items:center;gap:8px">${avatar(e,'xs')}<span>${esc(fullName(e))}${e.active?'':' <span class="small mut">(inaktiv)</span>'}</span></span></td><td class="small">${st.src.map(s=>s==='_'?esc(DEV.name||'dieses Gerät'):devIcon(s)+' '+esc(devName(s))).join('<br>')||'<span class="mut">–</span>'}</td><td>${rep?'<span class="ok">✓ Meldung</span>':'<span class="mut">–</span>'}</td><td class="n"><b>${fmtH(st.tot)}</b></td><td>${st.cf?`<span class="bad" data-cf="${e.id}">⚠ ${st.cf} Überschn.</span>`:''}${st.open?` <span class="small" style="color:#b26a00">${st.open} offen</span>`:''}</td><td>${isClosed(mk,e.id)?'<span class="badge cl">🔒 '+fmtTs(closedAt(mk,e.id)).replace(' Uhr','')+'</span>':'<span class="badge op">offen</span>'}</td></tr>`;}).join('');
+ const rows=DB.emps.map(e=>{const st=monthStats(e,mk);/*@FULL*/const rep=Object.values(ins).some(r=>r.emps.includes(e.id));/*@/FULL*/
+  return`<tr><td><input type="checkbox" data-sel="${e.id}" ${sel.has(e.id)?'checked':''} style="width:18px;height:18px"></td><td>${esc(e.nr||'–')}</td><td><span style="display:inline-flex;align-items:center;gap:8px">${avatar(e,'xs')}<span>${esc(fullName(e))}${e.active?'':' <span class="small mut">(inaktiv)</span>'}</span></span></td>${(MOB()?`<td class="small">${st.src.map(s=>s==='_'?esc(DEV.name||'dieses Gerät'):devIcon(s)+' '+esc(devName(s))).join('<br>')||'<span class="mut">–</span>'}</td><td>${rep?'<span class="ok">✓ Meldung</span>':'<span class="mut">–</span>'}</td>`:'')+''}<td class="n"><b>${fmtH(st.tot)}</b></td><td>${st.cf?`<span class="bad" data-cf="${e.id}">⚠ ${st.cf} Überschn.</span>`:''}${st.open?` <span class="small" style="color:#b26a00">${st.open} offen</span>`:''}${st.vpo?` <span class="bad" data-vpg="1" style="color:#b26a00" title="Virtuelle Pausen noch nicht bestätigt – zur Seite „Pause“">⏸ ${st.vpo} Pause${st.vpo>1?'n':''} offen</span>`:''}</td><td>${isClosed(mk,e.id)?'<span class="badge cl">🔒 '+fmtTs(closedAt(mk,e.id)).replace(' Uhr','')+'</span>':'<span class="badge op">offen</span>'}</td></tr>`;}).join('');
  const tot=DB.emps.reduce((s,e)=>s+monthStats(e,mk).tot,0);
- const insl=Object.entries(ins).sort((a,b)=>a[1].at<b[1].at?1:-1).map(([d,r])=>`<div class="snap"><span style="flex:1"><b>${r.personal?'📱 ':''}${esc(r.name||devName(d))}</b><br><span class="small mut">Meldung erstellt ${fmtTs(r.created)} · eingelesen ${fmtTs(r.at)} · ${r.emps.length} Mitarbeiter</span></span></div>`).join('');
+/*@FULL*/ const insl=Object.entries(ins).sort((a,b)=>a[1].at<b[1].at?1:-1).map(([d,r])=>`<div class="snap"><span style="flex:1"><b>${r.personal?'📱 ':''}${esc(r.name||devName(d))}</b><br><span class="small mut">Meldung erstellt ${fmtTs(r.created)} · eingelesen ${fmtTs(r.at)} · ${r.emps.length} Mitarbeiter</span></span></div>`).join('');/*@/FULL*/
  return`<div class="card"><div class="mnav"><button class="btn" id="abP">‹</button><b>${monLabel(mk)}</b><button class="btn" id="abN">›</button><span class="badge ${cl?'cl':'op'}">${cl?'🔒 alle abgeschlossen':part?'🔒 '+ncl+' von '+DB.emps.length+' abgeschlossen':'offen'}</span></div>
- <div class="acts"><label class="btn p" ${cl?'style="opacity:.45;pointer-events:none"':''} title="Stundenlisten (Monatsmeldungen) von Mitarbeiter-Handys und Terminals einlesen – mehrere Dateien auf einmal, mit Vorschau vor der Übernahme">📥 Daten importieren<input type="file" multiple accept=".json,application/json,text/plain" id="abImp" hidden></label><button class="btn" id="abOwn" title="Stundenlisten dieses Geräts für ${monLabel(mk)} als Meldedatei (.json) exportieren – zum Einlesen am Admin-Gerät unter 📥 Daten importieren. Keine Sicherung: für ein neues/leeres Gerät bitte Sichern &amp; Daten → Sicherung verwenden.">📤 Daten exportieren</button><button class="btn" id="abOut" ${sel.size?'':'disabled'}>🖨 Drucken / Export (${sel.size} ausgewählt)</button><span class="sp"></span>${selCl?`<button class="btn" id="abOpen">🔓 Wieder öffnen (${selCl})</button>`:''}<button class="btn d" id="abLock" ${selOp?'':'disabled'}>🔒 Abschließen (${selOp} ausgewählt)</button></div>
- <p class="small mut">Ablauf: <b>📥 Daten importieren</b> liest die Stundenlisten (Meldungen) der Mitarbeiter-Handys und des Terminals ein (Dateien per Mail) – mehrere auf einmal möglich. <b>📤 Daten exportieren</b> erstellt die Meldung der auf diesem Gerät gebuchten Stunden als .json-Datei (nur nötig, wenn dieses Gerät nicht das Admin-Gerät ist – die Datei wird am Admin-Gerät mit 📥 Daten importieren eingelesen; sie ist keine Sicherung). Danach Überschneidungen prüfen. Abschließen und Drucken/Export gelten für die <b>angehakten</b> Mitarbeiter (Vorgabe: alle).</p></div>
- <div class="card"><h3>Mitarbeiter ${monLabel(mk)}</h3><table class="mtab"><thead><tr><th><input type="checkbox" id="abAll" ${sel.size===DB.emps.length&&DB.emps.length?'checked':''} title="alle / keine" style="width:18px;height:18px"></th><th>Pers.-Nr.</th><th>Mitarbeiter</th><th>Herkunft der Buchungen</th><th>Meldung</th><th class="n">Stunden</th><th>Hinweise</th><th>Abschluss</th></tr></thead><tbody>${rows||'<tr><td colspan="8" class="mut">Noch keine Mitarbeiter.</td></tr>'}</tbody><tfoot><tr><td></td><td colspan="4"><b>Summe ausgewählte Mitarbeiter</b></td><td class="n"><b>${fmtH(DB.emps.filter(e=>sel.has(e.id)).reduce((s,e)=>s+monthStats(e,mk).tot,0))}</b></td><td colspan="2"></td></tr></tfoot></table></div>
- <div class="card"><h3>Eingelesene Meldungen</h3>${insl||'<p class="mut">Für diesen Monat wurden noch keine Meldungen eingelesen.</p>'}</div>`;}
+ <div class="acts">${(MOB()?`<label class="btn p" ${cl?'style="opacity:.45;pointer-events:none"':''} title="Stundenlisten (Monatsmeldungen) von Mitarbeiter-Handys und Terminals einlesen – mehrere Dateien auf einmal, mit Vorschau vor der Übernahme">📥 Daten importieren<input type="file" multiple accept=".json,application/json,text/plain" id="abImp" hidden></label><button class="btn" id="abOwn" title="Stundenlisten dieses Geräts für ${monLabel(mk)} als Meldedatei (.json) exportieren – zum Einlesen am Admin-Gerät unter 📥 Daten importieren. Keine Sicherung: für ein neues/leeres Gerät bitte Sichern &amp; Daten → Sicherung verwenden.">📤 Daten exportieren</button>`:'')+''}<button class="btn" id="abOut" ${sel.size?'':'disabled'}>🖨 Drucken / Export (${sel.size} ausgewählt)</button><span class="sp"></span>${selCl?`<button class="btn" id="abOpen">🔓 Wieder öffnen (${selCl})</button>`:''}<button class="btn d" id="abLock" ${selOp?'':'disabled'}>🔒 Abschließen (${selOp} ausgewählt)</button></div>
+ <p class="small mut">${!MOB()?'Ablauf: Zeitlisten prüfen (Überschneidungen sind rot markiert), dann drucken bzw. exportieren und den Monat abschließen. Abschließen und Drucken/Export gelten für die <b>angehakten</b> Mitarbeiter (Vorgabe: alle).':/*@FULL*/`Ablauf: <b>📥 Daten importieren</b> liest die Stundenlisten (Meldungen) der Mitarbeiter-Handys und des Terminals ein (Dateien per Mail) – mehrere auf einmal möglich. <b>📤 Daten exportieren</b> erstellt die Meldung der auf diesem Gerät gebuchten Stunden als .json-Datei (nur nötig, wenn dieses Gerät nicht das Admin-Gerät ist – die Datei wird am Admin-Gerät mit 📥 Daten importieren eingelesen; sie ist keine Sicherung). Danach Überschneidungen prüfen. Abschließen und Drucken/Export gelten für die <b>angehakten</b> Mitarbeiter (Vorgabe: alle).`+/*@/FULL*/''}</p></div>
+ <div class="card"><h3>Mitarbeiter ${monLabel(mk)}</h3><table class="mtab"><thead><tr><th><input type="checkbox" id="abAll" ${sel.size===DB.emps.length&&DB.emps.length?'checked':''} title="alle / keine" style="width:18px;height:18px"></th><th>Pers.-Nr.</th><th>Mitarbeiter</th>${(MOB()?'<th>Herkunft der Buchungen</th><th>Meldung</th>':'')+''}<th class="n">Stunden</th><th>Hinweise</th><th>Abschluss</th></tr></thead><tbody>${rows||'<tr><td colspan="${(!MOB())?6:8}" class="mut">Noch keine Mitarbeiter.</td></tr>'}</tbody><tfoot><tr><td></td><td colspan="${(!MOB())?2:4}"><b>Summe ausgewählte Mitarbeiter</b></td><td class="n"><b>${fmtH(DB.emps.filter(e=>sel.has(e.id)).reduce((s,e)=>s+monthStats(e,mk).tot,0))}</b></td><td colspan="2"></td></tr></tfoot></table></div>
+ ${(MOB()?`<div class="card"><h3>Eingelesene Meldungen</h3>${insl||'<p class="mut">Für diesen Monat wurden noch keine Meldungen eingelesen.</p>'}</div>`:'')+''}`;}
 function bAbschl(){const mk=abMonth;
  $('#abP').onclick=()=>{abMonth=shiftMonth(mk,-1);abSel=null;render();};$('#abN').onclick=()=>{abMonth=shiftMonth(mk,1);abSel=null;render();};
- $('#abImp').onchange=ev=>{const fs=[...ev.target.files];ev.target.value='';if(fs.length)importReports(fs);};
- $('#abOwn').onclick=()=>reportDialog(mk);
+
+ if($('#abImp'))$('#abImp').onchange=ev=>{const fs=[...ev.target.files];ev.target.value='';if(fs.length)importReports(fs);};
+ if($('#abOwn'))$('#abOwn').onclick=()=>reportDialog(mk);
  main.querySelectorAll('[data-sel]').forEach(c=>c.onchange=()=>{abSel=new Set(selIds());c.checked?abSel.add(c.dataset.sel):abSel.delete(c.dataset.sel);render();});
  $('#abAll').onchange=ev=>{abSel=new Set(ev.target.checked?DB.emps.map(e=>e.id):[]);render();};
  $('#abOut').onclick=()=>{const [y,m]=mk.split('-').map(Number);view={mode:'month',a:new Date(y,m-1,1)};const ids=selIds();OUT_ONLY=ids;outputDialog(DB.emps.find(e=>ids.includes(e.id))||DB.emps[0],true);const a=$('#oAll');if(a){a.checked=true;const l=a.closest('label');if(l)l.lastChild.textContent=' Ausgewählte Mitarbeiter ('+ids.length+')';}};
- const ao=$('#abOpen');if(ao)ao.onclick=()=>{const ids=selIds().filter(id=>isClosed(mk,id));confirmDlg(ids.length+' Mitarbeiter für '+monLabel(mk)+' wieder öffnen? Danach sind Korrekturen und Einlesen wieder möglich.','Wieder öffnen',()=>{
+ const ao=$('#abOpen');if(ao)ao.onclick=()=>{const ids=selIds().filter(id=>isClosed(mk,id));confirmDlg(ids.length+' Mitarbeiter für '+monLabel(mk)+' wieder öffnen? Danach sind Korrekturen'+(!MOB()?'':' und Einlesen')+' wieder möglich.','Wieder öffnen',()=>{
    if(DB.closed&&DB.closed[mk]){const at=DB.closed[mk].at;delete DB.closed[mk];DB.closedEmp=DB.closedEmp||{};DB.closedEmp[mk]={};DB.emps.forEach(e=>DB.closedEmp[mk][e.id]=at);}
    ids.forEach(id=>{if(DB.closedEmp&&DB.closedEmp[mk])delete DB.closedEmp[mk][id];});save();render();});};
  $('#abLock').onclick=()=>{const ids=selIds().filter(id=>!isClosed(mk,id));if(!ids.length)return;
+  const vo=DB.emps.filter(e=>ids.includes(e.id)).map(e=>[e,vpOpen(e,mk)]).filter(x=>x[1]);
+  if(vo.length){const b=openModal(`<h2>⏸ Pausen noch nicht bestätigt</h2><p>Vor dem Abschluss müssen alle virtuellen Pausen von ${monLabel(mk)} bestätigt sein:</p><ul style="line-height:1.6;margin:4px 0 8px 18px">${vo.map(([e,n])=>`<li><b>${esc(fullName(e))}</b>: ${n} Tag${n>1?'e':''} offen</li>`).join('')}</ul><div class="acts"><button class="btn" id="voC">Schließen</button><span class="sp"></span><button class="btn p" id="voG">⏸ Zur Seite „Pause“</button></div>`);
+   b.querySelector('#voC').onclick=closeModal;b.querySelector('#voG').onclick=()=>{closeModal();vpMonth=mk;adminTab='pause';render();};return;}
   const cf=DB.emps.filter(e=>ids.includes(e.id)).reduce((s,e)=>s+monthStats(e,mk).cf,0);
-  confirmDlg(`${monLabel(mk)} für <b>${ids.length} Mitarbeiter</b> abschließen?${cf?`<br><span style="color:var(--go)">⚠ Es gibt noch ${cf} Buchungen mit Überschneidungen.</span>`:''}<br><span class="mut">Danach sind für diesen Monat keine Korrekturen und kein Einlesen mehr möglich (wieder öffnen jederzeit möglich).</span>`,'Abschließen',()=>{DB.closedEmp=DB.closedEmp||{};DB.closedEmp[mk]=DB.closedEmp[mk]||{};const at=new Date().toISOString();ids.forEach(id=>DB.closedEmp[mk][id]=at);save();render();toast(monLabel(mk)+': '+ids.length+' Mitarbeiter abgeschlossen');});};
+  confirmDlg(`${monLabel(mk)} für <b>${ids.length} Mitarbeiter</b> abschließen?${cf?`<br><span style="color:var(--go)">⚠ Es gibt noch ${cf} Buchungen mit Überschneidungen.</span>`:''}<br><span class="mut">Danach sind für diesen Monat keine Korrekturen${(!MOB())?'':' und kein Einlesen'} mehr möglich (wieder öffnen jederzeit möglich).</span>`,'Abschließen',()=>{DB.closedEmp=DB.closedEmp||{};DB.closedEmp[mk]=DB.closedEmp[mk]||{};const at=new Date().toISOString();ids.forEach(id=>DB.closedEmp[mk][id]=at);save();render();toast(monLabel(mk)+': '+ids.length+' Mitarbeiter abgeschlossen');});};
+ main.querySelectorAll('[data-vpg]').forEach(x=>x.onclick=()=>{vpMonth=mk;adminTab='pause';main.dataset.tab='';render();});
  main.querySelectorAll('[data-cf]').forEach(x=>x.onclick=()=>{const [y,m]=mk.split('-').map(Number);adminEmpId=x.dataset.cf;adminTab='zeit';view={mode:'month',a:new Date(y,m-1,1)};render();});}
+/* ---------- V1.26: Admin-Seite „Pause“ ---------- */
+let vpMonth=null,VPAX={s:300,e:1380};
+const vpPct=m=>((m-VPAX.s)/(VPAX.e-VPAX.s)*100).toFixed(3)+'%';
+function aPause(){const mk=vpMonth||(vpMonth=abMonth||defMonth()),dur=vpDur();
+ const keys=[...new Set(DB.emps.flatMap(e=>Object.keys(DB.data[e.id]||{}).filter(k=>k.startsWith(mk))))].sort();
+ const days=keys.map(k=>({k,rows:vpDay(k)})).filter(x=>x.rows.length);
+ let lo=300,hi=1380;days.forEach(x=>x.rows.forEach(r=>{lo=Math.min(lo,Math.floor(r.b[0][0]/60)*60);hi=Math.max(hi,Math.ceil(r.b[r.b.length-1][1]/60)*60);}));VPAX={s:lo,e:hi};
+ const hrs=(hi-lo)/60;let need=0,done=0;
+ const axis=`<div class="vpr vpax"><div class="vpn"></div><div class="vpt" style="--h:${hrs}">${Array.from({length:hrs+1},(_,i)=>`<span class="${i%2?'odd':''}" style="left:${(i/hrs*100).toFixed(3)}%">${pad((lo/60+i)%24)}</span>`).join('')}</div><div class="vpi"></div></div>`;
+ const groups=days.map(({k,rows})=>{const d=pd(k);let gN=0,gD=0;
+  const body=rows.map(r=>{const lk=isClosed(mk,r.e.id),c=r.e.color;if(r.need){gN++;if(vpDone(r))gD++;}
+   const bars=r.b.map(([a,z])=>`<div class="vpb" style="left:${vpPct(a)};width:calc(${vpPct(z)} - ${vpPct(a)});background:${c}" title="${esc(r.e.first)}: ${hm(a)}–${hm(z,true)}"></div>`).join('');
+   const pp=r.need&&r.s!=null?`<div class="vpp${vpDone(r)?' ok':''}${r.cf?' cf':''}${lk?' lk':''}" data-e="${r.e.id}" data-k="${k}" style="left:${vpPct(r.s)};width:calc(${vpPct(r.s+dur)} - ${vpPct(r.s)})" title="${lk?'Monat abgeschlossen':'Ziehen zum Verschieben (15-Minuten-Raster)'}">${vpDone(r)?'✓':''}</div>`:'';
+   const info=!r.need?`<span class="mut small">keine Pause (${r.b.length>1?'längste zusammenhängende Arbeitszeit '+fmtH(r.lb):fmtH(r.work)} – nicht über ${fmtH((+S().vpAfter||0)*60)})</span>`
+    :r.s==null?`<span class="vpw">⚠ ${esc(r.warn)}</span>`
+    :`<b data-lbl="${r.e.id}|${k}">${hm(r.s)}–${hm(r.s+dur)}</b>${lk?'<span class="small mut">🔒</span>':`<button class="btn" data-vm="-1" data-e="${r.e.id}" data-k="${k}" title="15 Min früher">‹</button><button class="btn" data-vm="1" data-e="${r.e.id}" data-k="${k}" title="15 Min später">›</button><button class="btn${vpDone(r)?' okb':''}" data-vok="${r.e.id}" data-k="${k}" title="${vpDone(r)?'bestätigt – antippen zum Zurücknehmen':'Pause bestätigen'}">${vpDone(r)?'✓ bestätigt':'✓'}</button>${r.fix?`<button class="btn" data-vre="${r.e.id}" data-k="${k}" title="Gespeicherte Pause verwerfen und neu vorschlagen">↺</button>`:''}`}${r.cf?'<span class="vpw" style="color:var(--go)">⚠ überschneidet sich mit einer anderen Pause</span>':r.warn?`<span class="vpw">ⓘ ${esc(r.warn)}</span>`:''}`;
+   return`<div class="vpr"><div class="vpn">${avatar(r.e,'xs')}<span>${esc(r.e.first)}<br><span class="small mut" style="font-weight:400">${r.b.map(([a,z])=>hm(a)+'–'+hm(z,true)).join(', ')}</span></span></div><div class="vpt" style="--h:${hrs}">${bars}${pp}</div><div class="vpi">${info}</div></div>`;}).join('');
+  need+=gN;done+=gD;const anyLk=rows.some(r=>isClosed(mk,r.e.id));
+  return`<div class="card vpg"><div class="vph"><b style="${d.getDay()%6===0?'color:#6a4c9c':''}">${WDL[d.getDay()]}, ${dmy(d)}</b><span class="small mut">${rows.length} Mitarbeiter · ${gN?gD+' von '+gN+' Pausen bestätigt':'keine Pause nötig'}</span><span class="sp"></span>${gN&&gD<gN&&!anyLk?`<button class="btn" data-vday="${k}">✓ Tag bestätigen</button>`:gN&&gD===gN?'<span class="badge op">✓ bestätigt</span>':''}</div>${axis}${body}</div>`;}).join('');
+ return`<div class="card"><div class="mnav"><button class="btn" id="vpP">‹</button><b>${monLabel(mk)}</b><button class="btn" id="vpN">›</button><span class="badge ${need&&done===need?'op':'cl'}">${need?done+' von '+need+' Pausen bestätigt':'keine Pausen'}</span><span class="sp"></span>${need&&done<need?'<button class="btn p" id="vpAll">✓ Alle Vorschläge des Monats bestätigen</button>':''}</div>
+ <p class="small mut" style="margin:8px 0 4px">Pro Tag stehen alle Mitarbeiter mit Arbeitszeit untereinander (05:00–23:00). Für jeden mit einer <b>zusammenhängenden</b> Arbeitszeit (Kommen bis Gehen ohne Unterbrechung) von mehr als <b>${fmtH((+S().vpAfter||0)*60)}</b> wird darin eine bezahlte Pause von <b>${dur} Min</b> vorgeschlagen – frühestens nach der Hälfte, möglichst kurz nach 2/3 dieser Arbeitszeit, ohne Überschneidung mit anderen Pausen. Pause <b>ziehen</b> oder mit <b>‹ ›</b> im 15-Minuten-Raster verschieben, dann <b>✓ bestätigen</b>. Die Stunden ändern sich dadurch nicht. Vor dem Monatsabschluss müssen alle Pausen bestätigt sein.</p>
+ <p class="small" style="margin:4px 0 0"><span class="vpleg"><i></i>Vorschlag</span><span class="vpleg"><i class="ok"></i>bestätigt</span><span class="vpleg"><i class="cf"></i>Überschneidung</span></p></div>
+ ${groups||'<div class="card mut">In diesem Monat gibt es keine abgeschlossenen Buchungen.</div>'}`;}
+function bPause(){const mk=vpMonth;
+ const go=n=>{vpMonth=shiftMonth(mk,n);main.dataset.tab='';render();};$('#vpP').onclick=()=>go(-1);$('#vpN').onclick=()=>go(1);
+ const R=(id,k)=>{const e=DB.emps.find(x=>x.id===id);return e?vpRow(e,k):null;};
+ const all=$('#vpAll');if(all)all.onclick=()=>confirmDlg(`Alle angezeigten Pausen von <b>${monLabel(mk)}</b> so bestätigen, wie sie jetzt eingetragen sind?<br><span class="mut">Pausen mit Überschneidung und abgeschlossene Mitarbeiter werden übersprungen.</span>`,'Alle bestätigen',()=>{let n=0;
+  for(const k of new Set(DB.emps.flatMap(e=>Object.keys(DB.data[e.id]||{}).filter(x=>x.startsWith(mk)))))for(const r of vpDay(k))if(r.need&&r.s!=null&&!r.cf&&!vpDone(r)&&!isClosed(mk,r.e.id)){vpSet(r.e,k,r.s,true);n++;}
+  save();render();toast(n+' Pausen bestätigt');});
+ main.querySelectorAll('[data-vday]').forEach(b=>b.onclick=()=>{const k=b.dataset.vday;let n=0,skip=0;for(const r of vpDay(k)){if(!r.need||r.s==null||vpDone(r)||isClosed(mk,r.e.id))continue;if(r.cf){skip++;continue;}vpSet(r.e,k,r.s,true);n++;}save();render();toast(n+' Pausen bestätigt'+(skip?' · '+skip+' mit Überschneidung übersprungen':''),!!skip);});
+ main.querySelectorAll('[data-vok]').forEach(b=>b.onclick=()=>{const r=R(b.dataset.vok,b.dataset.k);if(!r||r.s==null)return;if(r.cf&&!vpDone(r)){toast('Diese Pause überschneidet sich mit einer anderen – bitte zuerst verschieben',true);return;}vpSet(r.e,r.key,r.s,!vpDone(r));save();render();});
+ main.querySelectorAll('[data-vre]').forEach(b=>b.onclick=()=>{const e=DB.emps.find(x=>x.id===b.dataset.vre),k=b.dataset.k;if(DB.vp&&DB.vp[e.id])delete DB.vp[e.id][k];save();render();toast('Neu vorgeschlagen');});
+ main.querySelectorAll('[data-vm]').forEach(b=>b.onclick=()=>{const r=R(b.dataset.e,b.dataset.k);if(!r||r.s==null)return;const dir=+b.dataset.vm,al=vpAllow(r).filter(s=>dir<0?s<r.s:s>r.s);
+  if(!al.length){toast(dir<0?'Früher nicht möglich (Arbeitsbeginn oder andere Pause)':'Später nicht möglich (Arbeitsende oder andere Pause)',true);return;}
+  vpSet(r.e,r.key,dir<0?Math.max(...al):Math.min(...al),false);save();render();});
+ main.querySelectorAll('.vpp[data-e]').forEach(p=>{if(p.classList.contains('lk'))return;
+  p.onpointerdown=ev=>{ev.preventDefault();const r=R(p.dataset.e,p.dataset.k);if(!r)return;const tl=p.parentNode.getBoundingClientRect(),span=VPAX.e-VPAX.s,dur=vpDur();
+   const al=vpAllow(r);if(!al.includes(r.s))al.push(r.s);const m0=r.s,x0=ev.clientX,lbl=main.querySelector(`[data-lbl="${r.e.id}|${r.key}"]`);let cur=m0;
+   try{p.setPointerCapture(ev.pointerId);}catch(x){}p.classList.add('drag');
+   p.onpointermove=mv=>{const want=m0+(mv.clientX-x0)/tl.width*span;const best=al.reduce((b,s)=>Math.abs(s-want)<Math.abs(b-want)?s:b,m0);
+    if(best!==cur){cur=best;p.style.left=vpPct(cur);if(lbl)lbl.textContent=hm(cur)+'–'+hm(cur+dur);}};
+   p.onpointerup=p.onpointercancel=()=>{p.onpointermove=p.onpointerup=p.onpointercancel=null;p.classList.remove('drag');if(cur!==m0){vpSet(r.e,r.key,cur,false);save();render();toast('Pause '+hm(cur)+'–'+hm(cur+dur)+' – bitte bestätigen');}};};});}
 /* ---------- V1.21: Copyright-Würfel ---------- */
 function cubeCard(){return`<div class="cpc" role="dialog" aria-label="Über Jet-Zeit"><div class="cw-stage"><div class="cw-glow"></div><div class="cw-tilt"><div class="cw-cube">
  <div class="cw-f cw-fr"></div>
@@ -715,9 +833,10 @@ setInterval(()=>{if(dirH&&fileSt==='err'){fileSt='ok';flushFile();}},60000);
 addEventListener('online',()=>{if(dirH&&fileSt==='err'){fileSt='ok';flushFile();}});
 /* Info-Knöpfe ⓘ */
 const INFO={
- pack:'<b>Komplettpaket</b> = eine HTML-Datei mit dem <b>Programm und allen Daten</b> (Mitarbeiter, Fotos, PINs, Buchungen, Einstellungen).<br><br><b>Wofür:</b> Umzug auf einen neuen PC/ein neues Gerät oder Notfall, wenn ein Gerät ausfällt.<br><b>So geht es:</b> Datei auf das neue Gerät bringen (USB-Stick, Mail an sich selbst), dort öffnen → „Daten übernehmen“ bestätigen. Am PC die Datei <b>lokal</b> ablegen und öffnen, nicht vom Netzlaufwerk.<br>iPhone/iPad: besser Jet-Zeit über die Web-Adresse öffnen und dort die <b>Sicherung</b> einspielen.<br><br><b>Vertraulich:</b> Enthält alle PINs – nicht öffentlich ablegen und nicht an Mitarbeiter weitergeben.',
+/*@FULL*/ pack:'<b>Komplettpaket</b> = eine HTML-Datei mit dem <b>Programm und allen Daten</b> (Mitarbeiter, Fotos, PINs, Buchungen, Einstellungen).<br><br><b>Wofür:</b> Umzug auf einen neuen PC/ein neues Gerät oder Notfall, wenn ein Gerät ausfällt.<br><b>So geht es:</b> Datei auf das neue Gerät bringen (USB-Stick, Mail an sich selbst), dort öffnen → „Daten übernehmen“ bestätigen. Am PC die Datei <b>lokal</b> ablegen und öffnen, nicht vom Netzlaufwerk.<br>iPhone/iPad: besser Jet-Zeit über die Web-Adresse öffnen und dort die <b>Sicherung</b> einspielen.<br><br><b>Vertraulich:</b> Enthält alle PINs – nicht öffentlich ablegen und nicht an Mitarbeiter weitergeben.',/*@/FULL*/
+ inst:'<b>Installation – mit oder ohne Internet</b><br><br><b>Windows-PC:</b> Die Programmdatei <b>index.html</b> (vom USB-Stick, aus der Mail, vom Netzlaufwerk oder von GitHub) in einen festen Ordner auf dem PC kopieren, z. B. <b>C:\\'+APP+'\\index.html</b>, und mit <b>Chrome oder Edge</b> öffnen (Rechtsklick → Öffnen mit). Am besten eine Verknüpfung auf den Desktop legen. Läuft danach ganz ohne Internet. Wichtig: nicht direkt aus der Mail oder vom Stick starten und immer <b>dieselbe Datei am selben Ort</b> öffnen.<br><b>Mit Internet (PC, Android):</b> die Web-Adresse öffnen und „📲 App installieren“ wählen – danach funktioniert '+APP+' auch offline.<br><b>Android-Tablet/-Handy:</b> am besten über die Web-Adresse installieren (einmal Internet nötig). Eine HTML-Datei vom Stick oder aus der Mail lässt sich je nach Gerät nur eingeschränkt öffnen.<br><b>iPad/iPhone:</b> nur über eine Web-Adresse in <b>Safari</b> → Teilen → „Zum Home-Bildschirm“. Mit einer <b>https</b>-Adresse (z. B. GitHub) einmal Internet nötig, danach auch offline. Ohne GitHub geht es über einen Webserver im eigenen Netz (z. B. NAS) – dann muss das iPad zum Starten im Firmen-WLAN sein. Eine HTML-Datei aus Mail, vom Stick oder aus der App „Dateien“ öffnet nur eine Vorschau – dort läuft '+APP+' nicht richtig und speichert nicht dauerhaft. Sicherungen: Teilen → „In Dateien sichern“ → Ordner (Stick, iCloud, Auf meinem iPad).<br><br><b>Neue Version:</b> vorher eine Sicherung erstellen, dann die neue index.html <b>über die alte</b> kopieren (gleicher Ordner, gleicher Name) – die Daten bleiben erhalten. Bei der Web-App wird die neue Version beim nächsten Start mit Internet automatisch geladen.',
  bak:'<b>Sicherungsdatei</b> (.json) = alle Daten dieses Geräts, ohne Programm.<br><br><b>Wofür:</b> regelmäßige Sicherung außerhalb des Geräts und Wiederherstellen nach einem Fehler oder auf einem neuen Gerät.<br><b>Wohin:</b> USB-Stick, Netzlaufwerk/NAS, iCloud/„In Dateien sichern“ oder per Mail an sich selbst – am besten an einen Ort außerhalb dieses Geräts.<br><b>Zurückholen:</b> „Sicherung einspielen“ → Datei wählen → Vorschau prüfen → bestätigen (der aktuelle Stand wird vorher automatisch gesichert).<br><br><b>Vertraulich:</b> Enthält PINs und Arbeitszeiten.',
- folder:'<b>Datenordner</b> = Ordner, in den Jet-Zeit bei jeder Eingabe automatisch die Datei <b>jetzeit-daten.json</b> schreibt; dazu im Unterordner <b>Sicherungen</b> eine Datei pro Tag.<br><br><b>Richtig wählen:</b> den Ordner, in dem jetzeit-daten.json liegen soll, z. B. <b>P:\\Jet-Zeit\\Daten</b> (Netzwerk/NAS) oder <b>Dokumente\\Jet-Zeit\\Daten</b> (Einzel-PC) – gegebenenfalls im Auswahlfenster mit „Neuer Ordner“ anlegen.<br><b>Nicht wählen:</b> den Unterordner „Sicherungen“, Hauptordner wie Downloads/Dokumente/Desktop oder ein ganzes Laufwerk (sperrt der Browser).<br><b>Laufwerk weg?</b> Jet-Zeit speichert weiter im Browser und schreibt automatisch nach, sobald der Ordner wieder erreichbar ist.'};
+ folder:'<b>Datenordner</b> = Ordner, in den '+APP+' bei jeder Eingabe automatisch die Datei <b>'+DATA_FILE+'</b> schreibt; dazu im Unterordner <b>Sicherungen</b> eine Datei pro Tag.<br><br><b>Richtig wählen:</b> den Ordner, in dem '+DATA_FILE+' liegen soll, z. B. <b>Dokumente\\'+APP+'\\Daten</b> (einzelner PC), ein Ordner auf einem <b>USB-Stick</b> oder <b>P:\\'+APP+'\\Daten</b> (Netzlaufwerk/NAS, falls vorhanden) – gegebenenfalls im Auswahlfenster mit „Neuer Ordner“ anlegen. Für Jet-Zeit/Jet-Office jeweils einen eigenen Ordner verwenden.<br><b>Nicht wählen:</b> den Unterordner „Sicherungen“, Hauptordner wie Downloads/Dokumente/Desktop oder ein ganzes Laufwerk (sperrt der Browser).<br><b>Laufwerk oder Stick weg?</b> '+APP+' speichert weiter im Browser und schreibt automatisch nach, sobald der Ordner wieder erreichbar ist.'};
 const ib=k=>`<button class="btn ib" data-info="${k}" title="Erklärung" style="min-height:30px;padding:2px 10px;font-size:14px">ⓘ</button>`;
 function bindInfo(){main.querySelectorAll('[data-info]').forEach(b=>b.onclick=()=>{const m=openModal(`<h2>ⓘ Erklärung</h2><p style="line-height:1.55">${INFO[b.dataset.info]}</p><div class="acts"><span class="sp"></span><button class="btn p" id="ibOk">OK</button></div>`);m.querySelector('#ibOk').onclick=closeModal;});}
 /* Speicherstatus (Punkt auf der Startseite) */
@@ -727,9 +846,9 @@ function storageInfo(){const s=storeState(),ios=/iPad|iPhone|iPod/.test(navigato
  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
  const b=openModal(`<h2>Speicherstatus</h2>
  <p>Jede Eingabe wird sofort gespeichert:</p>
- <p>${dirH?(fileSt==='ok'?'✅':fileSt==='prompt'?'⚠':'❌')+' Datei <b>jetzeit-daten.json</b> im Datenordner „'+esc(dirShow())+'“'+(fileSt==='prompt'?' – Freigabe nötig':fileSt==='err'?' – nicht erreichbar':'')+(lastFile?' <span class="mut small">(zuletzt '+hm(lastFile.getHours()*60+lastFile.getMinutes())+' Uhr)</span>':'')+'<br>':FS_OK?'ℹ Kein Datenordner gewählt (Administration → Sichern & Daten)<br>':''}${lsOk?'✅':'❌'} Hauptspeicher (localStorage)<br>${idbOk?'✅':idbOk===null?'⏳':'❌'} Zweitkopie + Tagessicherungen (IndexedDB)<br>${persisted?'✅ Speicher vom Browser als dauerhaft markiert':'ℹ Speicher nicht als dauerhaft markiert'}${lastSaved?'<br><span class="mut small">Zuletzt gespeichert: '+hm(lastSaved.getHours()*60+lastSaved.getMinutes())+' Uhr</span>':''}</p>
+ <p>${dirH?(fileSt==='ok'?'✅':fileSt==='prompt'?'⚠':'❌')+' Datei <b>'+DATA_FILE+'</b> im Datenordner „'+esc(labelFits()&&dirLabel?dirLabel:dirH.name)+'“'+(fileSt==='prompt'?' – Freigabe nötig':fileSt==='err'?' – nicht erreichbar':'')+(lastFile?' <span class="mut small">(zuletzt '+hm(lastFile.getHours()*60+lastFile.getMinutes())+' Uhr)</span>':'')+'<br>':FS_OK?'ℹ Kein Datenordner gewählt (Administration → Sichern & Daten)<br>':''}${lsOk?'✅':'❌'} Hauptspeicher (localStorage)<br>${idbOk?'✅':idbOk===null?'⏳':'❌'} Zweitkopie + Tagessicherungen (IndexedDB)<br>${persisted?'✅ Speicher vom Browser als dauerhaft markiert':'ℹ Speicher nicht als dauerhaft markiert'}${lastSaved?'<br><span class="mut small">Zuletzt gespeichert: '+hm(lastSaved.getHours()*60+lastSaved.getMinutes())+' Uhr</span>':''}</p>
  ${ios&&!standalone?'<p class="warn">iPad: Bitte Jet-Zeit über <b>Teilen → Zum Home-Bildschirm</b> starten. Sonst kann Safari die Daten nach einigen Tagen ohne Benutzung löschen.</p>':''}
- <p class="mut small">Die Daten bleiben nur auf diesem Gerät. Unter ⚙ Administration → „Sichern & Daten“ regelmäßig eine Sicherung erstellen (Mail, AirDrop, USB-Stick, Netzlaufwerk).</p>
+ <p class="mut small">Die Daten bleiben auf diesem Gerät${dirH?' und im gewählten Datenordner':''}. Unter ⚙ Administration → „Sichern & Daten“ regelmäßig eine Sicherung an einem Ort außerhalb des Geräts ablegen (USB-Stick, Mail, AirDrop, Netzlaufwerk falls vorhanden).</p>
  <div class="acts"><span class="sp"></span><button class="btn p" id="siOk">OK</button></div>`);
  b.querySelector('#siOk').onclick=closeModal;}
 const S=()=>DB.settings;
@@ -740,14 +859,55 @@ function dayCalc(sh){let gross=0,gaps=0,open=false,prevO=null;
  for(const s of sh){if(s.o==null){open=true;continue;}gross+=s.o-s.i;if(prevO!=null&&s.i>prevO)gaps+=s.i-prevO;prevO=s.o;}
  const st=S();let pause=0;
  /* V1.19: Pause nur, wenn eine DURCHGEHENDE Arbeitszeit (Kommen bis Gehen ohne Unterbrechung) die Grenze überschreitet – je Block einmal */
- if(st.pauseOn){let bs=null,be=null;const blocks=[];for(const s of sh){if(s.o==null)continue;if(be!=null&&s.i<=be){be=Math.max(be,s.o);}else{if(bs!=null)blocks.push(be-bs);bs=s.i;be=s.o;}}if(bs!=null)blocks.push(be-bs);
+ if(PAUSE_AUTO&&st.pauseOn){let bs=null,be=null;const blocks=[];for(const s of sh){if(s.o==null)continue;if(be!=null&&s.i<=be){be=Math.max(be,s.o);}else{if(bs!=null)blocks.push(be-bs);bs=s.i;be=s.o;}}if(bs!=null)blocks.push(be-bs);
   for(const b of blocks)if(b>st.pauseAfter*60)pause+=Math.min(st.pauseMin,b);}
  return{gross,pause,net:gross-pause,open};}
-function buildPeriod(e,from,to,label){const weeks=[];let cur=null;const total={net:0,pause:0,days:0};
+/* ---------- V1.26: virtuelle Pause ----------
+   Bezahlte, rein „virtuelle“ Pause je Mitarbeiter und Tag (ändert keine Stunden). Vorschlag: frühestens nach der Hälfte,
+   möglichst kurz nach 2/3 der Arbeitszeit, im 15-Min-Raster, ohne Überschneidung mit Pausen anderer Mitarbeiter am selben Tag.
+   Gespeichert in DB.vp[empId][JJJJ-MM-TT] = {s: Beginn (Min. ab Mitternacht), ok: bestätigt, at}. */
+const VP_G=15;
+const vpOn=()=>!!S().vpOn&&!isPersonal();
+const vpDur=()=>Math.max(15,+S().vpMin||30);
+const vpOv=(a,b,dur)=>a<b+dur&&b<a+dur;
+function vpBlocks(sh){const b=[];for(const s of sh.filter(x=>x.o!=null).sort((a,c)=>a.i-c.i)){const l=b[b.length-1];if(l&&s.i<=l[1])l[1]=Math.max(l[1],s.o);else b.push([s.i,s.o]);}return b;}
+const vpWork=b=>b.reduce((t,x)=>t+x[1]-x[0],0);
+function vpCands(b,dur){const c=[];for(const [a,z] of b)for(let s=Math.ceil(a/VP_G)*VP_G;s+dur<=z;s+=VP_G)c.push(s);return c;}
+function vpAt(b,frac){let need=vpWork(b)*frac;for(const [a,z] of b){if(need<=z-a)return a+need;need-=z-a;}return b.length?b[b.length-1][1]:0;}
+function vpCum(b,m){let c=0;for(const [a,z] of b){if(m<=a)break;c+=Math.min(m,z)-a;}return c;}
+let VPC={db:null,rev:-1,m:{}};
+function vpDay(key){const rev=(DB.meta&&DB.meta.rev)||0;if(VPC.db!==DB||VPC.rev!==rev)VPC={db:DB,rev,m:{}};if(VPC.m[key])return VPC.m[key];
+ const dur=vpDur(),lim=(+S().vpAfter||0)*60,rows=[];
+ for(const e of DB.emps){const sh=getShifts(e,key).filter(s=>s.o!=null);if(!sh.length)continue;const b=vpBlocks(sh),w=vpWork(b);
+  /* V1.29: maßgeblich ist der längste ZUSAMMENHÄNGENDE Arbeitsblock (Kommen bis Gehen ohne Unterbrechung) – nur er muss die Grenze überschreiten, und nur in ihm wird die Pause eingeplant */
+  const pb=[b.reduce((m,x)=>x[1]-x[0]>m[1]-m[0]?x:m,b[0])],lb=pb[0][1]-pb[0][0];
+  const r={e,key,b,pb,lb,work:w,first:b[0][0],need:lb>lim,cands:vpCands(pb,dur),st:((DB.vp||{})[e.id]||{})[key]||null,s:null,ok:false,fix:false,warn:''};
+  if(r.need&&r.st&&r.cands.includes(r.st.s)){r.s=r.st.s;r.ok=!!r.st.ok;r.fix=true;}
+  else if(r.need&&r.st)r.warn='Buchungen geändert – neuer Vorschlag';
+  if(r.need&&!r.cands.length)r.warn='Arbeitsblock zu kurz für '+dur+' Min';
+  rows.push(r);}
+ rows.sort((a,c)=>a.first-c.first||a.e.first.localeCompare(c.e.first));
+ const taken=rows.filter(r=>r.fix).map(r=>r.s);
+ for(const r of rows){if(!r.need||r.fix||!r.cands.length)continue;
+  const tgt=Math.ceil(vpAt(r.pb,2/3)/VP_G)*VP_G,half=r.lb/2,score=s=>s>=tgt?s-tgt:(tgt-s)*1.5+1;
+  const free=r.cands.filter(s=>!taken.some(t=>vpOv(s,t,dur)));
+  let pool=free.filter(s=>vpCum(r.pb,s)>=half);
+  if(!pool.length&&free.length){pool=free;r.warn='erst nach der Hälfte nicht möglich';}
+  if(!pool.length){pool=r.cands;r.warn='Überschneidung nicht vermeidbar';}
+  r.s=pool.reduce((best,s)=>score(s)<score(best)?s:best,pool[0]);taken.push(r.s);}
+ for(const r of rows)r.cf=r.s!=null&&rows.some(o=>o!==r&&o.s!=null&&vpOv(r.s,o.s,dur));
+ VPC.m[key]=rows;return rows;}
+const vpRow=(e,key)=>vpDay(key).find(x=>x.e.id===e.id)||null;
+const vpDone=r=>!!(r&&r.s!=null&&r.ok&&!r.cf);
+function vpGet(e,key){if(!vpOn())return null;const r=vpRow(e,key);return r&&r.need&&r.s!=null?{s:r.s,dur:vpDur(),ok:vpDone(r),cf:r.cf}:null;}
+function vpOpen(e,mk){if(!vpOn())return 0;let n=0;for(const k of Object.keys(DB.data[e.id]||{})){if(!k.startsWith(mk))continue;const r=vpRow(e,k);if(r&&r.need&&!vpDone(r))n++;}return n;}
+function vpSet(e,key,s,ok){DB.vp=DB.vp||{};DB.vp[e.id]=DB.vp[e.id]||{};DB.vp[e.id][key]={s,ok:!!ok,at:new Date().toISOString()};}
+function vpAllow(r){const dur=vpDur(),oth=vpDay(r.key).filter(o=>o!==r&&o.need&&o.s!=null);return r.cands.filter(s=>!oth.some(o=>vpOv(s,o.s,dur)));}
+function buildPeriod(e,from,to,label){const weeks=[];let cur=null;const total={net:0,pause:0,days:0,vp:0};
  for(let d=new Date(from);d<=to;d=addDays(d,1)){
-  if(!cur||d.getDay()===1){cur={kw:isoWeek(d),days:[],net:0};weeks.push(cur);}
-  const key=ymd(d),sh=getShifts(e,key),c=dayCalc(sh);
-  cur.days.push({date:new Date(d),key,shifts:sh,...c});cur.net+=c.net;total.net+=c.net;total.pause+=c.pause;if(c.gross>0)total.days++;}
+  if(!cur||d.getDay()===1){cur={kw:isoWeek(d),days:[],net:0,vp:0};weeks.push(cur);}
+  const key=ymd(d),sh=getShifts(e,key),c=dayCalc(sh),vp=sh.length?vpGet(e,key):null;
+  cur.days.push({date:new Date(d),key,shifts:sh,...c,vp});cur.net+=c.net;total.net+=c.net;total.pause+=c.pause;if(c.gross>0)total.days++;if(vp){cur.vp+=vp.dur;total.vp+=vp.dur;}}
  weeks.forEach(w=>{w.from=w.days[0].date;w.to=w.days[w.days.length-1].date;});
  return{from,to,label,weeks,total};}
 const monthPeriod=(e,y,m)=>buildPeriod(e,new Date(y,m,1),new Date(y,m+1,0),MON[m]+' '+y);
@@ -792,7 +952,7 @@ function renderHeader(){const st=S();$('#hdr').innerHTML=(st.logo?`<img class="l
 function tick(){const d=new Date(),t=$('#clkT'),dd=$('#clkD');if(t)t.textContent=pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());if(dd)dd.textContent=WDL[d.getDay()]+', '+d.getDate()+'. '+MON[d.getMonth()]+' '+d.getFullYear();}
 function applyBg(){const st=S();if(scr==='home'&&st.bgImage){const d=Math.min(80,Math.max(0,+st.bgDim||0))/100;main.style.backgroundImage=`linear-gradient(rgba(0,0,0,${d}),rgba(0,0,0,${d})),url(${st.bgImage})`;main.classList.add('bgimg');}else{main.style.backgroundImage='';main.classList.remove('bgimg');}}
 function render(){applyTheme();renderHeader();applyBg();if(scr==='home')renderHome();else if(scr==='emp')renderEmp();else renderAdmin();}
-function goHome(){clearTimeout(ovT);$('#ov').className='';closeModal();curEmp=null;scr='home';render();}
+function goHome(){clearTimeout(ovT);main.dataset.tab='';$('#ov').className='';closeModal();curEmp=null;scr='home';render();}
 
 /* ---------- Home ---------- */
 function setCols(n){const g=$('#grid');if(!g)return;const st=S(),land=innerWidth>=innerHeight;let c=+st.tileCols||0,r=+st.tileRows||0;
@@ -800,12 +960,12 @@ function setCols(n){const g=$('#grid');if(!g)return;const st=S(),land=innerWidth
  c=Math.min(c,Math.max(n,1));r=Math.max(r||0,Math.ceil(n/c));
  g.style.setProperty('--c',c);g.style.setProperty('--r',r);g.style.setProperty('--tw',(+st.tileW||240)+'px');g.style.setProperty('--th',(+st.tileH||210)+'px');}
 function renderHome(){const list=DB.emps.filter(e=>e.active);let h='<div class="home">';
- if(!list.length)h+=`<div class="empty">Noch keine Mitarbeiter angelegt.<br>Bitte unten über ⚙ Administration anlegen.<br><br><span class="small">Eigenes Gerät (Handy) eines Mitarbeiters?</span><br><label class="btn p" style="margin-top:8px">📱 Einrichtungsdatei einspielen<input type="file" accept=".json,application/json,text/plain" id="hSetup" hidden></label></div>`;
+ if(!list.length)h+=`<div class="empty">Noch keine Mitarbeiter angelegt.<br>Bitte unten über ⚙ Administration anlegen.${/*@FULL*/`<br><br><span class="small">Eigenes Gerät (Handy) eines Mitarbeiters?</span><br><label class="btn p" style="margin-top:8px">📱 Einrichtungsdatei einspielen<input type="file" accept=".json,application/json,text/plain" id="hSetup" hidden></label>`+/*@/FULL*/''}</div>`;
  else h+='<div class="emps" id="grid">'+list.map(e=>{const st=status(e);const lt=S().tileStyle==='light';return`<button class="emp${lt?' light':''}" data-id="${e.id}" style="--ec:${e.color};background-color:${e.color};color:${txtOn(e.color)}">${avatar(e)}<span class="nm">${esc(e.first)}</span>${st.canOut?`<span class="st">● anwesend seit ${hm(st.since)}</span>`:''}</button>`;}).join('')+'</div>';
- h+=`<div class="foot"><span class="verb" id="verb" title="">Jet-Zeit V${VERSION}${cubeCard()}</span><span class="sdot" id="sdot"></span>${bakDue()?`<span class="bkw" id="bkw" data-tip="${esc(bakTip())}">📤 ${esc(bakDue())} – jetzt sichern</span>`:''}${dirH&&fileSt==='prompt'?'<span class="bkw" id="fsGrH">📁 Datenordner freigeben</span>':''}<span class="sp"></span>${instEv||(IOS&&!STANDALONE()&&/^https?:$/.test(location.protocol))?'<button id="inst">📲 App installieren</button>':''}${FS_API&&!STANDALONE()?'<button id="fs">⛶ Vollbild</button>':''}<button id="adm">${isPersonal()?'⚙ Einstellungen':'⚙ Administration'}</button></div></div>`;
+ h+=`<div class="foot"><span class="verb" id="verb" title="">${APP} V${VERSION}${cubeCard()}</span><span class="sdot" id="sdot"></span>${bakDue()?`<span class="bkw" id="bkw" data-tip="${esc(bakTip())}">📤 ${esc(bakDue())} – jetzt sichern</span>`:''}${dirH&&fileSt==='prompt'?'<span class="bkw" id="fsGrH">📁 Datenordner freigeben</span>':''}${TMPRUN?'<span class="bkw" id="tmpW" style="background:#fde0d9;color:#a8321e">⚠ Aus Mail-Anhang geöffnet – bitte speichern</span>':''}<span class="sp"></span>${instEv||(IOS&&!STANDALONE()&&/^https?:$/.test(location.protocol))?'<button id="inst">📲 App installieren</button>':''}${FS_API&&!STANDALONE()?'<button id="fs">⛶ Vollbild</button>':''}<button id="adm">${isPersonal()?'⚙ Einstellungen':'⚙ Administration'}</button></div></div>`;
  main.innerHTML=h;setCols(list.length);applyBg();
  main.querySelectorAll('.emp').forEach(b=>b.onclick=()=>selectEmp(b.dataset.id));
- $('#adm').onclick=openAdmin;const fsb=$('#fs');if(fsb)fsb.onclick=toggleFS;$('#sdot').onclick=storageInfo;updDot();const bw=$('#bkw');if(bw)bw.onclick=bakNow;const vb=$('#verb');if(vb)vb.onclick=ev=>{ev.stopPropagation();vb.classList.add('open');clearTimeout(vb._t);vb._t=setTimeout(()=>vb.classList.remove('open'),3000);};const fg=$('#fsGrH');if(fg)fg.onclick=fsGrant;const ib=$('#inst');if(ib)ib.onclick=doInstall;const hs=$('#hSetup');if(hs)hs.onchange=ev=>readJsonFile(ev,j=>j.type==='setup'?applySetup(j):restoreFrom(j,'Sicherung'));}
+ $('#adm').onclick=openAdmin;const fsb=$('#fs');if(fsb)fsb.onclick=toggleFS;$('#sdot').onclick=storageInfo;updDot();const bw=$('#bkw');if(bw)bw.onclick=bakNow;const vb=$('#verb');if(vb)vb.onclick=ev=>{ev.stopPropagation();vb.classList.add('open');clearTimeout(vb._t);vb._t=setTimeout(()=>vb.classList.remove('open'),3000);};const fg=$('#fsGrH');if(fg)fg.onclick=fsGrant;const tw=$('#tmpW');if(tw)tw.onclick=tmpHelp;const ib=$('#inst');if(ib)ib.onclick=doInstall;/*@FULL*/const hs=$('#hSetup');if(hs)hs.onchange=ev=>readJsonFile(ev,j=>j.type==='setup'?applySetup(j):restoreFrom(j,'Sicherung'));/*@/FULL*/}
 function bakDue(){const st=S(),d=+st.bakRemind||0;if(!d||!countBk(DB).n)return'';if(!st.lastBackup)return'Noch keine Sicherung erstellt';
  const age=Math.floor((Date.now()-new Date(st.lastBackup).getTime())/864e5);return age>=d?'Letzte Sicherung vor '+age+(age===1?' Tag':' Tagen'):'';}
 function toggleFS(){const d=document;try{if(!d.fullscreenElement&&!d.webkitFullscreenElement){const el=d.documentElement;(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}else{(d.exitFullscreen||d.webkitExitFullscreen).call(d);}}catch(e){toast('Vollbild wird hier nicht unterstützt',true);}}
@@ -825,27 +985,70 @@ function selectEmp(id){const e=DB.emps.find(x=>x.id===id);if(!e)return;
  pinDialog({title:fullName(e),av:avatar(e),len:S().pinLen,check:p=>p===String(e.pin),ok:()=>openEmp(e)});}
 function openEmp(e){curEmp=e;scr='emp';view={mode:'week',a:new Date()};render();}
 
+/* ---------- V1.31: Stundenkonto ---------- */
+/* DB.acct[empId][Jahr] = {carry: Übertrag Vorjahr (Min), m: {'JJJJ-MM': {p: verrechnet (Min), n: Bemerkung, w: geleistet bei Eingabe, at}}}; e.contract = Vertragsstunden/Monat (Min) */
+function parseHrs(v){let t=String(v??'').trim().replace(/\s*(std\.?|h)\s*$/i,'');if(!t)return null;let neg=false;if(/^[-−–]/.test(t)){neg=true;t=t.slice(1).trim();}else if(t[0]==='+')t=t.slice(1).trim();let m;
+ if(/^\d+:\d{1,2}$/.test(t)){const p=t.split(':');if(+p[1]>59)return NaN;m=+p[0]*60+ +p[1];}else if(/^\d+([.,]\d+)?$/.test(t))m=Math.round(parseFloat(t.replace(',','.'))*60);else return NaN;return neg?-m:m;}
+const hIn=m=>m==null?'':(m<0?'-':'')+Math.floor(Math.abs(m)/60)+':'+pad(Math.abs(m)%60);
+const fmtS=m=>m==null?'':(m>0?'+ ':m<0?'− ':'± ')+fmtH(Math.abs(m));
+const sCls=m=>m>0?'kpos':m<0?'kneg':'';
+function acctRec(id,y){DB.acct=DB.acct||{};const a=DB.acct[id]=DB.acct[id]||{};return a[y]=a[y]||{carry:0,m:{}};}
+function acctYear(e,y){const r=((DB.acct||{})[e.id]||{})[y]||{carry:0,m:{}},con=+e.contract||0,nd=new Date(),nowK=monKey(nd.getFullYear(),nd.getMonth());let saldo=+r.carry||0,tw=0,tp=0,used=!!(+r.carry);
+ const rows=MON.map((_,m)=>{const mk=monKey(y,m),w=monthStats(e,mk).tot,cl=isClosed(mk,e.id),st=(r.m||{})[mk]||null;tw+=w;if(st&&(st.p!=null||st.n))used=true;
+  let p=null,def=false;if(cl){if(st&&st.p!=null)p=st.p;else if(con){p=con;def=true;}}
+  const diff=p==null?null:w-p;if(diff!=null){saldo+=diff;tp+=p;}
+  return{mk,m,w,cl,p,def,diff,saldo,note:st&&st.n||'',reopened:!cl&&!!(st&&st.p!=null),stale:!!(cl&&st&&st.p!=null&&st.w!=null&&st.w!==w),fut:mk>nowK,cur:mk===nowK};});
+ return{carry:+r.carry||0,con,rows,tw,tp,saldo,used:used||!!con};}
+function yearHTML(e,y){const A=acctYear(e,y),K=A.used;
+ const rows=A.rows.map((r,i)=>`<tr class="ym ${i%2?'b2':'b1'}${r.cur?' td':''}" data-ym="${r.m}" title="Monat ${MON[r.m]} ${y} öffnen"><td>${MON[r.m]} <span class="ych">›</span></td><td class="n">${r.w?nbx(fmtH(r.w)):''}</td>${K?`<td class="n">${r.p!=null?nbx(fmtH(r.p)):(r.w&&!r.fut?'<span class="kof">offen</span>':'')}</td><td class="n kmd ${sCls(r.diff)}">${fmtS(r.diff)}</td><td class="n ${sCls(r.saldo)}"><b>${r.diff!=null?fmtS(r.saldo):''}</b></td>`:''}</tr>`).join('');
+ return`<table class="tz ty"><colgroup><col style="width:150px"><col style="width:150px">${K?'<col style="width:150px"><col style="width:140px"><col style="width:150px">':''}</colgroup><thead><tr><th>Monat</th><th class="n">Stunden</th>${K?'<th class="n">Verrechnet</th><th class="n kmd">Monat ±</th><th class="n">Saldo</th>':''}</tr></thead><tbody>
+ ${K&&A.carry?`<tr class="b2"><td>Übertrag ${y-1}</td><td></td><td></td><td class="kmd"></td><td class="n ${sCls(A.carry)}"><b>${fmtS(A.carry)}</b></td></tr>`:''}${rows}</tbody>
+ <tfoot><tr><td>Gesamt ${y}</td><td class="n">${nbx(fmtH(A.tw))}</td>${K?`<td class="n">${nbx(fmtH(A.tp))}</td><td class="kmd"></td><td class="n">${fmtS(A.saldo)}</td>`:''}</tr></tfoot></table>${K?'<p class="small mut" style="margin:6px 4px 0">Verrechnet = vom Buchhalter abgerechnete Stunden (nach dem Monatsabschluss). Saldo = Reststunden (+) bzw. Minusstunden (−), fortlaufend ab Jahresbeginn.</p>':''}`;}
+let kontoY=new Date().getFullYear();
+function aKonto(){if(!DB.emps.length)return'<div class="card mut">Noch keine Mitarbeiter.</div>';
+ if(!DB.emps.find(e=>e.id===adminEmpId))adminEmpId=DB.emps[0].id;const e=DB.emps.find(x=>x.id===adminEmpId),y=kontoY,A=acctYear(e,y);
+ const rows=A.rows.map(r=>`<tr class="${r.cur?'kcur':''}"><td>${MON[r.m]}</td><td class="n">${r.w||r.cl?fmtH(r.w):''}</td><td class="n">${r.cl?`<input class="kin" data-kp="${r.mk}" value="${r.def?'':hIn(r.p)}" placeholder="${r.def?hIn(r.p):'Std:Min'}" title="Verrechnete Stunden (Std:Min, z. B. 80:00 oder 80,5). Leer = Vorgabe aus den Vertragsstunden.">${r.def?'<span class="kdef" title="Vorgabe aus den Vertragsstunden – zum Ändern eine Zahl eintragen">Vorgabe</span>':''}`:(r.reopened?'<span class="kof" title="Der Monat wurde wieder geöffnet – verrechnete Stunden zählen erst nach dem erneuten Abschluss">wieder geöffnet</span>':r.w&&!r.fut?'<span class="kof" title="Verrechnete Stunden können erst nach dem Monatsabschluss eingetragen werden">Monat offen</span>':'')}</td><td class="n ${sCls(r.diff)}">${fmtS(r.diff)}</td><td class="n ${sCls(r.saldo)}"><b>${r.diff!=null?fmtS(r.saldo):''}</b></td><td>${r.cl?`<input class="kin kn" data-kn="${r.mk}" value="${esc(r.note)}" placeholder="Bemerkung">`:esc(r.note)}${r.stale?`<div class="kst">⚠ Stunden nach der Eingabe geändert (damals ${fmtH(((acctRec(e.id,y).m||{})[r.mk]||{}).w)}) – bitte prüfen</div>`:''}</td></tr>`).join('');
+ const all=DB.emps.map(x=>{const B=acctYear(x,y);return`<tr data-kemp="${x.id}" class="kclk${x.id===e.id?' kcur':''}"><td>${esc(x.nr||'–')}</td><td><span style="display:inline-flex;align-items:center;gap:8px">${avatar(x,'xs')}${esc(fullName(x))}</span></td><td class="n">${x.contract?fmtH(x.contract):'<span class="mut">–</span>'}</td><td class="n">${fmtH(B.tw)}</td><td class="n">${fmtH(B.tp)}</td><td class="n ${sCls(B.saldo)}"><b>${fmtS(B.saldo)}</b></td></tr>`;}).join('');
+ return`<div class="chips">${DB.emps.map(x=>`<button data-ce="${x.id}" class="${x.id===adminEmpId?'on':''}">${avatar(x,'xs')}${esc(fullName(x))}</button>`).join('')}</div>
+ <div class="card"><div class="mnav"><button class="btn" id="kP">‹</button><b>${y}</b><button class="btn" id="kN">›</button><span class="sp"></span><span class="small">Vertragsstunden: <b>${A.con?fmtH(A.con)+' / Monat':'nicht eingetragen'}</b></span><button class="btn" id="kEd" title="Vertragsstunden unter Mitarbeiter bearbeiten">✎</button><label class="small kcar">Übertrag ${y-1}<input class="kin" id="kCar" value="${A.carry?hIn(A.carry):''}" placeholder="0:00" title="Saldo aus dem Vorjahr (Std:Min, Minusstunden mit „-“). Vorgabe 0 – jedes Jahr beginnt mit 0."></label><button class="btn p" id="kOut">🖨 Drucken / Export</button></div>
+ <table class="mtab ktab"><thead><tr><th>Monat</th><th class="n">Geleistet</th><th class="n">Verrechnet</th><th class="n">Monat ±</th><th class="n">Saldo</th><th>Bemerkung</th></tr></thead><tbody>${A.carry?`<tr><td>Übertrag ${y-1}</td><td></td><td></td><td></td><td class="n ${sCls(A.carry)}"><b>${fmtS(A.carry)}</b></td><td></td></tr>`:''}${rows}</tbody>
+ <tfoot><tr><td><b>Gesamt ${y}</b></td><td class="n"><b>${fmtH(A.tw)}</b></td><td class="n"><b>${fmtH(A.tp)}</b></td><td></td><td class="n ${sCls(A.saldo)}"><b>${fmtS(A.saldo)}</b></td><td></td></tr></tfoot></table>
+ <p class="small mut">Geleistet = Stunden laut Zeitliste. <b>Verrechnet</b> = vom Buchhalter abgerechnete Stunden – eintragbar, sobald der Monat für den Mitarbeiter unter „Monatsabschluss“ 🔒 abgeschlossen ist; leer = Vorgabe aus den Vertragsstunden. <b>Saldo</b> = Reststunden (+) bzw. Minusstunden (−), fortlaufend; jedes Jahr beginnt mit 0 (Übertrag bei Bedarf oben eintragen). Eingaben: Std:Min (80:00) oder Dezimal (80,5).</p></div>
+ <div class="card"><h3>Übersicht alle Mitarbeiter ${y}</h3><table class="mtab"><thead><tr><th>Pers.-Nr.</th><th>Mitarbeiter</th><th class="n">Vertrag/Monat</th><th class="n">Geleistet</th><th class="n">Verrechnet</th><th class="n">Saldo</th></tr></thead><tbody>${all}</tbody></table><p class="small mut">Zeile antippen = Stundenkonto dieses Mitarbeiters.</p></div>`;}
+function bKonto(){if(!DB.emps.length)return;const e=DB.emps.find(x=>x.id===adminEmpId),y=kontoY;
+ main.querySelectorAll('[data-ce],[data-kemp]').forEach(b=>b.onclick=()=>{adminEmpId=b.dataset.ce||b.dataset.kemp;render();});
+ $('#kP').onclick=()=>{kontoY--;render();};$('#kN').onclick=()=>{kontoY++;render();};
+ $('#kEd').onclick=()=>empForm(e,true);
+ $('#kOut').onclick=()=>{view={mode:'year',a:new Date(y,0,1)};OUT_SUM=true;outputDialog(e,true);};
+ const later=()=>setTimeout(()=>{const f=document.activeElement,ds=f&&f.dataset||{},k=ds.kp?'[data-kp="'+ds.kp+'"]':ds.kn?'[data-kn="'+ds.kn+'"]':f&&f.id==='kCar'?'#kCar':null;render();if(k){const x=main.querySelector(k);if(x){x.focus();if(x.select)x.select();}}},0);
+ $('#kCar').onchange=ev=>{const v=parseHrs(ev.target.value);if(Number.isNaN(v)){toast('Übertrag: bitte Std:Min (z. B. 5:30 oder -2:15) eingeben',true);return;}acctRec(e.id,y).carry=v||0;save();toast('Gespeichert');later();};
+ main.querySelectorAll('[data-kp]').forEach(i=>i.onchange=()=>{const mk=i.dataset.kp,v=parseHrs(i.value);if(Number.isNaN(v)||(v!=null&&v<0)){toast('Verrechnet: bitte Std:Min (z. B. 80:00) oder Dezimal (80,5) eingeben',true);return;}
+  const R=acctRec(e.id,y),o=R.m[mk]||{};if(v==null){delete o.p;delete o.w;}else{o.p=v;o.w=monthStats(e,mk).tot;}o.at=new Date().toISOString();if(o.p==null&&!o.n)delete R.m[mk];else R.m[mk]=o;save();toast('Gespeichert');later();});
+ main.querySelectorAll('[data-kn]').forEach(i=>i.onchange=()=>{const mk=i.dataset.kn,R=acctRec(e.id,y),o=R.m[mk]||{};o.n=i.value.trim();o.at=new Date().toISOString();if(o.p==null&&!o.n)delete R.m[mk];else R.m[mk]=o;save();toast('Gespeichert');later();});
+ main.querySelectorAll('.kin').forEach(i=>i.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();i.blur();}});}
+
 /* ---------- Employee screen ---------- */
 function renderEmp(){const e=curEmp,st=status(e),now=new Date();
  const today=dayCalc(getShifts(e,ymd(now))).net,wk=weekPeriod(e,now).total.net,mo=monthPeriod(e,now.getFullYear(),now.getMonth()).total.net;
- main.innerHTML=`<div class="ehead"><button class="btn" id="back">← Fertig</button>${avatar(e,'sm')}<div class="en"><b>${esc(fullName(e))}</b><span>${esc(st.text)}</span></div><button class="btn" id="uset">⚙ Meine Einstellungen</button>${isPersonal()?'<button class="btn p" id="urep">📤 Monat melden</button>':''}</div>
+ main.innerHTML=`<div class="ehead"><button class="btn" id="back">← Fertig</button>${avatar(e,'sm')}<div class="en"><b>${esc(fullName(e))}</b><span>${esc(st.text)}</span></div><button class="btn" id="uset">⚙ Meine Einstellungen</button>${/*@FULL*/(isPersonal()?'<button class="btn p" id="urep">📤 Monat melden</button>':'')+/*@/FULL*/''}</div>
  <div class="bigb"><button class="bb in" id="bIn" ${st.canIn?'':'disabled'}>Kommen<small>${st.canIn?'jetzt einstempeln':'nicht möglich'}</small></button><button class="bb out" id="bOut" ${st.canOut?'':'disabled'}>Gehen<small>${st.canOut?'jetzt ausstempeln':'nicht möglich'}</small></button></div>
  <div class="kpis"><div><span>Heute</span><b>${fmtH(today)}</b> ${unitTxt()}</div><div><span>Diese Woche (KW ${isoWeek(now)})</span><b>${fmtH(wk)}</b> ${unitTxt()}</div><div><span>${MON[now.getMonth()]} ${now.getFullYear()}</span><b>${fmtH(mo)}</b> ${unitTxt()}</div></div>
  ${listPanel(e,false)}`;
- $('#back').onclick=goHome;$('#uset').onclick=()=>empForm(e,false);const ur=$('#urep');if(ur)ur.onclick=()=>reportDialog(defMonth());
+ $('#back').onclick=goHome;$('#uset').onclick=()=>empForm(e,false);/*@FULL*/const ur=$('#urep');if(ur)ur.onclick=()=>reportDialog(defMonth());/*@/FULL*/
  $('#bIn').onclick=()=>book('in');$('#bOut').onclick=()=>book('out');
  bindList(e,false);}
-function viewPeriod(e){return view.mode==='week'?weekPeriod(e,view.a):monthPeriod(e,view.a.getFullYear(),view.a.getMonth());}
+function viewPeriod(e){if(view.mode==='year')return null;return view.mode==='week'?weekPeriod(e,view.a):monthPeriod(e,view.a.getFullYear(),view.a.getMonth());}
 function listPanel(e,admin){const P=viewPeriod(e),canEd=admin||S().empEdit;SHOWSRC=!!admin;
- const title=view.mode==='week'?`KW ${isoWeek(P.from)} · ${dm(P.from)}–${dmy(P.to)}`:P.label;
- const slim=!notesOn(e);return`<div class="lp${slim?' slim':''}"><div class="lbar"><div class="seg"><button data-m="week" class="${view.mode==='week'?'on':''}">Woche</button><button data-m="month" class="${view.mode==='month'?'on':''}">Monat</button></div><div class="nav"><button class="btn" data-nav="-1">‹</button><b>${title}</b><button class="btn" data-nav="1">›</button><button class="btn" data-nav="0">Heute</button></div><button class="btn p" id="outp">🖨 Drucken / Export</button></div><div class="tw">${tableHTML(P,canEd,notesOn(e))}</div></div>`;}
+ const title=view.mode==='year'?'Jahr '+view.a.getFullYear():view.mode==='week'?`KW ${isoWeek(P.from)} · ${dm(P.from)}–${dmy(P.to)}`:P.label;
+ const slim=!notesOn(e);return`<div class="lp${slim?' slim':''}"><div class="lbar"><div class="seg"><button data-m="week" class="${view.mode==='week'?'on':''}">Woche</button><button data-m="month" class="${view.mode==='month'?'on':''}">Monat</button><button data-m="year" class="${view.mode==='year'?'on':''}">Jahr</button></div><div class="nav"><button class="btn" data-nav="-1">‹</button><b>${title}</b><button class="btn" data-nav="1">›</button><button class="btn" data-nav="0">Heute</button></div><button class="btn p" id="outp">🖨 Drucken / Export</button></div><div class="tw">${P?tableHTML(P,canEd,notesOn(e)):yearHTML(e,view.a.getFullYear())}</div></div>`;}
 function bindList(e,admin){
  main.querySelectorAll('.seg [data-m]').forEach(b=>b.onclick=()=>{view.mode=b.dataset.m;render();});
- main.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{const n=+b.dataset.nav;if(!n)view.a=new Date();else if(view.mode==='week')view.a=addDays(view.a,7*n);else view.a=new Date(view.a.getFullYear(),view.a.getMonth()+n,1);render();});
+ main.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{const n=+b.dataset.nav;if(!n)view.a=new Date();else if(view.mode==='week')view.a=addDays(view.a,7*n);else if(view.mode==='year')view.a=new Date(view.a.getFullYear()+n,0,1);else view.a=new Date(view.a.getFullYear(),view.a.getMonth()+n,1);render();});
+ main.querySelectorAll('[data-ym]').forEach(r=>r.onclick=()=>{view={mode:'month',a:new Date(view.a.getFullYear(),+r.dataset.ym,1)};render();});
  $('#outp').onclick=()=>outputDialog(e,admin);
  main.querySelectorAll('.ed').forEach(b=>b.onclick=()=>editEntry(e,b.dataset.ek,+b.dataset.ei,admin));}
 let SHOWSRC=false;
-function tableHTML(P,edit,showN){const tk=ymd(new Date()),ec=edit?1:0;showN=showN!==false;const showSrc=SHOWSRC;SHOWSRC=false;
+function tableHTML(P,edit,showN){const tk=ymd(new Date()),ec=edit?1:0;showN=showN!==false;const showSrc=SHOWSRC&&MOB();SHOWSRC=false;
  let h=`<table class="tz${showN?'':' slim'}"><colgroup><col style="width:132px"><col style="width:72px"><col style="width:72px"><col style="width:128px"><col style="width:136px">${showN?'<col>':''}${ec?'<col style="width:92px">':''}</colgroup><thead><tr><th>Datum</th><th class="c">Kommen</th><th class="c">Gehen</th><th class="n">Dauer</th><th class="n">Tag</th>${showN?'<th class="nt">Bemerkung</th>':''}${ec?'<th></th>':''}</tr></thead><tbody>`;
  const rest=(showN?1:0)+ec,restTd=c=>rest?`<td class="nt" colspan="${rest}">${c||''}</td>`:'';
  let di=0;
@@ -853,9 +1056,12 @@ function tableHTML(P,edit,showN){const tk=ymd(new Date()),ec=edit?1:0;showN=show
   for(const d of w.days){const cls=(d.date.getDay()%6===0?'we ':'')+(d.key===tk?'td ':'')+(di++%2?'b2 ':'b1 ')+'df ';
    if(!d.shifts.length){h+=`<tr class="${cls}"><td>${fmtDateT(d.date)}</td><td></td><td></td><td></td><td></td>${showN?'<td class="nt"></td>':''}${ec?`<td class="nw"><button class="ed" data-ek="${d.key}" data-ei="-1" title="Eintrag hinzufügen">＋</button></td>`:''}</tr>`;continue;}
    const cfs=dayConflicts(d.shifts);d.shifts.forEach((s,k)=>{const last=k===d.shifts.length-1;
-    h+=`<tr class="${k?cls.replace('df ',''):cls}${k?'ct ':''}${last?'':'nl '}${cfs.has(k)?'cf':''}"${cfs.has(k)?' title="Überschneidung mit einer anderen Buchung an diesem Tag"':''}><td>${k?'':fmtDateT(d.date)}</td><td>${hm(s.i)}${showSrc&&s.src&&s.src!==DEV.id?`<span class="srcm" title="Herkunft: ${esc(devName(s.src))}">${devIcon(s.src)}</span>`:''}</td><td>${s.o==null?'<span class="open">offen</span>':hm(s.o,true)}</td><td class="n">${nbx(s.o==null?'':fmtH(s.o-s.i))}</td><td class="n"><b>${nbx(last?fmtH(d.net):'')}</b></td>${showN?`<td class="nt">${esc(noteText(d,s,k))}</td>`:''}${ec?`<td class="nw"><button class="ed" data-ek="${d.key}" data-ei="${k}" title="Korrigieren">✎</button>${last?`<button class="ed" data-ek="${d.key}" data-ei="-1" title="Weitere Buchung">＋</button>`:''}</td>`:''}</tr>`;});}
-  h+=`<tr class="ws"><td colspan="4">Woche KW ${w.kw} · ${dm(w.from)}–${dm(w.to)}</td><td class="n">${nbx(fmtH(w.net))}</td>${restTd()}</tr>`;}
- h+=`</tbody><tfoot><tr><td colspan="4">Gesamt ${esc(P.label||'')}</td><td class="n">${nbx(fmtH(P.total.net))}</td>${restTd(unitTxt())}</tr></tfoot></table>`;return h;}
+    h+=`<tr class="${k?cls.replace('df ',''):cls}${k?'ct ':''}${last&&!d.vp?'':'nl '}${cfs.has(k)?'cf':''}"${cfs.has(k)?' title="Überschneidung mit einer anderen Buchung an diesem Tag"':''}><td>${k?'':fmtDateT(d.date)}</td><td>${hm(s.i)}${/*@FULL*/(showSrc&&s.src&&s.src!==DEV.id?`<span class="srcm" title="Herkunft: ${esc(devName(s.src))}">${devIcon(s.src)}</span>`:'')+/*@/FULL*/''}</td><td>${s.o==null?'<span class="open">offen</span>':hm(s.o,true)}</td><td class="n">${nbx(s.o==null?'':fmtH(s.o-s.i))}</td><td class="n"><b>${nbx(last?fmtH(d.net):'')}</b></td>${showN?`<td class="nt">${esc(noteText(d,s,k))}</td>`:''}${ec?`<td class="nw"><button class="ed" data-ek="${d.key}" data-ei="${k}" title="Korrigieren">✎</button>${last?`<button class="ed" data-ek="${d.key}" data-ei="-1" title="Weitere Buchung">＋</button>`:''}</td>`:''}</tr>`;});
+   if(d.vp)h+=`<tr class="${cls.replace('df ','')}ct vrow"${d.vp.ok?'':' title="Vorschlag – vom Administrator noch nicht bestätigt (Administration → Pause)"'}><td class="vpl">Pause von/bis</td><td>${hm(d.vp.s)}</td><td>${hm(d.vp.s+d.vp.dur)}</td><td class="n">${nbx(fmtH(d.vp.dur))}</td><td class="n">${d.vp.ok?'':'<span class="vps">Vorschlag</span>'}</td>${restTd()}</tr>`;}
+  h+=`<tr class="ws${w.vp?' wsa':''}"><td colspan="4">Woche KW ${w.kw} · ${dm(w.from)}–${dm(w.to)}</td><td class="n">${nbx(fmtH(w.net))}</td>${restTd()}</tr>`;
+  if(w.vp)h+=`<tr class="ws wsp"><td colspan="4">Pause (bezahlt)</td><td class="n">${nbx(fmtH(w.vp))}</td>${restTd()}</tr>`;}
+ if(P.total.vp&&P.weeks.length>1)h+=`<tr class="ws wsp"><td colspan="4">Pause (bezahlt) gesamt</td><td class="n">${nbx(fmtH(P.total.vp))}</td>${restTd()}</tr>`;
+ h+=`</tbody><tfoot><tr><td colspan="4">${P.total.vp?'Summe inkl. Pausen':'Gesamt'} ${esc(P.label||'')}</td><td class="n">${nbx(fmtH(P.total.net))}</td>${restTd(unitTxt())}</tr></tfoot></table>`;return h;}
 
 /* ---------- Booking ---------- */
 function book(type){const e=curEmp,st=status(e),now=new Date(),key=ymd(now);
@@ -906,8 +1112,9 @@ function empForm(e,admin){const isNew=!e;const st=S();
  const b=openModal(`<h2>${isNew?'Neuer Mitarbeiter':admin?'Mitarbeiter bearbeiten':'Meine Einstellungen'}</h2>
  ${admin?`<div class="row2"><label class="fld">Vorname (Button-Titel) *<input id="mf" value="${esc(f.first)}"></label><label class="fld">Nachname<input id="ml" value="${esc(f.last)}"></label></div>
  <div class="row2"><label class="fld">Personalnummer *<input id="mnr" value="${esc(f.nr||'')}"></label><label class="fld">PIN (${st.pinLen} Ziffern)<input id="mpin" inputmode="numeric" maxlength="${st.pinLen}" value="${esc(f.pin||'')}"></label></div>
- <label class="chk"><input type="checkbox" id="mpr" ${f.pinReq!==false?'checked':''}> Anmeldung mit PIN am Terminal${st.requirePin?'':' <span class="small mut">(PIN-Abfrage ist unter Parameter allgemein aus)</span>'}</label>
- <label class="chk"><input type="checkbox" id="mpo" ${f.pinOwn?'checked':''}> Anmeldung mit PIN am eigenen Gerät (Handy)</label>`:
+ <div class="row2"><label class="fld">Vertragsstunden pro Monat<input id="mcon" inputmode="decimal" placeholder="z. B. 80 oder 80:30" value="${f.contract?hIn(f.contract):''}" title="Vorgabe für die verrechneten Stunden im Stundenkonto"></label><span class="small mut" style="align-self:end;padding-bottom:10px">Vorgabe für „Verrechnet“ im Stundenkonto (auch bei Geringfügigen = vereinbarte Monatsstunden)</span></div>
+ <label class="chk"><input type="checkbox" id="mpr" ${f.pinReq!==false?'checked':''}> Anmeldung mit PIN am Terminal${st.requirePin?'':' <span class="small mut">(PIN-Abfrage ist unter Parameter allgemein aus)</span>'}</label>${(MOB()?`
+ <label class="chk"><input type="checkbox" id="mpo" ${f.pinOwn?'checked':''}> Anmeldung mit PIN am eigenen Gerät (Handy)</label>`:'')+''}`:
  `<p class="mut">${esc(fullName(f))}</p><h3>PIN ändern</h3><div class="row2"><input id="np1" type="password" inputmode="numeric" maxlength="${st.pinLen}" placeholder="neue PIN (${st.pinLen} Ziffern)"><input id="np2" type="password" inputmode="numeric" maxlength="${st.pinLen}" placeholder="neue PIN wiederholen"></div><p class="mut small">Leer lassen, wenn die PIN gleich bleiben soll.</p>`}
  <div class="fld">Button-Farbe${swatches('mcol',f.color)}</div>
  <div class="fld">Bild oder Icon<div class="imgrow"><span id="mav">${avatar(f,'sm')}</span><label class="btn">📷 Bild wählen<input type="file" accept="image/*" id="mimg" hidden></label><button class="btn" id="mimgx" type="button">Bild entfernen</button><input id="mico" maxlength="2" placeholder="Emoji" value="${esc(f.icon||'')}" style="width:90px;height:46px;border:1.5px solid var(--line);border-radius:10px;text-align:center;font-size:22px"></div></div>
@@ -920,12 +1127,12 @@ function empForm(e,admin){const isNew=!e;const st=S();
  b.querySelector('#mimgx').onclick=()=>{f.photo='';upd();};
  b.querySelector('#mico').oninput=ev=>{f.icon=ev.target.value.trim();upd();};
  b.querySelector('#mcan').onclick=closeModal;
- const del=b.querySelector('#mdel');if(del)del.onclick=()=>confirmDlg(`Mitarbeiter <b>${esc(fullName(f))}</b> und <b>alle seine Zeitbuchungen</b> endgültig löschen?`,'Endgültig löschen',()=>{DB.emps=DB.emps.filter(x=>x.id!==f.id);delete DB.data[f.id];save();render();toast('Mitarbeiter gelöscht');},true);
+ const del=b.querySelector('#mdel');if(del)del.onclick=()=>confirmDlg(`Mitarbeiter <b>${esc(fullName(f))}</b> und <b>alle seine Zeitbuchungen</b> endgültig löschen?`,'Endgültig löschen',()=>{DB.emps=DB.emps.filter(x=>x.id!==f.id);delete DB.data[f.id];if(DB.acct)delete DB.acct[f.id];save();render();toast('Mitarbeiter gelöscht');},true);
  b.querySelector('#msav').onclick=()=>{
-  if(admin){f.first=$('#mf').value.trim();f.last=$('#ml').value.trim();f.nr=$('#mnr').value.trim();f.pin=$('#mpin').value.trim();f.pinReq=$('#mpr').checked;f.pinOwn=$('#mpo').checked;f.multi=$('#mmul').checked;f.active=$('#mact').checked;
+  if(admin){f.first=$('#mf').value.trim();f.last=$('#ml').value.trim();f.nr=$('#mnr').value.trim();f.pin=$('#mpin').value.trim();f.pinReq=$('#mpr').checked;if($('#mpo'))f.pinOwn=$('#mpo').checked;f.multi=$('#mmul').checked;f.active=$('#mact').checked;const cv=parseHrs($('#mcon').value);if(Number.isNaN(cv)||(cv!=null&&cv<0)){toast('Vertragsstunden: bitte z. B. 80 oder 80:30 eingeben',true);return;}f.contract=cv||0;
    if(!f.first){toast('Bitte einen Vornamen eingeben',true);return;}
-   if(!f.nr){toast('Bitte eine Personalnummer eingeben – sie ordnet Meldungen eindeutig zu',true);return;}
-   const pinUsed=(st.requirePin&&f.pinReq)||f.pinOwn;
+   if(!f.nr){toast(!MOB()?'Bitte eine Personalnummer eingeben':'Bitte eine Personalnummer eingeben – sie ordnet Meldungen eindeutig zu',true);return;}
+   const pinUsed=(st.requirePin&&f.pinReq)||(MOB()&&f.pinOwn);
    if((pinUsed||f.pin)&&!new RegExp('^\\d{'+st.pinLen+'}$').test(f.pin)){toast(pinUsed?'PIN muss aus '+st.pinLen+' Ziffern bestehen':'PIN: '+st.pinLen+' Ziffern oder leer lassen',true);return;}
    if(isNew&&DB.emps.length>=MAX_EMP){toast('Maximal '+MAX_EMP+' Mitarbeiter',true);return;}
    if(f.nr&&DB.emps.some(x=>x.id!==f.id&&String(x.nr||'').trim()===f.nr)){toast('Die Personalnummer '+f.nr+' ist schon vergeben',true);return;}}
@@ -935,27 +1142,28 @@ function empForm(e,admin){const isNew=!e;const st=S();
   if(curEmp&&curEmp.id===f.id)curEmp=f;save();closeModal();render();toast('Gespeichert');};}
 
 /* ---------- Output: print / export ---------- */
-var OUT_ONLY=null,OUT_SHARE=false; /* V1.24: Android-Ausgaben über Teilen */
-function outputDialog(e,admin){prepPdfLogo();const ONLY=OUT_ONLY;OUT_ONLY=null;let kind=view.mode==='week'?'week':'month';const a=view.a;
- const years=[];const y0=new Date().getFullYear();for(let y=y0-3;y<=y0+1;y++)years.push(y);
+var OUT_ONLY=null,OUT_SHARE=false,OUT_SUM=false; /* V1.24: Android-Ausgaben über Teilen */
+function outputDialog(e,admin){prepPdfLogo();const ONLY=OUT_ONLY;OUT_ONLY=null;const SUM0=OUT_SUM;OUT_SUM=false;let kind=view.mode==='week'?'week':view.mode==='year'?'year':'month';const a=view.a;
+ const years=[];const y0=new Date().getFullYear();for(let y=Math.min(y0-3,a.getFullYear());y<=Math.max(y0+1,a.getFullYear());y++)years.push(y);
  const b=openModal(`<h2>Drucken / Export</h2><p class="mut">${admin?'':esc(fullName(e))}</p>
  <div class="seg" id="ok"><button data-k="week">Woche</button><button data-k="month">Monat</button><button data-k="year">Jahr</button></div>
  <div style="margin-top:14px">
   <label class="fld" id="oW">Woche mit diesem Tag<input type="date" id="oDate" value="${ymd(a)}"></label>
   <div class="row2" id="oM"><label class="fld">Monat<select id="oMon">${MON.map((n,i)=>opt([i,n],a.getMonth())).join('')}</select></label><label class="fld">Jahr<select id="oYear">${years.map(y=>opt([y,y],a.getFullYear())).join('')}</select></label></div>
  </div>
+ <label class="chk" id="oSumL"><input type="checkbox" id="oSum" ${SUM0?'checked':''}> Nur Jahresübersicht mit Stundenkonto (ohne Monatsseiten)</label>
  ${admin?`<label class="chk"><input type="checkbox" id="oAll"> Alle Mitarbeiter (sonst nur ${esc(fullName(e))})</label>`:''}
- ${isPersonal()?'<p class="small" style="background:#fff6dc;border-radius:8px;padding:6px 10px;margin:10px 0 0">Stunden an den Administrator schicken? → bitte <b>📤 Monat melden</b> verwenden (Excel/CSV/Text/PDF sind nur zum Ansehen und Drucken).</p>':''}
+ ${/*@FULL*/(isPersonal()?'<p class="small" style="background:#fff6dc;border-radius:8px;padding:6px 10px;margin:10px 0 0">Stunden an den Administrator schicken? → bitte <b>📤 Monat melden</b> verwenden (Excel/CSV/Text/PDF sind nur zum Ansehen und Drucken).</p>':'')+/*@/FULL*/''}
  ${IOS?'<p class="small mut" style="margin:8px 0 0">ⓘ Jede Ausgabe öffnet das Teilen-Menü (Drucken, Mail, WhatsApp, In Dateien sichern).</p>':''}
  ${MOBILE&&!IOS&&canShareFiles()?'<label class="chk"><input type="checkbox" id="oShare" checked> Excel/CSV/Text über das Teilen-Menü (Mail, WhatsApp …) – sonst in „Downloads“</label>':''}
  <div class="obtns"><button class="btn p" data-f="print">🖨 Drucken</button><button class="btn" data-f="pdf">📄 PDF</button><button class="btn" data-f="xlsx">📊 Excel (.xlsx)</button><button class="btn" data-f="csv">📄 CSV (.csv)</button><button class="btn" data-f="txt">📝 Text (.txt)</button></div>
  <div class="acts"><span class="sp"></span><button class="btn" id="ocan">Schließen</button></div>`);
- const sync=()=>{b.querySelectorAll('#ok button').forEach(x=>x.classList.toggle('on',x.dataset.k===kind));b.querySelector('#oW').style.display=kind==='week'?'':'none';b.querySelector('#oM').style.display=kind==='week'?'none':'';b.querySelector('#oMon').parentNode.style.visibility=kind==='year'?'hidden':'';};
+ const sync=()=>{b.querySelectorAll('#ok button').forEach(x=>x.classList.toggle('on',x.dataset.k===kind));b.querySelector('#oW').style.display=kind==='week'?'':'none';b.querySelector('#oM').style.display=kind==='week'?'none':'';b.querySelector('#oMon').parentNode.style.visibility=kind==='year'?'hidden':'';b.querySelector('#oSumL').style.display=kind==='year'?'':'none';};
  b.querySelectorAll('#ok button').forEach(x=>x.onclick=()=>{kind=x.dataset.k;sync();});sync();
  b.querySelector('#ocan').onclick=closeModal;
  b.querySelectorAll('[data-f]').forEach(x=>x.onclick=()=>{
   const emps=admin&&$('#oAll').checked?(ONLY?DB.emps.filter(x=>ONLY.includes(x.id)):DB.emps.slice()):[e];
-  const ref={kind,date:$('#oDate').value?pd($('#oDate').value):new Date(),y:+$('#oYear').value,m:+$('#oMon').value};
+  const ref={kind,date:$('#oDate').value?pd($('#oDate').value):new Date(),y:+$('#oYear').value,m:+$('#oMon').value,sum:kind==='year'&&$('#oSum').checked};
   const secs=sections(emps,ref);const f=x.dataset.f;const osh=b.querySelector('#oShare');OUT_SHARE=!!(osh&&osh.checked);
   if(f==='pdf'){pdfOut(secs,ref,false);}else if(f==='print'&&IOS){pdfOut(secs,ref,true);}else if(f==='print'){closeModal();printSections(secs,ref);}else if(f==='xlsx')exportXlsx(secs,ref);else if(f==='csv')exportCsv(secs,ref);else exportTxt(secs,ref);});}
 /* sections: [{emp, periods:[P], kind}] */
@@ -964,14 +1172,15 @@ function sections(emps,ref){return emps.map(e=>{let periods;
  else if(ref.kind==='month')periods=[monthPeriod(e,ref.y,ref.m)];
  else periods=MON.map((_,m)=>monthPeriod(e,ref.y,m));return{emp:e,periods};});}
 function refLabel(ref){if(ref.kind==='week'){const mo=mondayOf(ref.date);return'KW '+isoWeek(mo)+' ('+dmy(mo)+' – '+dmy(addDays(mo,6))+')';}if(ref.kind==='month')return MON[ref.m]+' '+ref.y;return'Jahr '+ref.y;}
+const ovRows=(e,y)=>{const A=acctYear(e,y);return{A,K:A.used};};
 function refFile(ref){if(ref.kind==='week'){const mo=mondayOf(ref.date);return addDays(mo,3).getFullYear()+'_KW'+pad(isoWeek(mo));}if(ref.kind==='month')return ref.y+'-'+pad(ref.m+1);return String(ref.y);}
-function fileBase(secs,ref){return'Jet-Zeit_'+(secs.length===1?safeName(fullName(secs[0].emp)):'Alle')+'_'+refFile(ref);}
+function fileBase(secs,ref){return APP+'_'+(secs.length===1?safeName(fullName(secs[0].emp)):'Alle')+'_'+refFile(ref);}
 function download(blob,name,noShare){const sh=OUT_SHARE;OUT_SHARE=false;if(!noShare&&(IOS||sh)&&canShareFiles()){shareFile(blob,name);return;}const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},2000);toast('Datei erstellt: '+name);}
 const hasData=P=>P.total.days>0||P.weeks.some(w=>w.days.some(d=>d.shifts.length));
 
 /* ---------- V1.13: PDF-Ausgabe (eigener PDF-Erzeuger, A4, Helvetica) ---------- */
 const PDFW={H:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584,761,556,556,222,556,333,1000,556,556,333,1000,667,333,1000,556,611,556,556,222,222,333,333,350,556,1000,333,1000,500,333,944,556,500,667,278,333,556,556,556,556,260,556,333,737,370,556,584,333,737,333,400,584,333,333,333,556,537,278,333,333,365,556,834,834,834,611,667,667,667,667,667,667,1000,722,667,667,667,667,278,278,278,278,722,722,778,778,778,778,778,584,778,722,722,722,722,667,667,611,556,556,556,556,556,556,889,500,556,556,556,556,278,278,278,278,556,556,556,556,556,556,556,584,611,556,556,556,556,500,556,500],B:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584,761,556,556,278,556,500,1000,556,556,333,1000,667,333,1000,556,611,556,556,278,278,500,500,350,556,1000,333,1000,556,333,944,556,500,667,278,333,556,556,556,556,280,556,333,737,370,556,584,333,737,333,400,584,333,333,333,611,556,278,333,333,365,556,834,834,834,611,722,722,722,722,722,722,1000,722,667,667,667,667,278,278,278,278,722,722,778,778,778,778,778,584,778,722,722,722,722,667,667,611,556,556,556,556,556,556,889,556,556,556,556,556,278,278,278,278,611,611,611,611,611,611,611,584,611,611,611,611,611,556,611,556]};
-const PDF_MAP={'€':128,'‚':130,'„':132,'…':133,'‰':137,'‹':139,'‘':145,'’':146,'“':147,'”':148,'•':149,'–':150,'—':151,'›':155};
+const PDF_MAP={'−':45,'€':128,'‚':130,'„':132,'…':133,'‰':137,'‹':139,'‘':145,'’':146,'“':147,'”':148,'•':149,'–':150,'—':151,'›':155};
 function pdfTxt(s){return String(s??'').replace(/ ⁺¹/g,' (+1)').replace(/⁺¹/g,'(+1)').replace(/✎/g,'*').replace(/[\u{1F300}-\u{1FAFF}☀-➿️]/gu,'');}
 function pdfBytes(s){let o='';for(const ch of pdfTxt(s)){const c=ch.codePointAt(0);if(PDF_MAP[ch])o+=String.fromCharCode(PDF_MAP[ch]);else if(c<256)o+=ch;else o+='?';}return o;}
 function pdfW(s,bold,size){const b=pdfBytes(s),t=bold?PDFW.B:PDFW.H;let w=0;for(let i=0;i<b.length;i++)w+=t[b.charCodeAt(i)]||556;return w*size/1000;}
@@ -1030,17 +1239,22 @@ function makePdf(secs,ref){const d=new PdfDoc(),st=S(),M=40,R=d.W-M,TW=R-M,RH=15
     const ds=WD[dd.date.getDay()]+' '+dmy(dd.date);
     if(!dd.shifts.length){need();row(C,[ds,'','','','',''],{fill,dateBold:we,lineTop:true});continue;}
     dd.shifts.forEach((s,k)=>{need();const last=k===dd.shifts.length-1;
-     row(C,[k?'':ds,hm(s.i),s.o==null?'offen':hm(s.o,true),s.o==null?'':fmtH(s.o-s.i),last?fmtH(dd.net):'',showN?noteText(dd,s,k):''],{fill:cf.has(k)?'0.99 0.85 0.82':fill,sumBold:true,dateBold:we,lineTop:k===0});});}
-   need();row(C,['Woche KW '+w.kw+' · '+dm(w.from)+'–'+dm(w.to),'','','',fmtH(w.net)],{fill:'0.80 0.80 0.80',bold:true,lineTop:true,span:1});}
-  need();row(C,['Gesamt '+(P.label||''),'','','',fmtH(P.total.net),showN?unitTxt():''],{fill:'0.70 0.70 0.70',bold:true,size:9.5,span:1});
+     row(C,[k?'':ds,hm(s.i),s.o==null?'offen':hm(s.o,true),s.o==null?'':fmtH(s.o-s.i),last?fmtH(dd.net):'',showN?noteText(dd,s,k):''],{fill:cf.has(k)?'0.99 0.85 0.82':fill,sumBold:true,dateBold:we,lineTop:k===0});});
+    if(dd.vp){need();row(C,['   Pause von/bis',hm(dd.vp.s),hm(dd.vp.s+dd.vp.dur),fmtH(dd.vp.dur),dd.vp.ok?'':'Vorschlag',''],{fill,gray:.3,size:8});}}
+   need();row(C,['Woche KW '+w.kw+' · '+dm(w.from)+'–'+dm(w.to),'','','',fmtH(w.net)],{fill:'0.80 0.80 0.80',bold:true,lineTop:true,span:1});
+   if(w.vp){need();row(C,['Pause (bezahlt)','','','',fmtH(w.vp)],{fill:'0.88 0.88 0.88',span:1});}}
+  if(P.total.vp&&P.weeks.length>1){need();row(C,['Pause (bezahlt) gesamt – in den Stunden enthalten','','','',fmtH(P.total.vp)],{fill:'0.85 0.85 0.85',span:1,lineTop:true});}
+  need();row(C,[(P.total.vp?'Summe Arbeitsstunden inkl. Pausen ':'Gesamt ')+(P.label||''),'','','',fmtH(P.total.net),showN?unitTxt():''],{fill:'0.70 0.70 0.70',bold:true,size:9.5,span:1});
   foot();};
  for(const s of secs){const e=s.emp;if(d.c.length)d.add();
-  if(ref.kind==='year'){head(e,'Jahresübersicht '+ref.y,'01.01.'+ref.y+' – 31.12.'+ref.y);const C=[{t:'Monat',w:TW-150},{t:'Arbeitszeit',w:150,r:1}];thead(C);let tot=0;
-   s.periods.forEach((P,i)=>{tot+=P.total.net;row(C,[P.label,fmtH(P.total.net)],{fill:i%2?'0.94 0.94 0.94':null,lineTop:true});});
-   row(C,['Gesamt '+ref.y,fmtH(tot)],{fill:'0.70 0.70 0.70',bold:true,size:9.5});foot();
-   s.periods.filter(hasData).forEach(P=>{d.add();table(e,P,'Arbeitszeitnachweis',P.label);});}
+  if(ref.kind==='year'){head(e,'Jahresübersicht '+ref.y,'01.01.'+ref.y+' – 31.12.'+ref.y);const {A,K}=ovRows(e,ref.y);
+   const C=K?[{t:'Monat',w:TW-440},{t:'Arbeitszeit',w:110,r:1},{t:'Verrechnet',w:110,r:1},{t:'Monat ±',w:110,r:1},{t:'Saldo',w:110,r:1}]:[{t:'Monat',w:TW-150},{t:'Arbeitszeit',w:150,r:1}];thead(C);
+   if(K&&A.carry)row(C,['Übertrag '+(ref.y-1),'','','',fmtS(A.carry)],{lineTop:true});
+   A.rows.forEach((r,i)=>{row(C,K?[MON[r.m]+' '+ref.y,r.w?fmtH(r.w):'',r.p!=null?fmtH(r.p):'',fmtS(r.diff),r.diff!=null?fmtS(r.saldo):'']:[MON[r.m]+' '+ref.y,r.w?fmtH(r.w):''],{fill:i%2?'0.94 0.94 0.94':null,lineTop:true});});
+   row(C,K?['Gesamt '+ref.y,fmtH(A.tw),fmtH(A.tp),'',fmtS(A.saldo)]:['Gesamt '+ref.y,fmtH(A.tw)],{fill:'0.70 0.70 0.70',bold:true,size:9.5});foot();
+   if(!ref.sum)s.periods.filter(hasData).forEach(P=>{d.add();table(e,P,'Arbeitszeitnachweis',P.label);});}
   else table(e,s.periods[0],'Arbeitszeitnachweis',refLabel(ref));}
- const n=d.pages.length,now=new Date(),info='Erstellt am '+dmy(now)+' '+hm(now.getHours()*60+now.getMinutes())+' mit Jet-Zeit V'+VERSION+' · Zeiten gerundet auf '+st.round+' Min';
+ const n=d.pages.length,now=new Date(),info='Erstellt am '+dmy(now)+' '+hm(now.getHours()*60+now.getMinutes())+' mit '+APP+' V'+VERSION+' · Zeiten gerundet auf '+st.round+' Min';
  d.pages.forEach((c,i)=>{d.c=c;d.line(M,30,R,30,.75,.4);d.text(M,20,info,7,false,null,.4);d.text(R,20,'Seite '+(i+1)+' von '+n,7,false,'r',.4);});
  return d.build();}
 async function pdfOut(secs,ref,forPrint){const blob=makePdf(secs,ref),name=fileBase(secs,ref)+'.pdf';
@@ -1049,12 +1263,13 @@ async function pdfOut(secs,ref,forPrint){const blob=makePdf(secs,ref),name=fileB
 
 /* Print */
 function printHead(e,title,range){const st=S();return`<div class="ph">${st.logo?`<img src="${st.logo}" alt="">`:''}<div class="pc"><b style="font-size:13pt">${esc(st.company)}</b><br>${esc(st.subtitle)}${st.boss?'<br>Geschäftsführer: '+esc(st.boss):''}</div><div class="pr"><b style="font-size:12pt">${esc(title)}</b><br>${esc(fullName(e))}${e.nr?' · Pers.-Nr. '+esc(e.nr):''}<br>${esc(range)}</div></div>`;}
-const printFoot=()=>`<div class="sig"><div>Datum, Unterschrift Mitarbeiter/in</div><div>Datum, Unterschrift Arbeitgeber${S().boss?' ('+esc(S().boss)+')':''}</div></div><div class="pf">Erstellt am ${dmy(new Date())} ${hm(new Date().getHours()*60+new Date().getMinutes())} mit Jet-Zeit V${VERSION} · Zeiten gerundet auf ${S().round} Min${unitTxt()?' · Angaben in '+unitTxt():''}</div>`;
+const printFoot=()=>`<div class="sig"><div>Datum, Unterschrift Mitarbeiter/in</div><div>Datum, Unterschrift Arbeitgeber${S().boss?' ('+esc(S().boss)+')':''}</div></div><div class="pf">Erstellt am ${dmy(new Date())} ${hm(new Date().getHours()*60+new Date().getMinutes())} mit ${APP} V${VERSION} · Zeiten gerundet auf ${S().round} Min${unitTxt()?' · Angaben in '+unitTxt():''}</div>`;
 function printSections(secs,ref){let h='';
  for(const s of secs){const e=s.emp;
-  if(ref.kind==='year'){let rows='',tot=0,days=0;s.periods.forEach(P=>{tot+=P.total.net;days+=P.total.days;rows+=`<tr><td>${esc(P.label)}</td><td class="n">${fmtH(P.total.net)}</td></tr>`;});
-   h+=`<div class="pg">${printHead(e,'Jahresübersicht '+ref.y,'01.01.'+ref.y+' – 31.12.'+ref.y)}<table class="tz"><thead><tr><th>Monat</th><th class="n">Arbeitszeit</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td>Gesamt ${ref.y}</td><td class="n">${fmtH(tot)}</td></tr></tfoot></table>${printFoot()}</div>`;
-   s.periods.filter(hasData).forEach(P=>{h+=`<div class="pg">${printHead(e,'Arbeitszeitnachweis',P.label)}${tableHTML(P,false,notesOn(e))}${printFoot()}</div>`;});}
+  if(ref.kind==='year'){const {A,K}=ovRows(e,ref.y);let rows=K&&A.carry?`<tr><td>Übertrag ${ref.y-1}</td><td></td><td></td><td></td><td class="n">${fmtS(A.carry)}</td></tr>`:'';
+   A.rows.forEach(r=>{rows+=`<tr><td>${MON[r.m]} ${ref.y}</td><td class="n">${r.w?fmtH(r.w):''}</td>${K?`<td class="n">${r.p!=null?fmtH(r.p):''}</td><td class="n">${fmtS(r.diff)}</td><td class="n">${r.diff!=null?fmtS(r.saldo):''}</td>`:''}</tr>`;});
+   h+=`<div class="pg">${printHead(e,'Jahresübersicht '+ref.y,'01.01.'+ref.y+' – 31.12.'+ref.y)}<table class="tz"><thead><tr><th>Monat</th><th class="n">Arbeitszeit</th>${K?'<th class="n">Verrechnet</th><th class="n">Monat ±</th><th class="n">Saldo</th>':''}</tr></thead><tbody>${rows}</tbody><tfoot><tr><td>Gesamt ${ref.y}</td><td class="n">${fmtH(A.tw)}</td>${K?`<td class="n">${fmtH(A.tp)}</td><td></td><td class="n">${fmtS(A.saldo)}</td>`:''}</tr></tfoot></table>${printFoot()}</div>`;
+   if(!ref.sum)s.periods.filter(hasData).forEach(P=>{h+=`<div class="pg">${printHead(e,'Arbeitszeitnachweis',P.label)}${tableHTML(P,false,notesOn(e))}${printFoot()}</div>`;});}
   else{const P=s.periods[0];h+=`<div class="pg">${printHead(e,'Arbeitszeitnachweis',refLabel(ref))}${tableHTML(P,false,notesOn(e))}${printFoot()}</div>`;}}
  $('#print').innerHTML=h;const t0=document.title;document.title=fileBase(secs,ref); /* V1.24: Dateiname beim Drucken als PDF */
  setTimeout(()=>{window.print();if(!MOBILE)document.title=t0;else setTimeout(()=>document.title=t0,60000);},80);}
@@ -1062,10 +1277,15 @@ function printSections(secs,ref){let h='';
 
 /* CSV (flach, eine Zeile pro Buchung) */
 function exportCsv(secs,ref){const q=v=>{v=String(v??'');return/[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
- const L=[['Mitarbeiter','Pers.-Nr.','Datum','Wochentag','KW','Kommen','Gehen','Dauer (Std)','Pause (Min)','Tagessumme (Std dezimal)','Tagessumme','Bemerkung','Korrigiert','Original Kommen','Original Gehen'].join(';')];
- for(const s of secs){let tot=0;for(const P of s.periods)for(const w of P.weeks)for(const d of w.days){tot+=d.net;d.shifts.forEach((sh,k)=>{const last=k===d.shifts.length-1;
-  L.push([fullName(s.emp),s.emp.nr||'',dmy(d.date),WD[d.date.getDay()],isoWeek(d.date),hm(sh.i),sh.o==null?'offen':hmx(sh.o),sh.o==null?'':dec(sh.o-sh.i),last?d.pause:'',last?dec(d.net):'',last?fmtH(d.net):'',sh.n||'',sh.e?'ja':'',sh.ri||'',sh.ro||''].map(q).join(';'));});}
-  L.push([fullName(s.emp),s.emp.nr||'','Summe '+refLabel(ref),'','','','','','','',dec(tot),fmtH(tot),'','',''].map(q).join(';'));}
+ if(ref.sum){const L=[['Mitarbeiter','Pers.-Nr.','Jahr','Monat','Geleistet (Std dezimal)','Geleistet','Verrechnet (Std dezimal)','Verrechnet','Monat ± (Std dezimal)','Saldo (Std dezimal)','Saldo','Bemerkung'].join(';')];
+  for(const s of secs){const A=acctYear(s.emp,ref.y);if(A.carry)L.push([fullName(s.emp),s.emp.nr||'',ref.y,'Übertrag '+(ref.y-1),'','','','','',dec(A.carry),fmtS(A.carry),''].map(q).join(';'));
+   A.rows.forEach(r=>L.push([fullName(s.emp),s.emp.nr||'',ref.y,MON[r.m],dec(r.w),fmtH(r.w),r.p!=null?dec(r.p):'',r.p!=null?fmtH(r.p):'',r.diff!=null?dec(r.diff):'',r.diff!=null?dec(r.saldo):'',r.diff!=null?fmtS(r.saldo):'',r.note].map(q).join(';')));
+   L.push([fullName(s.emp),s.emp.nr||'',ref.y,'Gesamt',dec(A.tw),fmtH(A.tw),dec(A.tp),fmtH(A.tp),'',dec(A.saldo),fmtS(A.saldo),''].map(q).join(';'));}
+  download(new Blob(['\ufeff'+L.join('\r\n')],{type:'text/csv;charset=utf-8'}),fileBase(secs,ref)+'_Stundenkonto.csv');return;}
+ const L=[['Mitarbeiter','Pers.-Nr.','Datum','Wochentag','KW','Kommen','Gehen','Dauer (Std)','Pause (Min)','Tagessumme (Std dezimal)','Tagessumme','Bemerkung','Korrigiert','Original Kommen','Original Gehen','Pause von','Pause bis','Pause bezahlt (Min)','Pause bestätigt'].join(';')];
+ for(const s of secs){let tot=0,vpt=0;for(const P of s.periods)for(const w of P.weeks)for(const d of w.days){tot+=d.net;if(d.vp)vpt+=d.vp.dur;d.shifts.forEach((sh,k)=>{const last=k===d.shifts.length-1;
+  L.push([fullName(s.emp),s.emp.nr||'',dmy(d.date),WD[d.date.getDay()],isoWeek(d.date),hm(sh.i),sh.o==null?'offen':hmx(sh.o),sh.o==null?'':dec(sh.o-sh.i),last?d.pause:'',last?dec(d.net):'',last?fmtH(d.net):'',sh.n||'',sh.e?'ja':'',sh.ri||'',sh.ro||'',last&&d.vp?hm(d.vp.s):'',last&&d.vp?hm(d.vp.s+d.vp.dur):'',last&&d.vp?d.vp.dur:'',last&&d.vp?(d.vp.ok?'ja':'Vorschlag'):''].map(q).join(';'));});}
+  L.push([fullName(s.emp),s.emp.nr||'','Summe '+refLabel(ref),'','','','','','','',dec(tot),fmtH(tot),'','','','','',vpt||'',''].map(q).join(';'));}
  download(new Blob(['﻿'+L.join('\r\n')],{type:'text/csv;charset=utf-8'}),fileBase(secs,ref)+'.csv');}
 
 /* Text */
@@ -1073,14 +1293,21 @@ function exportTxt(secs,ref){const st=S(),W=92,line=c=>c.repeat(W);const out=[];
  const al=v=>{const p=hmParts(v);return p?(p[0].padStart(8)+' '+p[1].padStart(6)):String(v||'')};
  const row=(a,b,c,d,e,f)=>a.padEnd(16)+b.padEnd(8)+c.padEnd(10)+al(d).padStart(16)+al(e).padStart(17)+'  '+f;
  for(const s of secs){
-  for(const P of s.periods){if(ref.kind==='year'&&!hasData(P))continue;
+  if(ref.kind==='year'){const {A,K}=ovRows(s.emp,ref.y),c=v=>al(v).padStart(17);out.push(line('='),st.company,'Jahresübersicht '+ref.y+' – '+fullName(s.emp)+(s.emp.nr?' (Pers.-Nr. '+s.emp.nr+')':''),line('-'),'Monat'.padEnd(18)+'Arbeitszeit'.padStart(17)+(K?'Verrechnet'.padStart(17)+'Monat ±'.padStart(18)+'Saldo'.padStart(18):''),line('-'));
+   if(K&&A.carry)out.push(('Übertrag '+(ref.y-1)).padEnd(18)+''.padStart(52)+fmtS(A.carry).padStart(18));
+   A.rows.forEach(r=>out.push((MON[r.m]+' '+ref.y).padEnd(18)+c(r.w?fmtH(r.w):'')+(K?c(r.p!=null?fmtH(r.p):'')+fmtS(r.diff).padStart(18)+(r.diff!=null?fmtS(r.saldo):'').padStart(18):'')));
+   out.push(line('-'),('Gesamt '+ref.y).padEnd(18)+c(fmtH(A.tw))+(K?c(fmtH(A.tp))+''.padStart(18)+fmtS(A.saldo).padStart(18):''),'');}
+  for(const P of s.periods){if(ref.kind==='year'&&(ref.sum||!hasData(P)))continue;
    out.push(line('='),st.company,(st.subtitle||'')+(st.boss?' · Geschäftsführer: '+st.boss:''),'Arbeitszeitnachweis – '+fullName(s.emp)+(s.emp.nr?' (Pers.-Nr. '+s.emp.nr+')':''),'Zeitraum: '+(ref.kind==='year'?P.label:refLabel(ref)),line('-'),row('Datum','Kommen','Gehen','Dauer','Tag','Bemerkung'),line('-'));
    for(const w of P.weeks){for(const d of w.days){if(!d.shifts.length){out.push(row(fmtDate(d.date),'','','','',''));continue;}
-     d.shifts.forEach((sh,k)=>{const last=k===d.shifts.length-1;out.push(row(k?'':fmtDate(d.date),hm(sh.i),sh.o==null?'offen':hmx(sh.o),sh.o==null?'':fmtH(sh.o-sh.i),last?fmtH(d.net):'',notesOn(s.emp)?noteText(d,sh,k).replace('✎ ',''):''));});}
-    out.push(('  Woche KW '+w.kw+' ('+dm(w.from)+'–'+dm(w.to)+')').padEnd(50)+al(fmtH(w.net)).padStart(17),line('-'));}
-   out.push(('GESAMT '+P.label).padEnd(50)+al(fmtH(P.total.net)).padStart(17)+'  '+unitTxt(),'');}
+     d.shifts.forEach((sh,k)=>{const last=k===d.shifts.length-1;out.push(row(k?'':fmtDate(d.date),hm(sh.i),sh.o==null?'offen':hmx(sh.o),sh.o==null?'':fmtH(sh.o-sh.i),last?fmtH(d.net):'',notesOn(s.emp)?noteText(d,sh,k).replace('✎ ',''):''));});
+     if(d.vp)out.push(row('  Pause von/bis',hm(d.vp.s),hm(d.vp.s+d.vp.dur),fmtH(d.vp.dur),'',d.vp.ok?'':'(Vorschlag)'));}
+    out.push(('  Woche KW '+w.kw+' ('+dm(w.from)+'–'+dm(w.to)+')').padEnd(50)+al(fmtH(w.net)).padStart(17));
+    if(w.vp)out.push('  Pause (bezahlt)'.padEnd(50)+al(fmtH(w.vp)).padStart(17));out.push(line('-'));}
+   if(P.total.vp&&P.weeks.length>1)out.push('Pause (bezahlt) gesamt – in den Stunden enthalten'.padEnd(50)+al(fmtH(P.total.vp)).padStart(17));
+   out.push(((P.total.vp?'SUMME INKL. PAUSEN ':'GESAMT ')+P.label).padEnd(50)+al(fmtH(P.total.net)).padStart(17)+'  '+unitTxt(),'');}
   if(ref.kind==='year'){let t=0;s.periods.forEach(P=>t+=P.total.net);out.push(line('='),('JAHRESSUMME '+ref.y+' – '+fullName(s.emp)).padEnd(50)+al(fmtH(t)).padStart(17)+'  '+unitTxt(),'');}}
- out.push('Erstellt am '+dmy(new Date())+' mit Jet-Zeit V'+VERSION);
+ out.push('Erstellt am '+dmy(new Date())+' mit '+APP+' V'+VERSION);
  download(new Blob(['﻿'+out.join('\r\n')],{type:'text/plain;charset=utf-8'}),fileBase(secs,ref)+'.txt');}
 
 /* XLSX (eigener Generator, ohne Bibliothek) – Layout wie Vorlage: Datum | Beginn | Ende | Beginn | Ende | Stunden | Bemerkungen */
@@ -1123,17 +1350,21 @@ function periodSheet(e,P,title,range){const st=S();
    for(let i=0;i<pairs;i++){const sh=d.shifts[i];r.push({v:sh?hm(sh.i):''},{v:sh?(sh.o==null?'offen':hmx(sh.o)):''});}
    r.push(d.shifts.length?hoursCell(d.net):{v:''});
    const notes=d.shifts.map(sh=>sh.n).filter(Boolean);if(d.pause>0)notes.push('Pause −'+d.pause+' Min');if(d.shifts.some(sh=>sh.e))notes.push('korrigiert');
-   if(showN)r.push({v:notes.join(' · ')});rows.push(r);}
-  const wr=blank(3);wr[0]={v:'Woche KW '+w.kw+' ('+dm(w.from)+'–'+dm(w.to)+')',s:3};wr[hc]=hoursCell(w.net,true);rows.push(wr);}
- rows.push([]);const tr=blank(3);tr[0]={v:'Summe Arbeitsstunden',s:3};tr[hc]=hoursCell(P.total.net,true);rows.push(tr);
- rows.push([],[{v:'Erstellt am '+dmy(new Date())+' mit Jet-Zeit V'+VERSION+' · Zeiten gerundet auf '+st.round+' Min',s:8}]);
+   if(showN)r.push({v:notes.join(' · ')});rows.push(r);
+   if(d.vp){const pr=blank(0);pr[0]={v:'Pause von/bis',s:8};pr[1]={v:hm(d.vp.s),s:8};pr[2]={v:hm(d.vp.s+d.vp.dur),s:8};pr[hc]={v:fmtH(d.vp.dur)+(d.vp.ok?'':' (Vorschlag)'),s:8};if(showN)pr[hc+1]={v:''};rows.push(pr);}}
+  const wr=blank(3);wr[0]={v:'Woche KW '+w.kw+' ('+dm(w.from)+'–'+dm(w.to)+')',s:3};wr[hc]=hoursCell(w.net,true);rows.push(wr);
+  if(w.vp){const pr=blank(0);pr[0]={v:'Pause (bezahlt)'};pr[hc]=hoursCell(w.vp);rows.push(pr);}}
+ rows.push([]);if(P.total.vp&&P.weeks.length>1){const pr=blank(0);pr[0]={v:'Pause (bezahlt) gesamt'};pr[hc]=hoursCell(P.total.vp);rows.push(pr);}
+ const tr=blank(3);tr[0]={v:P.total.vp?'Summe Arbeitsstunden inkl. Pausen':'Summe Arbeitsstunden',s:3};tr[hc]=hoursCell(P.total.net,true);rows.push(tr);
+ rows.push([],[{v:'Erstellt am '+dmy(new Date())+' mit '+APP+' V'+VERSION+' · Zeiten gerundet auf '+st.round+' Min',s:8}]);
  const cols=[18];for(let i=0;i<pairs;i++)cols.push(9,9);cols.push(14);if(showN)cols.push(60);return{cols,rows};}
 function exportXlsx(secs,ref){const sheets=[];const multi=secs.length>1;
  for(const s of secs){const e=s.emp,pre=multi?e.first+' ':'';
-  if(ref.kind==='year'){const rows=[[{v:S().company,s:7}],[{v:'Jahresübersicht '+ref.y+' – '+fullName(e)+(e.nr?' (Pers.-Nr. '+e.nr+')':''),s:1}],[],[{v:'Monat',s:3},{v:'Stunden',s:3}]];let t=0,dd=0;
-   s.periods.forEach(P=>{t+=P.total.net;dd+=P.total.days;rows.push([{v:P.label},hoursCell(P.total.net)]);});
-   rows.push([{v:'Gesamt '+ref.y,s:3},hoursCell(t,true)]);sheets.push({name:pre+'Übersicht '+ref.y,cols:[18,20],rows});
-   s.periods.filter(hasData).forEach(P=>sheets.push({name:pre+P.label,...periodSheet(e,P,'Arbeitsstunden',P.label)}));}
+  if(ref.kind==='year'){const {A,K}=ovRows(e,ref.y);const rows=[[{v:S().company,s:7}],[{v:'Jahresübersicht '+ref.y+' – '+fullName(e)+(e.nr?' (Pers.-Nr. '+e.nr+')':''),s:1}],[],[{v:'Monat',s:3},{v:'Stunden',s:3},...(K?[{v:'Verrechnet',s:3},{v:'Monat ±',s:3},{v:'Saldo',s:3}]:[])]];
+   if(K&&A.carry)rows.push([{v:'Übertrag '+(ref.y-1)},{v:''},{v:''},{v:''},{v:fmtS(A.carry)}]);
+   A.rows.forEach(r=>rows.push([{v:MON[r.m]+' '+ref.y},hoursCell(r.w),...(K?[r.p!=null?hoursCell(r.p):{v:''},{v:fmtS(r.diff)},{v:r.diff!=null?fmtS(r.saldo):''}]:[])]));
+   rows.push([{v:'Gesamt '+ref.y,s:3},hoursCell(A.tw,true),...(K?[hoursCell(A.tp,true),{v:'',s:3},{v:fmtS(A.saldo),s:3}]:[])]);sheets.push({name:pre+'Übersicht '+ref.y,cols:K?[18,20,20,16,16]:[18,20],rows});
+   if(!ref.sum)s.periods.filter(hasData).forEach(P=>sheets.push({name:pre+P.label,...periodSheet(e,P,'Arbeitsstunden',P.label)}));}
   else{const P=s.periods[0];sheets.push({name:pre+(ref.kind==='week'?'KW '+isoWeek(P.from)+' '+addDays(P.from,3).getFullYear():P.label),...periodSheet(e,P,'Arbeitsstunden',refLabel(ref))});}}
  download(xlsxBlob(sheets),fileBase(secs,ref)+'.xlsx');}
 
@@ -1141,12 +1372,13 @@ function exportXlsx(secs,ref){const sheets=[];const multi=secs.length>1;
 function openAdmin(){if(isPersonal()){const e=DB.emps[0];const go=()=>{scr='admin';if(!['daten','start'].includes(adminTab))adminTab='daten';render();};
   if(!e||!needPin(e)){go();return;}pinDialog({title:'Einstellungen',sub:'Ihre PIN eingeben',av:avatar(e),len:S().pinLen,check:p=>p===String(e.pin),ok:go});return;}
  pinDialog({title:'Administration',sub:'Admin-PIN eingeben',len:0,check:p=>p===String(S().adminPin),ok:()=>{scr='admin';adminTab=S().adminPin==='0000'?'param':adminTab;render();}});}
-function renderAdmin(){const tabs=isPersonal()?[['daten','Sichern & Daten'],['start','Startseite']]:[['firma','Firma'],['start','Startseite'],['ma','Mitarbeiter'],['zeit','Zeitlisten'],['abschl','Monatsabschluss'],['param','Parameter'],['daten','Sichern & Daten']];
+function renderAdmin(){const keepY=main.dataset.tab===adminTab?main.scrollTop:0;const tabs=isPersonal()?[['daten','Sichern & Daten'],['start','Startseite']]:[['firma','Firma'],['start','Startseite'],['ma','Mitarbeiter'],['zeit','Zeitlisten'],...(S().vpOn?[['pause','Pause']]:[]),['abschl','Monatsabschluss'],['konto','Stundenkonto'],['param','Parameter'],['daten','Sichern & Daten']];
  if(!tabs.some(t=>t[0]===adminTab))adminTab=tabs[0][0];
- const A={firma:[aFirma,bFirma],start:[aStart,bStart],ma:[aMA,bMA],zeit:[aZeit,bZeit],abschl:[aAbschl,bAbschl],param:[aParam,bParam],daten:[aDaten,bDaten]}[adminTab];
+ const A={firma:[aFirma,bFirma],start:[aStart,bStart],ma:[aMA,bMA],zeit:[aZeit,bZeit],pause:[aPause,bPause],abschl:[aAbschl,bAbschl],konto:[aKonto,bKonto],param:[aParam,bParam],daten:[aDaten,bDaten]}[adminTab];
  main.innerHTML=`<div class="adm"><div class="atop"><h1>${isPersonal()?'⚙ Einstellungen <span class="small mut">· persönliches Gerät</span>':'⚙ Administration'}</h1><span class="sp"></span><button class="btn p" id="aout">Abmelden</button></div><div class="tabs">${tabs.map(t=>`<button data-t="${t[0]}" class="${adminTab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><div>${A[0]()}</div></div>`;
+ main.scrollTop=keepY;main.dataset.tab=adminTab;
  main.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{adminTab=b.dataset.t;render();});$('#aout').onclick=goHome;A[1]();}
-function bindSettings(){main.querySelectorAll('[data-s]').forEach(el=>el.onchange=()=>{let v=el.type==='checkbox'?el.checked:el.value;if(el.dataset.t==='n')v=Number(String(v).replace(',','.'))||0;DB.settings[el.dataset.s]=v;save();toast('Gespeichert');if(['pinLen','requirePin','accent','company','subtitle','boss','hourFmt'].includes(el.dataset.s))render();});}
+function bindSettings(){main.querySelectorAll('[data-s]').forEach(el=>el.onchange=()=>{let v=el.type==='checkbox'?el.checked:el.value;if(el.dataset.t==='n')v=Number(String(v).replace(',','.'))||0;DB.settings[el.dataset.s]=v;save();toast('Gespeichert');if(['pinLen','requirePin','accent','company','subtitle','boss','hourFmt','vpOn','vpAfter','vpMin','mobileOn'].includes(el.dataset.s))render();});}
 function aFirma(){const st=S();return`<div class="card"><h3>Firmendaten (Kopfzeile & Ausdrucke)</h3>
  <label class="fld">Firmenname<input data-s="company" value="${esc(st.company)}"></label>
  <label class="fld">Zusatzzeile (Adresse, Slogan …)<input data-s="subtitle" value="${esc(st.subtitle)}"></label>
@@ -1159,10 +1391,10 @@ function bFirma(){bindSettings();const sw=main.querySelectorAll('.sw');bindSwatc
  $('#sLogo').onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{DB.settings.logo=await loadImg(f,400,'image/png',false);save();render();toast('Logo gespeichert');}catch(x){toast('Logo konnte nicht geladen werden',true);}};
  const x=$('#sLogoX');if(x)x.onclick=()=>{DB.settings.logo='';save();render();};}
 function aMA(){return`<div class="card"><div class="acts" style="margin-top:0"><h3 style="margin:0">Mitarbeiter (${DB.emps.length}/${MAX_EMP})</h3><span class="sp"></span><button class="btn p" id="mAdd" ${DB.emps.length>=MAX_EMP?'disabled':''}>＋ Neuer Mitarbeiter</button></div>
- ${DB.emps.length?DB.emps.map((e,i)=>`<div class="mrow">${avatar(e,'sm')}<div class="mn"><b>${esc(fullName(e))}</b>${e.nr?`<span class="tag">Nr. ${esc(e.nr)}</span>`:'<span class="tag" style="background:#fde0d9;color:var(--go)">⚠ Pers.-Nr. fehlt</span>'}${e.multi?'<span class="tag">Mehrfachschicht</span>':''}${e.active?'':'<span class="tag">inaktiv</span>'}<span class="tag">PIN ${'•'.repeat(String(e.pin||'').length)}</span></div><button class="btn" data-up="${i}" ${i?'':'disabled'}>▲</button><button class="btn" data-dn="${i}" ${i<DB.emps.length-1?'':'disabled'}>▼</button><button class="btn" data-setup="${e.id}" title="Einrichtungsdatei für das eigene Handy/Tablet dieses Mitarbeiters">📱 Eigenes Gerät</button><button class="btn" data-ed="${e.id}">✎ Bearbeiten</button></div>`).join(''):'<p class="mut">Noch keine Mitarbeiter.</p>'}</div>
- <p class="small mut">📱 Eigenes Gerät: erstellt eine Einrichtungsdatei, mit der ein Mitarbeiter Jet-Zeit auf seinem eigenen Handy nutzt (nur seine Person, keine anderen Mitarbeiter, keine Buchungen). Die <b>Personalnummer</b> ist Pflicht: Über sie werden Einrichtung und Monatsmeldungen eindeutig zugeordnet. Dateinamen: Kürzel_Personalnummer_Datum, z. B. <b>mmu_101_2026-11-30.json</b> (Max Muster, Nr. 101) (Kürzel = 1. Buchstabe Vorname + 2 Buchstaben Nachname).</p>`;}
+ ${DB.emps.length?DB.emps.map((e,i)=>`<div class="mrow">${avatar(e,'sm')}<div class="mn"><b>${esc(fullName(e))}</b>${e.nr?`<span class="tag">Nr. ${esc(e.nr)}</span>`:'<span class="tag" style="background:#fde0d9;color:var(--go)">⚠ Pers.-Nr. fehlt</span>'}${e.contract?`<span class="tag">${fmtH(e.contract)}/Monat</span>`:''}${e.multi?'<span class="tag">Mehrfachschicht</span>':''}${e.active?'':'<span class="tag">inaktiv</span>'}<span class="tag">PIN ${'•'.repeat(String(e.pin||'').length)}</span></div><button class="btn" data-up="${i}" ${i?'':'disabled'}>▲</button><button class="btn" data-dn="${i}" ${i<DB.emps.length-1?'':'disabled'}>▼</button>${(MOB()?`<button class="btn" data-setup="${e.id}" title="Einrichtungsdatei für das eigene Handy/Tablet dieses Mitarbeiters">📱 Eigenes Gerät</button>`:'')+''}<button class="btn" data-ed="${e.id}">✎ Bearbeiten</button></div>`).join(''):'<p class="mut">Noch keine Mitarbeiter.</p>'}</div>${(MOB()?`
+ <p class="small mut">📱 Eigenes Gerät: erstellt eine Einrichtungsdatei, mit der ein Mitarbeiter Jet-Zeit auf seinem eigenen Handy nutzt (nur seine Person, keine anderen Mitarbeiter, keine Buchungen). Die <b>Personalnummer</b> ist Pflicht: Über sie werden Einrichtung und Monatsmeldungen eindeutig zugeordnet. Dateinamen: Kürzel_Personalnummer_Datum, z. B. <b>mmu_101_2026-11-30.json</b> (Max Muster, Nr. 101) (Kürzel = 1. Buchstabe Vorname + 2 Buchstaben Nachname).</p>`:'')+''}`;}
 function bMA(){$('#mAdd').onclick=()=>empForm(null,true);
- main.querySelectorAll('[data-setup]').forEach(b=>b.onclick=()=>setupDialog(DB.emps.find(e=>e.id===b.dataset.setup)));
+ /*@FULL*/main.querySelectorAll('[data-setup]').forEach(b=>b.onclick=()=>setupDialog(DB.emps.find(e=>e.id===b.dataset.setup)));/*@/FULL*/
  main.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>empForm(DB.emps.find(e=>e.id===b.dataset.ed),true));
  const mv=(i,j)=>{const a=DB.emps;[a[i],a[j]]=[a[j],a[i]];save();render();};
  main.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>mv(+b.dataset.up,+b.dataset.up-1));
@@ -1178,19 +1410,26 @@ function aParam(){const st=S();return`${st.adminPin==='0000'?'<p class="warn">�
  <label class="chk"><input type="checkbox" data-s="empEdit" ${st.empEdit?'checked':''}> Mitarbeiter dürfen eigene Einträge korrigieren (Korrekturen werden markiert)</label>
  <label class="chk"><input type="checkbox" data-s="notesOn" ${st.notesOn?'checked':''}> Bemerkungen / Tätigkeiten verwenden (für alle Mitarbeiter)</label>
  <p class="mut small" style="margin-top:-4px">Aus: keine Eingabe möglich, die Spalte „Bemerkung“ entfällt in Liste, Ausdruck und Export. Bereits erfasste Bemerkungen bleiben gespeichert.</p>
- <h3>Automatischer Pausenabzug</h3>
+ ${PAUSE_AUTO?`<h3>Automatischer Pausenabzug</h3>
  <label class="chk"><input type="checkbox" data-s="pauseOn" ${st.pauseOn?'checked':''}> Pause automatisch abziehen</label>
  <div class="row2"><label class="fld">wenn eine durchgehende Arbeitszeit länger ist als (Std)<input type="number" min="0" max="24" step="0.5" data-s="pauseAfter" data-t="n" value="${st.pauseAfter}"></label><label class="fld">Pausendauer (Min)<input type="number" min="0" max="240" step="5" data-s="pauseMin" data-t="n" value="${st.pauseMin}"></label></div>
- <p class="mut small">Gilt je durchgehendem Arbeitsblock (Kommen bis Gehen ohne Unterbrechung). Wer zwischendurch geht und wieder kommt, hat bereits Pause gemacht – dann zählt jeder Block einzeln.</p></div>
+ <p class="mut small">Gilt je durchgehendem Arbeitsblock (Kommen bis Gehen ohne Unterbrechung). Wer zwischendurch geht und wieder kommt, hat bereits Pause gemacht – dann zählt jeder Block einzeln.</p>`:''}
+ <h3>Pausenplanung</h3>
+ <label class="chk"><input type="checkbox" data-s="vpOn" ${st.vpOn?'checked':''}> Pausenplanung verwenden (Vorschlag und Bestätigung durch den Administrator, Anzeige in Liste, Ausdruck und Export)</label>
+ <div class="row2"><label class="fld">Pause vorschlagen, wenn eine zusammenhängende Arbeitszeit länger ist als (Std)<input type="number" min="0" max="24" step="0.5" data-s="vpAfter" data-t="n" value="${st.vpAfter}"></label><label class="fld">Dauer der Pause<select data-s="vpMin" data-t="n">${[[15,'15 Minuten'],[30,'30 Minuten'],[45,'45 Minuten'],[60,'60 Minuten']].map(o=>opt(o,st.vpMin)).join('')}</select></label></div>
+ <p class="mut small">Zusammenhängend = Kommen bis Gehen ohne Unterbrechung; wer zwischendurch geht und wieder kommt, hat bereits Pause gemacht. Die geplante Pause ist <b>bezahlt</b> und ändert keine Stunden – sie wird nur eingeplant und ausgewiesen. Vor dem Monatsabschluss müssen alle Pausen unter „Pause“ bestätigt sein.</p></div>
  <div class="card"><h3>Anmeldung & Bedienung</h3>
  <label class="chk"><input type="checkbox" data-s="requirePin" ${st.requirePin?'checked':''}> PIN-Abfrage für Mitarbeiter</label>
  <label class="fld">PIN-Länge Mitarbeiter<select data-s="pinLen" data-t="n">${[[4,'4-stellig'],[6,'6-stellig']].map(o=>opt(o,st.pinLen)).join('')}</select></label>
  ${pinWarn()}
- <div class="row2"><label class="fld">Automatisch abmelden nach Inaktivität (Sek., 0 = nie)<input type="number" min="0" step="5" data-s="idleSec" data-t="n" value="${st.idleSec}"></label><label class="fld">Nach Buchung zur Startseite (Sek., 0 = in Ansicht bleiben)<input type="number" min="0" step="1" data-s="afterBookSec" data-t="n" value="${st.afterBookSec}"></label></div></div>
- <div class="card"><h3>Dieses Gerät</h3><label class="fld">Gerätename (erscheint später als Herkunft der Buchungen)<input id="devName" value="${esc(DEV.name||'')}" placeholder="z. B. Terminal Tankstelle"></label></div>
+ <div class="row2"><label class="fld">Automatisch abmelden nach Inaktivität (Sek., 0 = nie)<input type="number" min="0" step="5" data-s="idleSec" data-t="n" value="${st.idleSec}"></label><label class="fld">Nach Buchung zur Startseite (Sek., 0 = in Ansicht bleiben)<input type="number" min="0" step="1" data-s="afterBookSec" data-t="n" value="${st.afterBookSec}"></label></div></div>${(MOB()?`
+ <div class="card"><h3>Dieses Gerät</h3><label class="fld">Gerätename (erscheint später als Herkunft der Buchungen)<input id="devName" value="${esc(DEV.name||'')}" placeholder="z. B. Terminal Tankstelle"></label></div>`:'')+''}
+ <div class="card"><h3>📱 Mitarbeiter-Handys & Datenaustausch</h3>
+ <label class="chk"><input type="checkbox" data-s="mobileOn" ${st.mobileOn?'checked':''}> Mitarbeiter-Handys und Datenaustausch verwenden</label>
+ <p class="mut small">Ein: Mitarbeiter können Jet-Zeit zusätzlich am eigenen Handy nutzen. Dazu kommen Mitarbeiter → <b>📱 Eigenes Gerät</b> (Einrichtungsdatei), Monatsabschluss → <b>📥 Daten importieren</b> / <b>📤 Daten exportieren</b>, die Herkunft der Buchungen (🖥/📱), der Gerätename und unter Sichern &amp; Daten das <b>Komplettpaket</b>.<br>Aus (Vorgabe): alle Mitarbeiter buchen nur auf diesem Gerät (Büro-Terminal) – entspricht der früheren Office-Version „Jet-Office“. Ausschalten löscht keine Daten; eingelesene Buchungen bleiben erhalten.</p></div>
  <div class="card"><h3>Admin-PIN ändern</h3><div class="row2"><input id="ap1" type="password" inputmode="numeric" maxlength="8" placeholder="neue Admin-PIN (4–8 Ziffern)"><input id="ap2" type="password" inputmode="numeric" maxlength="8" placeholder="wiederholen"></div><div class="acts"><button class="btn p" id="apSet">Admin-PIN speichern</button></div></div>`;}
 function pinWarn(){const st=S();const bad=DB.emps.filter(e=>e.pinReq!==false&&!new RegExp('^\\d{'+st.pinLen+'}$').test(String(e.pin||'')));return bad.length&&st.requirePin?`<p class="warn">⚠ Diese Mitarbeiter haben keine gültige ${st.pinLen}-stellige PIN und können sich nicht anmelden: ${bad.map(e=>esc(fullName(e))).join(', ')} – bitte unter „Mitarbeiter“ anpassen.</p>`:'';}
-function bParam(){bindSettings();bindPersonal();$('#apSet').onclick=()=>{const a=$('#ap1').value.trim(),b=$('#ap2').value.trim();if(!/^\d{4,8}$/.test(a)){toast('Admin-PIN: 4–8 Ziffern',true);return;}if(a!==b){toast('Die PINs stimmen nicht überein',true);return;}DB.settings.adminPin=a;save();render();toast('Admin-PIN geändert');};}
+function bParam(){bindSettings();/*@FULL*/bindPersonal();/*@/FULL*/$('#apSet').onclick=()=>{const a=$('#ap1').value.trim(),b=$('#ap2').value.trim();if(!/^\d{4,8}$/.test(a)){toast('Admin-PIN: 4–8 Ziffern',true);return;}if(a!==b){toast('Die PINs stimmen nicht überein',true);return;}DB.settings.adminPin=a;save();render();toast('Admin-PIN geändert');};}
 function aStart(){const st=S();const n=DB.emps.filter(e=>e.active).length;
  const num=(k,lbl,min,max,step)=>`<label class="fld">${lbl}<input type="number" min="${min}" max="${max}" step="${step}" data-s="${k}" data-t="n" value="${st[k]}"></label>`;
  const sel=(k,lbl,opts)=>`<label class="fld">${lbl}<select data-s="${k}" data-t="n">${opts.map(o=>opt(o,st[k])).join('')}</select></label>`;
@@ -1205,24 +1444,31 @@ function aStart(){const st=S();const n=DB.emps.filter(e=>e.active).length;
 function bStart(){bindSettings();$('#stPrev').onclick=goHome;
  $('#stBg').onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{DB.settings.bgImage=await loadImg(f,1920,'image/jpeg',false);save();render();toast('Hintergrundbild gespeichert');}catch(x){toast('Bild konnte nicht geladen werden (evtl. zu groß)',true);}};
  const x=$('#stBgX');if(x)x.onclick=()=>{DB.settings.bgImage='';save();render();};}
+/* V1.28: iPad/iPhone – kein Datenordner möglich (Safari erlaubt keinen dauerhaften Ordnerzugriff), stattdessen Sicherung über „In Dateien sichern“ */
+function iosCard(){const sh=canShareFiles();return`<div class="card"><h3>💾 Sicherung auf USB-Stick, iCloud oder „Auf meinem iPad“</h3>
+ <p>Auf dem iPad/iPhone speichert ${APP} jede Eingabe sofort <b>doppelt im Gerät</b>. Einen Datenordner, in den automatisch geschrieben wird, erlaubt Apple für Web-Apps nicht – deshalb bitte regelmäßig eine <b>Sicherungsdatei</b> in einem Ordner Ihrer Wahl ablegen.</p>
+ <div class="acts" style="margin-top:4px">${sh?'<button class="btn p" id="iSave" style="font-size:15.5px;padding:10px 18px">💾 Sicherung in Dateien sichern</button>':'<p class="warn">Das Teilen-Menü steht hier nicht zur Verfügung – bitte '+APP+' über das Symbol am Home-Bildschirm starten.</p>'}</div>
+ <ol style="margin:10px 0 0 20px;line-height:1.7"><li>Auf <b>„💾 Sicherung in Dateien sichern“</b> tippen – das Teilen-Menü öffnet sich.</li><li><b>„In Dateien sichern“</b> wählen (ggf. in der Liste nach unten blättern).</li><li>Ordner wählen – z. B. den USB-Stick (<b>Speicherorte → NO NAME</b> o. Ä.), <b>iCloud Drive</b> oder <b>Auf meinem iPad</b> – und oben rechts <b>„Sichern“</b> tippen.</li></ol>
+ <p class="small mut" style="margin-top:8px"><b>Zurückholen:</b> unten „♻ Sicherung einspielen“ → im Fenster „Dateien“ den Ordner öffnen (Stick, iCloud, Auf meinem iPad) → Sicherungsdatei antippen → Vorschau prüfen → bestätigen. Tipp: am Stick einen festen Ordner anlegen, z. B. <b>${APP}-Sicherung</b>.</p></div>`;}
 function aDaten(){const c=countBk(DB),kb=Math.round(JSON.stringify(DB).length/1024),st=S(),due=bakDue(),sh=canShareFiles();
  const lb=st.lastBackup?new Date(st.lastBackup):null;
  const how=`<details class="small" style="margin-top:6px"><summary style="cursor:pointer;color:var(--mut)">So wählen Sie den Ordner richtig</summary><ol style="margin:6px 0 0 18px;line-height:1.6"><li>Auf „📁 … Ordner wählen“ klicken – es öffnet sich ein Auswahlfenster.</li><li>Dort oben auf <b>„Neuer Ordner“</b> klicken und z. B. <b>Jet-Zeit</b> nennen (oder auf dem Netzlaufwerk einen vorhandenen Unterordner öffnen).</li><li>Diesen Ordner markieren → <b>„Ordner auswählen“</b> → <b>„Dateien bearbeiten“/„Zulassen“</b>.</li></ol><p style="margin:6px 0 0">Nicht möglich (sperrt der Browser): Hauptordner wie <b>Downloads, Dokumente, Desktop</b> oder ein <b>ganzes Laufwerk</b> (z. B. K:\\). Immer einen Unterordner darin wählen – und nicht den Unterordner „Sicherungen“, den legt Jet-Zeit selbst an.</p></details>`;
  const where=dirH?'📁 '+esc(labelFits()&&dirLabel?dirLabel:dirH.name):'';
- const fsCard=`<div class="card"><h3 style="display:flex;align-items:center;gap:8px">📁 Automatische Speicherung in einen Ordner ${FS_OK?ib('folder'):''}</h3>${!FS_OK?'<p class="warn">'+fsWhy()+'</p>':
- !dirH?`<p>Noch kein Ordner gewählt. Mit Ordner schreibt Jet-Zeit bei jeder Eingabe die Datei <b>${DATA_FILE}</b> dorthin und legt jeden Tag eine Sicherung im Unterordner <b>${BAK_DIR}</b> an.</p><div class="acts" style="align-items:center"><button class="btn p" id="fsCh">📁 Datenordner wählen</button><span class="small mut">Den Ordner wählen, in dem <b>jetzeit-daten.json</b> liegen soll – z. B. P:\\Jet-Zeit\\Daten</span></div>${how}`:
+ const fsCard=IOS?iosCard():`<div class="card"><h3 style="display:flex;align-items:center;gap:8px">📁 Automatische Speicherung in einen Ordner ${FS_OK?ib('folder'):''}</h3>${!FS_OK?'<p class="warn">'+fsWhy()+'</p>':
+ !dirH?`<p>Noch kein Ordner gewählt. Mit Ordner schreibt ${APP} bei jeder Eingabe die Datei <b>${DATA_FILE}</b> dorthin und legt jeden Tag eine Sicherung im Unterordner <b>${BAK_DIR}</b> an.</p><div class="acts" style="align-items:center"><button class="btn p" id="fsCh">📁 Datenordner wählen</button><span class="small mut">Den Ordner wählen, in dem <b>${DATA_FILE}</b> liegen soll – z. B. Dokumente\\${APP}\\Daten</span></div>${how}`:
  fileSt==='ok'?`<p style="font-size:15px">✅ Speichert automatisch in den Ordner <b>${where}</b></p><p class="mut small">${lastFile?'Zuletzt gespeichert um '+hm(lastFile.getHours()*60+lastFile.getMinutes())+' Uhr · ':''}Datei <b>${DATA_FILE}</b> + Unterordner <b>${BAK_DIR}</b> (eine Sicherung pro Tag, ${FILE_KEEP} Tage).</p><div class="acts"><button class="btn" id="fsNow">Jetzt speichern</button><button class="btn" id="fsCh">Anderen Ordner wählen</button><button class="btn d" id="fsOff">Ordner trennen</button></div>`:
  fileSt==='prompt'?`<p style="font-size:15px">⚠ Der Browser fragt erneut nach dem Zugriff auf den Ordner <b>${where}</b>.</p><div class="acts"><button class="btn p" id="fsGr">Zugriff erlauben</button><button class="btn" id="fsCh">Anderen Ordner wählen</button><button class="btn d" id="fsOff">Ordner trennen</button></div><p class="small mut">Tipp: Im Browser-Fenster „Bei jedem Besuch zulassen“ wählen.</p>`:
  `<p style="font-size:15px;color:var(--go)">❌ Der Ordner <b>${where==='\\'?'(ganzes Laufwerk)':where}</b> ist nicht erreichbar – es wird gerade <b>nicht</b> in eine Datei gespeichert.</p><p class="small">Mögliche Gründe: Netzlaufwerk/NAS nicht verbunden, Ordner umbenannt oder gelöscht${where==='\\'?', oder es wurde ein ganzes Laufwerk gewählt (nicht erlaubt)':''}. Die Daten sind trotzdem sicher im Browser gespeichert; sobald der Ordner wieder erreichbar ist, schreibt Jet-Zeit automatisch nach (jede Minute geprüft).</p><div class="acts"><button class="btn p" id="fsCh">📁 Neuen Ordner wählen</button><button class="btn" id="fsGr">Erneut versuchen</button><button class="btn d" id="fsOff">Ordner trennen</button></div>${how}${fsErr?'<p class="small mut" style="margin-top:4px">Technisch: '+esc(fsErr)+'</p>':''}`}</div>`;
- return personalCard()+fsCard+`<div class="card"><h3 style="display:flex;align-items:center;gap:8px">💾 Sichern & Wiederherstellen ${ib('bak')}</h3>
+ return /*@FULL*/personalCard()+/*@/FULL*/fsCard+`<div class="card"><h3 style="display:flex;align-items:center;gap:8px">💾 Sichern & Wiederherstellen ${ib('bak')}</h3>
  <p class="mut">Alle Daten – Mitarbeiter, Fotos, PINs, Einstellungen und Buchungen – stecken in <b>einer Sicherungsdatei</b>. Diese Datei z. B. per Mail oder AirDrop verschicken, auf einen USB-Stick oder ins Netzlaufwerk legen.</p>
  <p>Letzte Sicherung: <b>${lb?dmy(lb)+' '+hm(lb.getHours()*60+lb.getMinutes())+' Uhr':'noch keine'}</b>${due?' · <span class="warn" style="padding:3px 8px">'+esc(due)+'</span>':''}</p>
  <div class="bigacts">${sh?'<button class="btn p" id="dShare">📤 Sicherung teilen<br><span class="small">Mail, AirDrop, WhatsApp, Dateien …</span></button>':''}<button class="btn ${sh?'':'p'}${IOS&&sh?' ioshide':''}" id="dBak" title="${esc(saveTip())}">💾 Sicherung ${SAVE_OK?'speichern unter …':'in Downloads speichern'}<br><span class="small">${SAVE_OK?'Ordner und Dateinamen selbst wählen':'Datei landet im Download-Ordner'} ⓘ</span></button><label class="btn">♻ Sicherung einspielen<br><span class="small">Datei auswählen, Vorschau, bestätigen</span><input type="file" accept=".json,application/json,text/plain" id="dRes" hidden></label></div>
  <p class="small mut" style="margin-top:12px">Vor jedem Einspielen wird der aktuelle Stand automatisch gesichert – es kann also nichts verloren gehen.</p>
  <label class="small">Erinnerung auf der Startseite, wenn die letzte Sicherung älter ist als <select data-s="bakRemind" data-t="n">${[[0,'aus'],[1,'1 Tag'],[3,'3 Tage'],[7,'7 Tage'],[14,'14 Tage'],[30,'30 Tage']].map(o=>opt(o,st.bakRemind)).join('')}</select></label></div>
  <div class="card"><h3>🕘 Automatische Sicherungen auf diesem Gerät</h3><p class="mut">Jet-Zeit hebt den Stand der letzten 14 Tage sowie die letzten 10 Sicherheitskopien (vor dem Einspielen) automatisch auf.</p><div id="snapList" class="mut">wird geladen …</div></div>
- ${isPersonal()?'':`<div class="card"><h3>📦 Komplettpaket für ein neues Gerät</h3><p class="mut">Eine einzige HTML-Datei mit <b>Programm und allen Daten</b>. Auf dem neuen Gerät öffnen → „Daten übernehmen“ bestätigen → fertig.</p>
- <div class="acts" style="align-items:center">${sh?'<button class="btn" id="dPackS">📤 Komplettpaket teilen</button>':''}<button class="btn${IOS&&sh?' ioshide':''}" id="dPack" title="${esc(saveTip())}">📦 Komplettpaket ${SAVE_OK?'speichern unter …':'in Downloads speichern'}</button>${PACK?'<button class="btn" id="dPackI">Daten aus diesem Paket übernehmen</button>':''}<span class="small mut" style="max-width:340px">Für Umzug/Notfall · enthält alle PINs – vertraulich behandeln</span>${ib('pack')}</div></div>`}
+ ${/*@FULL*/(isPersonal()||!MOB()?'':`<div class="card"><h3>📦 Komplettpaket für ein neues Gerät</h3><p class="mut">Eine einzige HTML-Datei mit <b>Programm und allen Daten</b>. Auf dem neuen Gerät öffnen → „Daten übernehmen“ bestätigen → fertig.</p>
+ <div class="acts" style="align-items:center">${sh?'<button class="btn" id="dPackS">📤 Komplettpaket teilen</button>':''}<button class="btn${IOS&&sh?' ioshide':''}" id="dPack" title="${esc(saveTip())}">📦 Komplettpaket ${SAVE_OK?'speichern unter …':'in Downloads speichern'}</button>${PACK?'<button class="btn" id="dPackI">Daten aus diesem Paket übernehmen</button>':''}<span class="small mut" style="max-width:340px">Für Umzug/Notfall · enthält alle PINs – vertraulich behandeln</span>${ib('pack')}</div></div>`)+/*@/FULL*/''}
+ <div class="card"><h3 style="display:flex;align-items:center;gap:8px">📲 Installation &amp; Betrieb ohne Internet ${ib('inst')}</h3><p class="mut">${location.protocol==='file:'?'Dieses Programm läuft als Datei auf diesem Gerät – es braucht kein Internet.':'Dieses Programm läuft über eine Web-Adresse; als installierte App funktioniert es auch ohne Internet.'} Wie man ${APP} auf PC, Android oder iPad einrichtet (auch per USB-Stick oder Mail): ⓘ</p></div>
  <div class="card"><h3>Speicherstatus</h3><p>Gespeicherte Buchungen: <b>${c.n}</b> · Mitarbeiter: <b>${c.emps}</b> · Datenmenge ca. <b>${kb} KB</b></p><div class="acts" style="margin-top:0"><button class="btn" id="dInfo">Details zum Speicher</button></div></div>
  ${IMPORTS.length?`<div class="card"><h3>Übernahme aus Excel</h3><p class="mut">Einträge vom November 2026 aus der Excel-Liste. Fehlende Einträge werden ergänzt, vorhandene bleiben unverändert – es entstehen keine Doppelungen.</p><div class="acts"><button class="btn" id="dImp">Excel-Einträge November erneut übernehmen</button></div></div>`:''}
  <div class="card"><h3>Auswertung aller Mitarbeiter</h3><p class="mut">Unter „Zeitlisten“ → „Drucken / Export“ → „Alle Mitarbeiter“ lassen sich Woche, Monat oder Jahr für alle gemeinsam drucken oder exportieren.</p></div>
@@ -1232,12 +1478,14 @@ const SAVE_LBL=()=>SAVE_OK?'💾 Speichern unter …':'💾 In Downloads speiche
 function canShareFiles(){if(!MOBILE)return false;try{return !!(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['{}'],'t.json',{type:'application/json'})]}));}catch(e){return false;}}
 async function shareFile(blob,name,title){try{await navigator.share({files:[new File([blob],name,{type:blob.type})]});return true;}
  catch(e){if(e&&e.name==='AbortError')return false;toast('Teilen nicht möglich – Datei wird gespeichert',true);download(blob,name,true);return true;}}
-function backupFile(){const n=new Date();return{blob:new Blob([JSON.stringify({app:'Jet-Zeit',version:VERSION,created:n.toISOString(),counts:countBk(DB),db:DB},null,1)],{type:'application/json'}),name:isPersonal()&&DB.emps[0]?empFile(DB.emps[0],'sicherung',n):'Jet-Zeit-Sicherung_'+ymd(n)+'_'+pad(n.getHours())+pad(n.getMinutes())+'.json'};}
+function backupFile(){const n=new Date();return{blob:new Blob([JSON.stringify({app:'Jet-Zeit',version:VERSION,created:n.toISOString(),counts:countBk(DB),db:DB},null,1)],{type:'application/json'}),name:isPersonal()&&DB.emps[0]?empFile(DB.emps[0],'sicherung',n):APP+'-Sicherung_'+ymd(n)+'_'+pad(n.getHours())+pad(n.getMinutes())+'.json'};}
 function markBackup(){DB.settings.lastBackup=new Date().toISOString();save();if(scr==='admin')render();}
+/*@FULL*/
 function packFile(){const n=new Date();const pack={app:'Jet-Zeit',id:uid(),created:n.toISOString(),version:VERSION,counts:countBk(DB),db:DB};
  const tag='<scr'+'ipt id="jzPack" type="application/json">'+JSON.stringify(pack).replace(/</g,'\\u003c')+'</scr'+'ipt>\n';
  const i=SRC0.indexOf('<scr'+'ipt>');const html=i<0?SRC0:SRC0.slice(0,i)+tag+SRC0.slice(i);
  return{blob:new Blob([html],{type:'text/html'}),name:'Jet-Zeit_V'+VERSION+'_Komplett_'+ymd(n)+'.html'};}
+/*@/FULL*/
 function fmtTs(iso){const d=new Date(iso);return isNaN(d)?'?':dmy(d)+' '+hm(d.getHours()*60+d.getMinutes())+' Uhr';}
 /* Wiederherstellen mit Vorschau – vorher immer Sicherheitskopie */
 function restoreFrom(j,src,after){const d=j&&(j.db||j);if(!d||!Array.isArray(d.emps)||!d.data){toast('Keine gültige Jet-Zeit-Sicherung',true);return;}
@@ -1246,7 +1494,8 @@ function restoreFrom(j,src,after){const d=j&&(j.db||j);if(!d||!Array.isArray(d.e
   toast('Auf diesem Gerät können nur eigene Sicherungen eingespielt werden',true);return;}
  restoreFrom0(j,src,after);}
 function restoreFrom0(j,src,after){const d=j&&(j.db||j);
- if(d.mode==='personal'&&adminGuard('Die Sicherung eines Mitarbeiter-Handys einzuspielen'))return;
+ if(!MOB()&&d.mode==='personal'){toast('Das ist die Sicherung eines Mitarbeiter-Handys – dafür zuerst unter Parameter „Mitarbeiter-Handys & Datenaustausch“ einschalten',true);return;}
+ /*@FULL*/if(d.mode==='personal'&&adminGuard('Die Sicherung eines Mitarbeiter-Handys einzuspielen'))return;/*@/FULL*/
  const c=countBk(d),cur=countBk(DB);
  confirmDlg(`<b>${esc(src)}</b><br>Stand: <b>${j.created?fmtTs(j.created):(d.meta&&d.meta.savedAt?fmtTs(d.meta.savedAt):'unbekannt')}</b><br>Mitarbeiter: <b>${c.emps}</b> (${esc(d.emps.map(e=>e.first).join(', ')||'–')})<br>Buchungen: <b>${c.n}</b>${c.min?' · Zeitraum '+dmy(pd(c.min))+' – '+dmy(pd(c.max)):''}${d.mode==='personal'&&!isPersonal()?'<br><span class="warn" style="display:block;margin-top:6px">Achtung: Diese Sicherung stammt von einem <b>persönlichen Gerät</b>. Nach dem Einspielen läuft auch dieses Gerät im Einzelmodus. Zum Zusammenführen der Stunden kommt in V1.11 die Monatsmeldung.</span>':''}<br><br><span class="mut">Derzeit auf diesem Gerät: ${cur.emps} Mitarbeiter, ${cur.n} Buchungen. Dieser Stand wird vorher automatisch gesichert.</span><br><b>Die aktuellen Daten werden durch die Sicherung ersetzt.</b>`,'Wiederherstellen',async()=>{
   await safetyCopy('Sicherheitskopie vor dem Einspielen');const rev=Math.max((DB.meta&&DB.meta.rev)||0,(d.meta&&d.meta.rev)||0);
@@ -1257,23 +1506,33 @@ async function loadSnapList(){const el=$('#snapList');if(!el)return;if(!window.i
   el.innerHTML=ks.length?ks.map(k=>`<div class="snap"><span style="flex:1;min-width:220px"><b>${fmtTs(m[k].time)}</b><br><span class="small mut">${esc(m[k].label)} · ${m[k].emps} Mitarbeiter · ${m[k].n} Buchungen</span></span><button class="btn" data-sr="${esc(k)}">Wiederherstellen</button><button class="btn" data-sd="${esc(k)}" title="${esc(saveTip())}">${IOS&&canShareFiles()?'📤 Teilen':SAVE_LBL()}</button></div>`).join(''):'Noch keine automatischen Sicherungen vorhanden.';
   el.querySelectorAll('[data-sr]').forEach(b=>b.onclick=async()=>{const k=b.dataset.sr,v=await idbGet(k);if(v)restoreFrom({created:m[k].time,db:v},m[k].label);});
   el.querySelectorAll('[data-sd]').forEach(b=>b.onclick=async()=>{const k=b.dataset.sd,v=await idbGet(k);if(!v)return;const t=new Date(m[k].time);
-   saveAs(new Blob([JSON.stringify({app:'Jet-Zeit',version:VERSION,created:m[k].time,counts:countBk(v),db:v},null,1)],{type:'application/json'}),'Jet-Zeit-Sicherung_'+ymd(t)+'_'+pad(t.getHours())+pad(t.getMinutes())+'.json','bak');});}
+   saveAs(new Blob([JSON.stringify({app:'Jet-Zeit',version:VERSION,created:m[k].time,counts:countBk(v),db:v},null,1)],{type:'application/json'}),APP+'-Sicherung_'+ymd(t)+'_'+pad(t.getHours())+pad(t.getMinutes())+'.json','bak');});}
  catch(e){el.innerHTML='<span class="warn">Automatische Sicherungen konnten nicht gelesen werden.</span>';}}
 function bDaten(){bindSettings();
+ const isv=$('#iSave');if(isv)isv.onclick=async()=>{const f=backupFile();if(await shareFile(f.blob,f.name,APP+' Sicherung'))markBackup();};
  const fc=$('#fsCh');if(fc)fc.onclick=fsChoose;const fgr=$('#fsGr');if(fgr)fgr.onclick=fsGrant;const fo=$('#fsOff');if(fo)fo.onclick=fsDisconnect;
  
  const fn=$('#fsNow');if(fn)fn.onclick=async()=>{await flushFile();toast(fileSt==='ok'?'In Datei gespeichert':'Datei konnte nicht geschrieben werden',fileSt!=='ok');render();};
  const sh=$('#dShare');if(sh)sh.onclick=async()=>{const f=backupFile();if(await shareFile(f.blob,f.name,'Jet-Zeit Sicherung'))markBackup();};
  $('#dBak').onclick=async()=>{const f=backupFile();if(await saveAs(f.blob,f.name,'bak'))markBackup();};
- $('#dRes').onchange=ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;const fr=new FileReader();fr.onload=()=>{let j;try{j=JSON.parse(fr.result);}catch(x){toast('Datei ist keine Jet-Zeit-Sicherung',true);return;}if(j&&j.type==='setup')applySetup(j);else if(j&&j.type==='report'){if(isPersonal())toast('Monatsmeldungen werden beim Administrator unter „Monatsabschluss“ eingelesen',true);else importReports([f]);}else restoreFrom(j,'Sicherung „'+f.name+'“');};fr.readAsText(f);};
- const ps=$('#dPackS');if(ps)ps.onclick=async()=>{const f=packFile();if(await shareFile(f.blob,f.name,'Jet-Zeit Komplettpaket'))markBackup();};
+ $('#dRes').onchange=ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;const fr=new FileReader();fr.onload=()=>{let j;try{j=JSON.parse(fr.result);}catch(x){toast('Datei ist keine Jet-Zeit-Sicherung',true);return;}if(j&&(j.type==='setup'||j.type==='report')){if(j.type==='setup'){applySetup(j);return;}if(isPersonal()){toast('Monatsmeldungen werden beim Administrator unter „Monatsabschluss“ eingelesen',true);return;}if(MOB()){importReports([f]);return;}toast('Monatsmeldungen einlesen: zuerst unter Administration → Parameter „Mitarbeiter-Handys & Datenaustausch“ einschalten',true);return;}restoreFrom(j,'Sicherung „'+f.name+'“');};fr.readAsText(f);};
+/*@FULL*/ const ps=$('#dPackS');if(ps)ps.onclick=async()=>{const f=packFile();if(await shareFile(f.blob,f.name,'Jet-Zeit Komplettpaket'))markBackup();};
  if($('#dPack'))$('#dPack').onclick=async()=>{const f=packFile();if(await saveAs(f.blob,f.name,'pack'))markBackup();};
- const pi=$('#dPackI');if(pi)pi.onclick=()=>restoreFrom(PACK,'Daten aus diesem Komplettpaket',()=>{DB.imports=DB.imports||{};DB.imports['pack-'+PACK.id]=true;});
- $('#dInfo').onclick=storageInfo;bindPersonal();
+ const pi=$('#dPackI');if(pi)pi.onclick=()=>restoreFrom(PACK,'Daten aus diesem Komplettpaket',()=>{DB.imports=DB.imports||{};DB.imports['pack-'+PACK.id]=true;});/*@/FULL*/
+ $('#dInfo').onclick=storageInfo;/*@FULL*/bindPersonal();/*@/FULL*/
  loadSnapList();bindInfo();
  if($('#dImp'))$('#dImp').onclick=()=>{const before=JSON.stringify(DB.data);IMPORTS.forEach(im=>delete DB.imports[im.id]);delete DB.imports.done;migrate();render();toast(JSON.stringify(DB.data)===before?'Alle Einträge waren bereits vorhanden':'Fehlende Einträge übernommen');};
  if($('#dClr'))$('#dClr').onclick=()=>confirmDlg('Wirklich <b>alle Zeitbuchungen aller Mitarbeiter</b> löschen? Mitarbeiter und Einstellungen bleiben erhalten.<br><span class="mut">Vorher wird automatisch eine Sicherheitskopie angelegt.</span>','Alle Buchungen löschen',async()=>{await safetyCopy('Sicherheitskopie vor „Buchungen löschen“');DB.data={};save();render();toast('Buchungen gelöscht');},true);
  if($('#dAll'))$('#dAll').onclick=()=>confirmDlg('Wirklich <b>alles</b> löschen (Mitarbeiter, Buchungen, Einstellungen, Admin-PIN wird 0000)?<br><span class="mut">Vorher wird automatisch eine Sicherheitskopie angelegt.</span>','Alles zurücksetzen',async()=>{await safetyCopy('Sicherheitskopie vor „Alles zurücksetzen“');const rev=(DB.meta&&DB.meta.rev)||0;DB=norm(seed());DB.emps=[];DB.imports={done:true};DB.meta.rev=rev;save();scr='home';render();toast('Zurückgesetzt');},true);}
+/*@FULL*/
+/* V1.30: Daten der früheren Office-Version Jet-Office (eigener Speicher bis V1.29) beim ersten Start übernehmen */
+function checkOldOffice(){if(isPersonal()||DB.emps.length||countBk(DB).n||(DB.imports&&DB.imports.oldOffice))return;
+ let o=null;try{o=JSON.parse(localStorage.getItem(OLD_PFX+'_db_v1')||'null');}catch(e){}
+ if(!o||!Array.isArray(o.emps)||!o.emps.length||!o.data)return;const c=countBk(o);
+ const b=openModal(`<h2>📦 Daten aus Jet-Office gefunden</h2><p>Auf diesem Gerät liegen Daten der früheren Office-Version <b>Jet-Office</b>:<br>${c.emps} Mitarbeiter (${esc(o.emps.map(e=>e.first).join(', '))}), ${c.n} Buchungen${c.min?' · '+dmy(pd(c.min))+' – '+dmy(pd(c.max)):''}.</p><p class="mut">Ab Version 1.30 gibt es nur noch Jet-Zeit. Beim Übernehmen bleibt „Mitarbeiter-Handys &amp; Datenaustausch“ ausgeschaltet (Büro-Terminal wie bisher). Die alten Jet-Office-Daten bleiben zusätzlich unverändert gespeichert.</p><div class="acts"><span class="sp"></span><button class="btn" id="ooN">Nicht übernehmen</button><button class="btn p" id="ooY">Übernehmen</button></div>`);
+ b.querySelector('#ooN').onclick=()=>{closeModal();DB.imports=DB.imports||{};DB.imports.oldOffice='nein';save();};
+ b.querySelector('#ooY').onclick=async()=>{closeModal();await safetyCopy('Sicherheitskopie vor Übernahme aus Jet-Office');const rev=Math.max((DB.meta&&DB.meta.rev)||0,(o.meta&&o.meta.rev)||0);
+  DB=norm(JSON.parse(JSON.stringify(o)));DB.imports=DB.imports||{};DB.imports.oldOffice=new Date().toISOString();DB.meta.rev=rev;save();applyTheme();scr='home';render();toast('Daten aus Jet-Office übernommen');};}
 /* Komplettpaket: beim Öffnen einer Paket-Datei die enthaltenen Daten anbieten */
 let PACK=null;try{const el=document.getElementById('jzPack');if(el)PACK=JSON.parse(el.textContent);}catch(e){PACK=null;}
 function checkPack(){if(!PACK||!PACK.db)return;DB.imports=DB.imports||{};if(DB.imports['pack-'+PACK.id])return;
@@ -1283,6 +1542,7 @@ function checkPack(){if(!PACK||!PACK.db)return;DB.imports=DB.imports||{};if(DB.i
  b.querySelector('#pkYes').onclick=async()=>{closeModal();await safetyCopy('Sicherheitskopie vor Übernahme Komplettpaket');const rev=Math.max((DB.meta&&DB.meta.rev)||0,(PACK.db.meta&&PACK.db.meta.rev)||0);
   DB=norm(JSON.parse(JSON.stringify(PACK.db)));DB.imports=DB.imports||{};DB.imports['pack-'+PACK.id]=true;DB.meta.rev=rev;save();scr='home';render();toast('Daten aus dem Komplettpaket übernommen');};}
 
+/*@/FULL*/
 /* ---------- Timer: Uhr, Auto-Abmeldung, Aktualisierung ---------- */
 ['pointerdown','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{lastAct=Date.now();},{passive:true}));
 let lastMin=-1;
